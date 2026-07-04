@@ -79,21 +79,21 @@ body{font-family:'Montserrat',sans-serif;background:var(--primary);color:#fff;ov
 .stat-label{font-size:.85rem;opacity:.7;margin-top:.3rem}
 .admin-edit-btn{background:linear-gradient(135deg,var(--gold),#f59e0b);color:var(--dark);border:none;width:36px;height:36px;border-radius:50%;cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center;transition:all .3s;box-shadow:0 4px 15px rgba(251,191,36,0.4)}
 .admin-edit-btn:hover{transform:scale(1.1) rotate(15deg)}
-.albums-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:2rem}
-.album-card{background:var(--glass);border:1px solid var(--glass2);border-radius:20px;overflow:hidden;cursor:pointer;transition:all .4s;position:relative}
-.album-card:hover{transform:translateY(-8px);box-shadow:0 20px 50px rgba(0,0,0,0.4);background:var(--glass2)}
-.album-cover{aspect-ratio:16/10;overflow:hidden;position:relative;background:var(--secondary)}
-.album-cover img{width:100%;height:100%;object-fit:cover;transition:transform .6s}
-.album-card:hover .album-cover img{transform:scale(1.1)}
+.albums-grid,.videos-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:2rem}
+.album-card,.video-card{background:var(--glass);border:1px solid var(--glass2);border-radius:20px;overflow:hidden;cursor:pointer;transition:all .4s;position:relative}
+.album-card:hover,.video-card:hover{transform:translateY(-8px);box-shadow:0 20px 50px rgba(0,0,0,0.4);background:var(--glass2)}
+.album-cover,.video-thumbnail{aspect-ratio:16/9;overflow:hidden;position:relative;background:var(--secondary)}
+.album-cover img,.video-thumbnail img{width:100%;height:100%;object-fit:cover;transition:transform .6s}
+.album-card:hover .album-cover img,.video-card:hover .video-thumbnail img{transform:scale(1.1)}
 .album-cover-overlay{position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(0,0,0,0.7) 100%);display:flex;align-items:flex-end;padding:1rem}
 .album-photo-count{background:rgba(0,0,0,0.6);padding:.3rem .8rem;border-radius:20px;font-size:.8rem;font-weight:600;backdrop-filter:blur(10px)}
-.album-info{padding:1.5rem}
-.album-info h3{font-family:'Playfair Display',serif;font-size:1.3rem;margin-bottom:.5rem}
-.album-info p{font-size:.9rem;opacity:.7;line-height:1.5}
+.album-info,.video-info{padding:1.5rem}
+.album-info h3,.video-info h3{font-family:'Playfair Display',serif;font-size:1.3rem;margin-bottom:.5rem}
+.album-info p,.video-info p{font-size:.9rem;opacity:.7;line-height:1.5}
 .album-info .album-date{font-size:.8rem;color:var(--gold);margin-top:.8rem;font-weight:600}
-.album-add{background:var(--glass);border:2px dashed var(--glass2);border-radius:20px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.8rem;min-height:280px;cursor:pointer;transition:all .3s;color:var(--gold)}
-.album-add:hover{background:var(--glass2);border-color:var(--gold)}
-.album-add svg{width:50px;height:50px}
+.album-add,.video-add{background:var(--glass);border:2px dashed var(--glass2);border-radius:20px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.8rem;min-height:280px;cursor:pointer;transition:all .3s;color:var(--gold)}
+.album-add:hover,.video-add:hover{background:var(--glass2);border-color:var(--gold)}
+.album-add svg,.video-add svg{width:50px;height:50px}
 .album-detail{position:fixed;inset:0;z-index:1600;background:var(--primary);overflow-y:auto;transform:translateX(100%);transition:transform .5s cubic-bezier(.4,0,.2,1)}
 .album-detail.open{transform:translateX(0)}
 .album-detail-hero{position:relative;height:40vh;min-height:250px;overflow:hidden}
@@ -273,84 +273,30 @@ body{font-family:'Montserrat',sans-serif;background:var(--primary);color:#fff;ov
 .fade-in{opacity:0;transform:translateY(30px);transition:all .8s}
 .fade-in.visible{opacity:1;transform:translateY(0)}
 @media(max-width:968px){.nav-links{position:fixed;top:0;right:-100%;width:70%;height:100vh;background:rgba(10,22,40,0.98);backdrop-filter:blur(20px);flex-direction:column;justify-content:center;gap:2rem;transition:right .4s;padding:2rem}.nav-links.open{right:0}.hamburger{display:flex}.about-grid,.contact-grid{grid-template-columns:1fr}.stats{grid-template-columns:repeat(3,1fr)}.admin-panel{width:100%}.hero-logo{width:160px}}
-@media(max-width:600px){.stats{grid-template-columns:1fr}.hero-title{font-size:2.5rem}.section{padding:4rem 1rem}.album-detail-hero{height:30vh;min-height:180px}.lightbox-prev{left:1rem}.lightbox-next{right:1rem}.multi-preview{grid-template-columns:repeat(auto-fill,minmax(80px,1fr))}.albums-grid{grid-template-columns:1fr}.album-photos-header{flex-direction:column;align-items:flex-start}.icon-selector{grid-template-columns:repeat(6,1fr)}.hero-logo{width:130px}.nav-logo .logo-text .main{font-size:1rem}.nav-logo .logo-text .sub{font-size:.55rem}.nav-logo .shield-logo{width:45px;height:50px}.footer-logo .shield-logo{width:55px;height:60px}}
+@media(max-width:600px){.stats{grid-template-columns:1fr}.hero-title{font-size:2.5rem}.section{padding:4rem 1rem}.album-detail-hero{height:30vh;min-height:180px}.lightbox-prev{left:1rem}.lightbox-next{right:1rem}.multi-preview{grid-template-columns:repeat(auto-fill,minmax(80px,1fr))}.albums-grid,.videos-grid{grid-template-columns:1fr}.album-photos-header{flex-direction:column;align-items:flex-start}.icon-selector{grid-template-columns:repeat(6,1fr)}.hero-logo{width:130px}.nav-logo .logo-text .main{font-size:1rem}.nav-logo .logo-text .sub{font-size:.55rem}.nav-logo .shield-logo{width:45px;height:50px}.footer-logo .shield-logo{width:55px;height:60px}}
 
-/* ========================================== */
-/* ESTILOS BOTONES REORDENAR                  */
-/* ========================================== */
-.album-reorder-controls {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-    z-index: 10;
-}
-.album-reorder-btn {
-    width: 32px;
-    height: 32px;
-    background: rgba(251, 191, 36, 0.95);
-    border: 2px solid rgba(255,255,255,0.3);
-    border-radius: 50%;
-    cursor: pointer;
-    font-size: 1rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.2s;
-    backdrop-filter: blur(10px);
-    color: var(--dark);
-    font-weight: bold;
-}
-.album-reorder-btn:hover {
-    background: var(--gold);
-    transform: scale(1.15);
-    border-color: #fff;
-}
-.album-reorder-btn:disabled {
-    opacity: 0.3;
-    cursor: not-allowed;
-}
-.album-reorder-btn:disabled:hover {
-    transform: none;
-}
-.admin-item .album-reorder-controls {
-    position: static;
-    flex-direction: row;
-    margin-right: 0.5rem;
-}
+/* BOTONES REORDENAR */
+.album-reorder-controls { position: absolute; top: 10px; right: 10px; display: flex; flex-direction: column; gap: 5px; z-index: 10; }
+.album-reorder-btn { width: 32px; height: 32px; background: rgba(251, 191, 36, 0.95); border: 2px solid rgba(255,255,255,0.3); border-radius: 50%; cursor: pointer; font-size: 1rem; display: flex; align-items: center; justify-content: center; transition: all 0.2s; backdrop-filter: blur(10px); color: var(--dark); font-weight: bold; }
+.album-reorder-btn:hover { background: var(--gold); transform: scale(1.15); border-color: #fff; }
+.album-reorder-btn:disabled { opacity: 0.3; cursor: not-allowed; }
+.album-reorder-btn:disabled:hover { transform: none; }
+.admin-item .album-reorder-controls { position: static; flex-direction: row; margin-right: 0.5rem; }
 
-/* ========================================== */
-/* ESTILOS SECCIÓN VIDEOS                     */
-/* ========================================== */
-.videos-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:2rem}
-.video-card{background:var(--glass);border:1px solid var(--glass2);border-radius:20px;overflow:hidden;cursor:pointer;transition:all .4s;position:relative}
-.video-card:hover{transform:translateY(-8px);box-shadow:0 20px 50px rgba(0,0,0,0.4);background:var(--glass2)}
-.video-thumbnail{aspect-ratio:16/9;overflow:hidden;position:relative;background:var(--secondary)}
-.video-thumbnail img{width:100%;height:100%;object-fit:cover;transition:transform .6s}
-.video-card:hover .video-thumbnail img{transform:scale(1.1)}
+/* VIDEO LIGHTBOX (CORREGIDO) */
 .video-play-btn{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:70px;height:70px;background:rgba(255,0,0,0.9);border-radius:50%;display:flex;align-items:center;justify-content:center;transition:all .3s;box-shadow:0 8px 25px rgba(0,0,0,0.5)}
 .video-card:hover .video-play-btn{transform:translate(-50%,-50%) scale(1.15);background:#ff0000}
 .video-play-btn svg{width:30px;height:30px;fill:#fff;margin-left:4px}
-.video-info{padding:1.5rem}
-.video-info h3{font-family:'Playfair Display',serif;font-size:1.3rem;margin-bottom:.5rem}
-.video-info p{font-size:.9rem;opacity:.7;line-height:1.5}
-.video-add{background:var(--glass);border:2px dashed var(--glass2);border-radius:20px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.8rem;min-height:280px;cursor:pointer;transition:all .3s;color:var(--gold)}
-.video-add:hover{background:var(--glass2);border-color:var(--gold)}
-.video-add svg{width:50px;height:50px}
-.video-lightbox{position:fixed;inset:0;background:rgba(0,0,0,0.95);z-index:3000;display:none;align-items:center;justify-content:center;padding:2rem}
+.video-lightbox{position:fixed;inset:0;background:rgba(0,0,0,0.95);z-index:3000;display:none;align-items:center;justify-content:center;padding:2rem;cursor:pointer}
 .video-lightbox.active{display:flex}
-.video-lightbox-content{width:100%;max-width:1000px;aspect-ratio:16/9;position:relative}
+.video-lightbox-content{width:100%;max-width:1000px;aspect-ratio:16/9;position:relative;cursor:default;pointer-events:auto}
 .video-lightbox-content iframe{width:100%;height:100%;border:none;border-radius:15px}
-.video-lightbox-close{position:absolute;top:-50px;right:0;background:var(--glass);border:none;color:#fff;width:45px;height:45px;border-radius:50%;cursor:pointer;font-size:1.5rem;transition:all .3s}
-.video-lightbox-close:hover{background:#ef4444;transform:rotate(90deg)}
+.video-lightbox-close{position:absolute;top:10px;right:10px;background:rgba(239,68,68,0.95);border:2px solid rgba(255,255,255,0.5);color:#fff;width:50px;height:50px;border-radius:50%;cursor:pointer;font-size:1.5rem;transition:all .3s;z-index:3010;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 15px rgba(0,0,0,0.5)}
+.video-lightbox-close:hover{background:#ef4444;transform:scale(1.1) rotate(90deg);border-color:#fff}
 .video-lightbox-title{position:absolute;bottom:-50px;left:0;right:0;color:#fff;font-family:'Playfair Display',serif;font-size:1.3rem;text-align:center}
 @media(max-width:600px){.video-lightbox-close{top:10px;right:10px}.video-lightbox-title{bottom:-40px;font-size:1rem}}
 
-/* ========================================== */
-/* ESTILOS SECCIÓN COMENTARIOS                */
-/* ========================================== */
+/* COMENTARIOS */
 .comments-section{background:linear-gradient(180deg,var(--secondary) 0%,var(--primary) 100%);padding:6rem 2rem}
 .comments-container{max-width:900px;margin:0 auto}
 .comments-header{text-align:center;margin-bottom:3rem}
@@ -416,10 +362,10 @@ body{font-family:'Montserrat',sans-serif;background:var(--primary);color:#fff;ov
 <div class="hero-logo-glow"></div>
 <img src="logo.png" alt="Escudo Larramendi" class="hero-logo">
 </div>
-<span class="hero-badge">⚽ Agrupación de Veteranos de Fútbol</span>
+<span class="hero-badge"> Agrupación de Veteranos de Fútbol</span>
 <h1 class="hero-title"><span class="half-white">LARRA</span><span class="half-blue">MENDI</span></h1>
 <p class="hero-subtitle">Paraná, Entre Ríos · Pasión por el fútbol que trasciende el tiempo</p>
-<div class="hero-founded">🏛️ Fundada el <span>16 de Enero de 1989</span></div>
+<div class="hero-founded">️ Fundada el <span>16 de Enero de 1989</span></div>
 <div class="hero-buttons">
 <a href="#historia" class="btn btn-primary">Conocer Más</a>
 <a href="#galeria" class="btn btn-outline">Ver Galería</a>
@@ -462,7 +408,6 @@ body{font-family:'Montserrat',sans-serif;background:var(--primary);color:#fff;ov
 </div>
 </section>
 
-<!-- NUEVA SECCIÓN VIDEOS -->
 <section class="section section-alt" id="videos">
 <div class="container">
 <div class="section-header fade-in"><span class="section-label">Multimedia</span><h2 class="section-title">Nuestros <span style="color:var(--gold)">Videos</span></h2><div class="section-divider"></div></div>
@@ -487,7 +432,6 @@ body{font-family:'Montserrat',sans-serif;background:var(--primary);color:#fff;ov
 </div>
 </section>
 
-<!-- SECCIÓN COMENTARIOS -->
 <section class="comments-section" id="comentarios">
 <div class="comments-container">
 <div class="comments-header fade-in">
@@ -495,30 +439,18 @@ body{font-family:'Montserrat',sans-serif;background:var(--primary);color:#fff;ov
 <h2>Dejá tu <span class="gold">Comentario</span></h2>
 <div class="section-divider"></div>
 </div>
-
 <div class="comments-form fade-in">
 <h3>📝 Escribí tu mensaje</h3>
 <form id="commentForm" onsubmit="submitComment(event)">
 <div class="form-row">
-<div class="form-group">
-<label>Nombre *</label>
-<input type="text" id="commentName" required placeholder="Tu nombre">
+<div class="form-group"><label>Nombre *</label><input type="text" id="commentName" required placeholder="Tu nombre"></div>
+<div class="form-group"><label>Email (opcional)</label><input type="email" id="commentEmail" placeholder="tu@email.com"></div>
 </div>
-<div class="form-group">
-<label>Email (opcional)</label>
-<input type="email" id="commentEmail" placeholder="tu@email.com">
-</div>
-</div>
-<div class="form-group">
-<label>Comentario *</label>
-<textarea id="commentMessage" required placeholder="Compartí tu opinión sobre la agrupación..."></textarea>
-</div>
+<div class="form-group"><label>Comentario *</label><textarea id="commentMessage" required placeholder="Compartí tu opinión sobre la agrupación..."></textarea></div>
 <button type="submit" class="btn-submit" id="btnSubmitComment">💾 Publicar Comentario</button>
 </form>
 </div>
-
 <div class="comments-list fade-in" id="commentsList"></div>
-
 <div class="visit-counter fade-in">
 <div class="counter-number" id="visitCount">0</div>
 <div class="counter-label">👥 Visitas totales</div>
@@ -535,18 +467,16 @@ body{font-family:'Montserrat',sans-serif;background:var(--primary);color:#fff;ov
 </div>
 </div>
 <p>Paraná, Entre Ríos · Desde 1989</p>
-<div class="footer-social"><a href="#">📘</a><a href="#">📷</a><a href="#"></a><a href="#">▶️</a></div>
+<div class="footer-social"><a href="#">📘</a><a href="#">📷</a><a href="#">🐦</a><a href="#">▶️</a></div>
 <div class="footer-copy">© 2025 Larramendi. Todos los derechos reservados.</div>
 </footer>
 
-<!-- Modal detalle álbum -->
 <div class="album-detail" id="albumDetail">
 <button class="album-detail-close" onclick="closeAlbumDetail()">✕</button>
 <div class="album-detail-hero"><img id="albumDetailHeroImg" src="" alt=""><div class="album-detail-hero-overlay"></div><div class="album-detail-hero-content"><a class="album-detail-back" onclick="closeAlbumDetail()">← Volver a álbumes</a><h1 class="album-detail-hero-title" id="albumDetailTitle"></h1><p class="album-detail-hero-subtitle" id="albumDetailSubtitle"></p></div></div>
 <div class="album-photos-section"><div class="album-photos-header"><div><div class="album-photos-title">Fotos del álbum <span id="albumPhotosTitleName"></span></div><div class="album-photos-count" id="albumPhotosCount"></div></div><div class="album-photos-actions" id="albumPhotosActions"></div></div><div class="album-photos-grid" id="albumPhotosGrid"></div></div>
 </div>
 
-<!-- Modal Login -->
 <div class="modal-overlay" id="loginModal">
 <div class="modal">
 <button class="modal-close" onclick="closeLogin()">✕</button>
@@ -562,10 +492,9 @@ body{font-family:'Montserrat',sans-serif;background:var(--primary);color:#fff;ov
 </div>
 </div>
 
-<!-- Modal Editar Álbum -->
 <div class="modal-overlay" id="editAlbumModal">
 <div class="modal modal-lg">
-<button class="modal-close" onclick="closeEditAlbum()">✕</button>
+<button class="modal-close" onclick="closeEditAlbum()"></button>
 <h2 id="editAlbumTitle">Nuevo Álbum</h2>
 <p class="modal-subtitle">Completá los datos del álbum</p>
 <form onsubmit="saveAlbum(event)" novalidate>
@@ -574,7 +503,7 @@ body{font-family:'Montserrat',sans-serif;background:var(--primary);color:#fff;ov
 <div class="form-group"><label>Descripción</label><textarea id="albumField2" placeholder="Descripción breve del álbum..."></textarea></div>
 <div class="form-group"><label>Imagen de portada *</label>
 <div class="upload-zone" id="albumUploadZone" onclick="document.getElementById('albumFileInput').click()">
-<div id="albumUploadPlaceholder"><p style="margin-bottom:.5rem">📁 Hacé clic para subir la portada</p><p style="font-size:.8rem;opacity:.6">o pegá una URL abajo</p></div>
+<div id="albumUploadPlaceholder"><p style="margin-bottom:.5rem"> Hacé clic para subir la portada</p><p style="font-size:.8rem;opacity:.6">o pegá una URL abajo</p></div>
 <img id="albumUploadPreview" style="display:none">
 <input type="file" id="albumFileInput" accept="image/*" onchange="handleAlbumCoverUpload(event)">
 </div>
@@ -587,7 +516,6 @@ body{font-family:'Montserrat',sans-serif;background:var(--primary);color:#fff;ov
 </div>
 </div>
 
-<!-- Modal Editar Video -->
 <div class="modal-overlay" id="editVideoModal">
 <div class="modal modal-lg">
 <button class="modal-close" onclick="closeEditVideo()">✕</button>
@@ -605,7 +533,6 @@ body{font-family:'Montserrat',sans-serif;background:var(--primary);color:#fff;ov
 </div>
 </div>
 
-<!-- Modal Editar Sección -->
 <div class="modal-overlay" id="editPageModal">
 <div class="modal modal-xl">
 <button class="modal-close" onclick="closeEditPage()">✕</button>
@@ -613,12 +540,12 @@ body{font-family:'Montserrat',sans-serif;background:var(--primary);color:#fff;ov
 <p class="modal-subtitle">Modificá todos los elementos visibles de la sección</p>
 <form onsubmit="savePage(event)" novalidate>
 <input type="hidden" id="editPageId">
-<div class="form-group"><label> Título de la sección *</label><input type="text" id="pageField1" required placeholder="Ej: Nuestro Equipo"><div class="form-error" id="errPageTitle">El título es obligatorio</div></div>
-<div class="form-group"><label> Encabezado / Subtítulo</label><input type="text" id="pageField5" placeholder="Ej: Conocé a nuestro equipo"></div>
+<div class="form-group"><label>📝 Título de la sección *</label><input type="text" id="pageField1" required placeholder="Ej: Nuestro Equipo"><div class="form-error" id="errPageTitle">El título es obligatorio</div></div>
+<div class="form-group"><label>📄 Encabezado / Subtítulo</label><input type="text" id="pageField5" placeholder="Ej: Conocé a nuestro equipo"></div>
 <div class="form-group"><label>📋 Contenido / Descripción *</label><textarea id="pageField2" style="min-height:150px" placeholder="Escribí el contenido completo de la página..."></textarea><div class="form-error" id="errPageDesc">La descripción es obligatoria</div></div>
-<div class="form-group"><label>️ Imagen de fondo (Hero) *</label>
+<div class="form-group"><label>🖼️ Imagen de fondo (Hero) *</label>
 <div class="upload-zone" id="pageUploadZone" onclick="document.getElementById('pageFileInput').click()">
-<div id="pageUploadPlaceholder"><p style="margin-bottom:.5rem">🖼️ Hacé clic para subir la imagen de fondo</p><p style="font-size:.8rem;opacity:.6">Esta imagen aparecerá como fondo al abrir la sección</p></div>
+<div id="pageUploadPlaceholder"><p style="margin-bottom:.5rem">️ Hacé clic para subir la imagen de fondo</p><p style="font-size:.8rem;opacity:.6">Esta imagen aparecerá como fondo al abrir la sección</p></div>
 <img id="pageUploadPreview" style="display:none">
 <input type="file" id="pageFileInput" accept="image/*" onchange="handlePageBgUpload(event)">
 </div>
@@ -626,13 +553,12 @@ body{font-family:'Montserrat',sans-serif;background:var(--primary);color:#fff;ov
 <div class="form-error" id="errPageBg">Debés subir una imagen o pegar una URL</div>
 </div>
 <div class="form-group"><label>🎨 Ícono de la sección</label><div class="icon-selector" id="iconSelector"></div><input type="hidden" id="pageFieldIcon"></div>
-<div class="form-group"><label>📅 Fecha / Período</label><input type="text" id="pageField4" placeholder="Octubre 2025"></div>
+<div class="form-group"><label> Fecha / Período</label><input type="text" id="pageField4" placeholder="Octubre 2025"></div>
 <button type="submit" class="btn btn-primary btn-full" id="btnSavePage">💾 Guardar Sección</button>
 </form>
 </div>
 </div>
 
-<!-- Modal Editar Historia -->
 <div class="modal-overlay" id="editHomeSectionModal">
 <div class="modal modal-xl">
 <button class="modal-close" onclick="closeEditHomeSection()">✕</button>
@@ -643,8 +569,8 @@ body{font-family:'Montserrat',sans-serif;background:var(--primary);color:#fff;ov
 <div class="form-group"><label>📌 Título principal (usá * para la parte dorada, ej: "Tradición y *Pasión*")</label><input type="text" id="homeTitle" placeholder="Tradición y *Pasión*"><div class="form-error" id="errHomeTitle">El título es obligatorio</div></div>
 <div class="form-group"><label>📝 Subtítulo del bloque</label><input type="text" id="homeAboutTitle" placeholder="Más que un equipo, una familia"><div class="form-error" id="errHomeAboutTitle">El subtítulo es obligatorio</div></div>
 <div class="form-group"><label>📄 Primer párrafo</label><textarea id="homeP1" style="min-height:100px"></textarea><div class="form-error" id="errHomeP1">El primer párrafo es obligatorio</div></div>
-<div class="form-group"><label> Segundo párrafo</label><textarea id="homeP2" style="min-height:100px"></textarea><div class="form-error" id="errHomeP2">El segundo párrafo es obligatorio</div></div>
-<div class="form-group"><label>🖼️ Imagen del bloque</label>
+<div class="form-group"><label>📄 Segundo párrafo</label><textarea id="homeP2" style="min-height:100px"></textarea><div class="form-error" id="errHomeP2">El segundo párrafo es obligatorio</div></div>
+<div class="form-group"><label>️ Imagen del bloque</label>
 <div class="upload-zone" id="homeUploadZone" onclick="document.getElementById('homeFileInput').click()">
 <div id="homeUploadPlaceholder"><p style="margin-bottom:.5rem">🖼️ Hacé clic para subir la imagen</p><p style="font-size:.8rem;opacity:.6">o pegá una URL abajo</p></div>
 <img id="homeUploadPreview" style="display:none">
@@ -668,7 +594,6 @@ body{font-family:'Montserrat',sans-serif;background:var(--primary);color:#fff;ov
 </div>
 </div>
 
-<!-- Modal Subir Múltiples Fotos -->
 <div class="modal-overlay" id="multiUploadModal">
 <div class="modal modal-xl">
 <button class="modal-close" onclick="closeMultiUpload()">✕</button>
@@ -693,7 +618,6 @@ body{font-family:'Montserrat',sans-serif;background:var(--primary);color:#fff;ov
 </div>
 </div>
 
-<!-- Modal Editar Contacto -->
 <div class="modal-overlay" id="editContactItemModal">
 <div class="modal">
 <button class="modal-close" onclick="closeEditContactItem()">✕</button>
@@ -701,7 +625,7 @@ body{font-family:'Montserrat',sans-serif;background:var(--primary);color:#fff;ov
 <p class="modal-subtitle">Modificá la información de contacto</p>
 <form onsubmit="saveContactItem(event)" novalidate>
 <input type="hidden" id="contactItemId">
-<div class="form-group"><label>Ícono (emoji)</label><input type="text" id="contactItemIcon" placeholder="Ej:  📱 " maxlength="4"></div>
+<div class="form-group"><label>Ícono (emoji)</label><input type="text" id="contactItemIcon" placeholder="Ej: 📍 📱 " maxlength="4"></div>
 <div class="form-group"><label>Título *</label><input type="text" id="contactItemTitleField" required placeholder="Ej: Ubicación"><div class="form-error" id="errContactItemTitle">El título es obligatorio</div></div>
 <div class="form-group"><label>Contenido *</label><input type="text" id="contactItemContent" required placeholder="Ej: Paraná, Entre Ríos"><div class="form-error" id="errContactItemContent">El contenido es obligatorio</div></div>
 <button type="submit" class="btn btn-primary btn-full">💾 Guardar</button>
@@ -709,7 +633,6 @@ body{font-family:'Montserrat',sans-serif;background:var(--primary);color:#fff;ov
 </div>
 </div>
 
-<!-- Modal Editar Campo Formulario -->
 <div class="modal-overlay" id="editFormFieldModal">
 <div class="modal">
 <button class="modal-close" onclick="closeEditFormField()">✕</button>
@@ -727,7 +650,6 @@ body{font-family:'Montserrat',sans-serif;background:var(--primary);color:#fff;ov
 </div>
 </div>
 
-<!-- Lightbox fotos -->
 <div class="lightbox" id="lightbox">
 <button class="lightbox-close" onclick="closeLightbox()">✕</button>
 <button class="lightbox-nav lightbox-prev" onclick="lightboxNav(-1)">❮</button>
@@ -736,7 +658,6 @@ body{font-family:'Montserrat',sans-serif;background:var(--primary);color:#fff;ov
 <div class="lightbox-counter" id="lightboxCounter"></div>
 </div>
 
-<!-- NUEVO: Video Lightbox -->
 <div class="video-lightbox" id="videoLightbox">
 <button class="video-lightbox-close" onclick="closeVideoLightbox()">✕</button>
 <div class="video-lightbox-content">
@@ -745,7 +666,6 @@ body{font-family:'Montserrat',sans-serif;background:var(--primary);color:#fff;ov
 </div>
 </div>
 
-<!-- Panel Admin -->
 <button class="admin-toggle" id="adminToggle" onclick="toggleAdmin()">⚙️</button>
 <div class="admin-panel" id="adminPanel">
 <div class="admin-header"><h2>Panel <span>Admin</span></h2><button class="modal-close" onclick="toggleAdmin()" style="position:static">✕</button></div>
@@ -768,19 +688,18 @@ body{font-family:'Montserrat',sans-serif;background:var(--primary);color:#fff;ov
 <div id="adminAlbumsList"></div>
 <button class="btn-add" onclick="openEditAlbum()">+ Nuevo Álbum</button>
 </div>
-<!-- NUEVA PESTAÑA ADMIN VIDEOS -->
 <div class="admin-section" id="tab-videos">
-<div class="help-box"><h4>🎬 Cómo gestionar videos</h4><ul><li>Pegá el link de YouTube y el sistema extrae la miniatura automáticamente</li><li>Usá ️ ⬇️ para reordenar los videos</li><li>Hacé clic en ✏️ para editar o 🗑️ para eliminar</li></ul></div>
+<div class="help-box"><h4>🎬 Cómo gestionar videos</h4><ul><li>Pegá el link de YouTube y el sistema extrae la miniatura automáticamente</li><li>Usá ⬆️ ⬇️ para reordenar los videos</li><li>Hacé clic en ✏️ para editar o 🗑️ para eliminar</li></ul></div>
 <div id="adminVideosList"></div>
 <button class="btn-add" onclick="openEditVideo()">+ Nuevo Video</button>
 </div>
 <div class="admin-section" id="tab-pages">
-<div class="help-box"><h4>💡 Cómo gestionar secciones</h4><ul><li>Cada sección es una página con título, fondo y contenido propios</li><li>Hacé clic en ️ para editar</li><li>Usá ️ para eliminar</li></ul></div>
+<div class="help-box"><h4> Cómo gestionar secciones</h4><ul><li>Cada sección es una página con título, fondo y contenido propios</li><li>Hacé clic en ✏️ para editar</li><li>Usá 🗑️ para eliminar</li></ul></div>
 <div id="adminPagesList"></div>
 <button class="btn-add" onclick="openEditPage()">+ Nueva Sección</button>
 </div>
 <div class="admin-section" id="tab-contact">
-<div class="help-box"><h4>📞 Gestión de Contacto</h4><ul><li>Editá los datos de contacto (ubicación, email, etc.)</li><li>Agregá o eliminá campos del formulario</li><li>Los cambios se reflejan inmediatamente en el sitio</li></ul></div>
+<div class="help-box"><h4> Gestión de Contacto</h4><ul><li>Editá los datos de contacto (ubicación, email, etc.)</li><li>Agregá o eliminá campos del formulario</li><li>Los cambios se reflejan inmediatamente en el sitio</li></ul></div>
 <h3 style="margin-bottom:1rem;color:var(--gold)">Datos de contacto</h3>
 <div id="adminContactItemsList"></div>
 <button class="btn-add" onclick="openEditContactItem()">+ Agregar dato de contacto</button>
@@ -808,9 +727,6 @@ body{font-family:'Montserrat',sans-serif;background:var(--primary);color:#fff;ov
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <script>
-/* ============================================================
-   CREDENCIALES DE SUPABASE
-   ============================================================ */
 const SUPABASE_URL = 'https://osqiwfuzagmbxaxqkhar.supabase.co';
 const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9zcWl3ZnV6YWdtYnhheHFraGFyIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc4MTE1MjAxNywiZXhwIjoyMDk2NzI4MDE3fQ.iYlQQUFqUC6WRKD9lozuKZ6gTaMG7uCILiCmssHCNFs';
 
@@ -820,366 +736,123 @@ let SUPABASE_DB_ENABLED = false;
 try {
   supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
   console.log('✅ Cliente Supabase creado');
-  
   supabaseClient.from('albums').select('count').then(function(result) {
-    if (result.error) {
-      console.error('❌ Error DB:', result.error.message);
-      console.log('⚠️ Usando localStorage como fallback');
-    } else {
-      SUPABASE_DB_ENABLED = true;
-      console.log('✅ Base de datos conectada. Álbumes:', result.count);
-      loadFromDatabase();
-    }
+    if (result.error) { console.error(' Error DB:', result.error.message); } 
+    else { SUPABASE_DB_ENABLED = true; console.log('✅ Base de datos conectada. Álbumes:', result.count); loadFromDatabase(); }
   });
-} catch(e) {
-  console.error('Error:', e);
-}
+} catch(e) { console.error('Error:', e); }
 
 const CONTACT_EMAIL = 'larramendifutbolveteranos@gmail.com';
-
-const DEFAULT_HOME_SECTION = {
-  label: 'Nuestra Historia',
-  title: 'Tradición y *Pasión*',
-  aboutTitle: 'Más que un equipo, una familia',
-  p1: 'La Agrupación de Veteranos de Fútbol Larramendi nació del amor por el deporte rey. Desde Paraná, Entre Ríos, reunimos a jugadores que mantienen viva la pasión por el fútbol a través de los años.',
-  p2: 'Fundada el 16 de enero de 1989, nuestra agrupación ha sido un pilar del fútbol veterano en la región, fomentando el deporte, la camaradería y los valores que el fútbol nos enseñó. Cada partido es una celebración de la amistad y el compañerismo.',
-  image: 'https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=1920',
-  stats: [
-    { number: '36+', label: 'Años de historia' },
-    { number: '40+', label: 'Jugadores' },
-    { number: '15+', label: 'Torneos' }
-  ]
-};
-
-const DEFAULT_CONTACT_ITEMS = [
-  { id: 1, icon: '📍', title: 'Ubicación', content: 'Paraná, Entre Ríos, Argentina' },
-  { id: 2, icon: '📧', title: 'Email', content: CONTACT_EMAIL },
-  { id: 3, icon: '📱', title: 'Teléfono', content: '+54 343 555-0000' }
-];
-
-const DEFAULT_FORM_FIELDS = [
-  { id: 1, label: 'Nombre completo', type: 'text', required: true, placeholder: 'Tu nombre', options: [] },
-  { id: 2, label: 'Email', type: 'email', required: true, placeholder: 'tu@email.com', options: [] },
-  { id: 3, label: 'Asunto', type: 'text', required: false, placeholder: 'Motivo de contacto', options: [] },
-  { id: 4, label: 'Mensaje', type: 'textarea', required: true, placeholder: 'Tu mensaje...', options: [] }
-];
-
+const DEFAULT_HOME_SECTION = { label: 'Nuestra Historia', title: 'Tradición y *Pasión*', aboutTitle: 'Más que un equipo, una familia', p1: 'La Agrupación de Veteranos de Fútbol Larramendi nació del amor por el deporte rey. Desde Paraná, Entre Ríos, reunimos a jugadores que mantienen viva la pasión por el fútbol a través de los años.', p2: 'Fundada el 16 de enero de 1989, nuestra agrupación ha sido un pilar del fútbol veterano en la región, fomentando el deporte, la camaradería y los valores que el fútbol nos enseñó. Cada partido es una celebración de la amistad y el compañerismo.', image: 'https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=1920', stats: [{ number: '36+', label: 'Años de historia' }, { number: '40+', label: 'Jugadores' }, { number: '15+', label: 'Torneos' }] };
+const DEFAULT_CONTACT_ITEMS = [{ id: 1, icon: '📍', title: 'Ubicación', content: 'Paraná, Entre Ríos, Argentina' }, { id: 2, icon: '📧', title: 'Email', content: CONTACT_EMAIL }, { id: 3, icon: '📱', title: 'Teléfono', content: '+54 343 555-0000' }];
+const DEFAULT_FORM_FIELDS = [{ id: 1, label: 'Nombre completo', type: 'text', required: true, placeholder: 'Tu nombre', options: [] }, { id: 2, label: 'Email', type: 'email', required: true, placeholder: 'tu@email.com', options: [] }, { id: 3, label: 'Asunto', type: 'text', required: false, placeholder: 'Motivo de contacto', options: [] }, { id: 4, label: 'Mensaje', type: 'textarea', required: true, placeholder: 'Tu mensaje...', options: [] }];
 const TEAM_IMAGE = 'https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=1920';
-const ICONS = ['','🏆','🎉','🎊','⭐','👥','🏟️','🎯','🎖️','🎊','🥅','🏅','🎖️',''];
+const ICONS = ['⚽','🏆','🎉','🎊','⭐','👥','🏟️','','🎖️','','','🏅','🎖️',''];
 
 let state = {
   homeSection: JSON.parse(localStorage.getItem('larr_home_section')) || DEFAULT_HOME_SECTION,
-  albums: [],
-  videos: [],
-  pages: JSON.parse(localStorage.getItem('larr_pages')) || [
-    {id:1,title:'Nuestro Equipo',header:'Conocé a nuestro plantel',desc:'Conocé a los jugadores.',icon:'⚽',date:'Desde 1989',url:TEAM_IMAGE,gallery:[]},
-    {id:2,title:'Torneos',header:'Nuestras competencias',desc:'Participamos en torneos.',icon:'🏆',date:'2025',url:TEAM_IMAGE,gallery:[]},
-    {id:3,title:'Eventos Sociales',header:'Más allá de la cancha',desc:'Somos una comunidad.',icon:'🎉',date:'Todo el año',url:TEAM_IMAGE,gallery:[]},
-    {id:4,title:'Historia',header:'Nuestra trayectoria',desc:'Desde 1989.',icon:'📖',date:'16 de Enero de 1989',url:TEAM_IMAGE,gallery:[]}
-  ],
+  albums: [], videos: [],
+  pages: JSON.parse(localStorage.getItem('larr_pages')) || [{id:1,title:'Nuestro Equipo',header:'Conocé a nuestro plantel',desc:'Conocé a los jugadores.',icon:'⚽',date:'Desde 1989',url:TEAM_IMAGE,gallery:[]},{id:2,title:'Torneos',header:'Nuestras competencias',desc:'Participamos en torneos.',icon:'🏆',date:'2025',url:TEAM_IMAGE,gallery:[]},{id:3,title:'Eventos Sociales',header:'Más allá de la cancha',desc:'Somos una comunidad.',icon:'🎉',date:'Todo el año',url:TEAM_IMAGE,gallery:[]},{id:4,title:'Historia',header:'Nuestra trayectoria',desc:'Desde 1989.',icon:'📖',date:'16 de Enero de 1989',url:TEAM_IMAGE,gallery:[]}],
   contactItems: JSON.parse(localStorage.getItem('larr_contact_items')) || DEFAULT_CONTACT_ITEMS,
   formFields: JSON.parse(localStorage.getItem('larr_form_fields')) || DEFAULT_FORM_FIELDS,
   heroUrl: localStorage.getItem('larr_hero') || TEAM_IMAGE,
   password: localStorage.getItem('larr_pass') || 'larramendi2025',
   loggedIn: sessionStorage.getItem('larr_logged') === 'true',
-  pendingImage: null, originalUrl: null, pagePendingBg: null, pageOriginalBg: null,
-  homePendingImage: null, homeOriginalImage: null,
-  selectedIcon: '⚽', currentAlbumId: null, lightboxImages: [], lightboxIndex: 0,
-  multiFiles: [], manageMode: false,
-  comments: []
+  pendingImage: null, originalUrl: null, pagePendingBg: null, pageOriginalBg: null, homePendingImage: null, homeOriginalImage: null,
+  selectedIcon: '⚽', currentAlbumId: null, lightboxImages: [], lightboxIndex: 0, multiFiles: [], manageMode: false, comments: []
 };
 
 async function loadFromDatabase() {
   try {
-    const { data: albumsData, error: albumsError } = await supabaseClient
-      .from('albums')
-      .select('*')
-      .order('display_order', { ascending: true });
-    
+    const { data: albumsData, error: albumsError } = await supabaseClient.from('albums').select('*').order('display_order', { ascending: true });
     if (albumsError) throw albumsError;
-    
     const albums = [];
     for (const album of albumsData) {
-      const { data: photosData, error: photosError } = await supabaseClient
-        .from('photos')
-        .select('*')
-        .eq('album_id', album.id)
-        .order('id', { ascending: true });
-      
+      const { data: photosData, error: photosError } = await supabaseClient.from('photos').select('*').eq('album_id', album.id).order('id', { ascending: true });
       if (photosError) throw photosError;
-      
-      albums.push({
-        id: album.id,
-        title: album.title,
-        desc: album.description || '',
-        url: album.cover_url || TEAM_IMAGE,
-        date: album.date || '',
-        photos: (photosData || []).map(p => ({
-          id: p.id,
-          title: p.title,
-          url: p.url,
-          date: p.date || ''
-        }))
-      });
+      albums.push({ id: album.id, title: album.title, desc: album.description || '', url: album.cover_url || TEAM_IMAGE, date: album.date || '', photos: (photosData || []).map(p => ({ id: p.id, title: p.title, url: p.url, date: p.date || '' })) });
     }
-    
     state.albums = albums;
-    console.log('✅ Álbumes cargados desde DB:', albums.length);
-    
-    // Cargar videos
     await loadVideos();
-    
-    // Cargar comentarios y contador de visitas
     await loadComments();
     await loadVisitCount();
-    
     render();
-  } catch(err) {
-    console.error('❌ Error cargando desde DB:', err);
-    state.albums = JSON.parse(localStorage.getItem('larr_albums')) || [];
-    render();
-  }
+  } catch(err) { console.error('❌ Error cargando desde DB:', err); state.albums = JSON.parse(localStorage.getItem('larr_albums')) || []; render(); }
 }
 
 function save() {
-  try {
-    localStorage.setItem('larr_home_section', JSON.stringify(state.homeSection));
-    localStorage.setItem('larr_pages', JSON.stringify(state.pages));
-    localStorage.setItem('larr_contact_items', JSON.stringify(state.contactItems));
-    localStorage.setItem('larr_form_fields', JSON.stringify(state.formFields));
-    localStorage.setItem('larr_hero', state.heroUrl);
-    localStorage.setItem('larr_pass', state.password);
-    return true;
-  } catch(e) { toast('⚠️ Error: almacenamiento local lleno.', 'error'); return false; }
+  try { localStorage.setItem('larr_home_section', JSON.stringify(state.homeSection)); localStorage.setItem('larr_pages', JSON.stringify(state.pages)); localStorage.setItem('larr_contact_items', JSON.stringify(state.contactItems)); localStorage.setItem('larr_form_fields', JSON.stringify(state.formFields)); localStorage.setItem('larr_hero', state.heroUrl); localStorage.setItem('larr_pass', state.password); return true; } 
+  catch(e) { toast('️ Error: almacenamiento local lleno.', 'error'); return false; }
 }
 
 async function saveAlbumToDB(album) {
   if (!SUPABASE_DB_ENABLED) return false;
-  
   try {
-    if (album.id && album.id > 0) {
-      const { error } = await supabaseClient
-        .from('albums')
-        .update({
-          title: album.title,
-          description: album.desc,
-          cover_url: album.url,
-          date: album.date
-        })
-        .eq('id', album.id);
-      
-      if (error) throw error;
-    } else {
-      const { data, error } = await supabaseClient
-        .from('albums')
-        .insert({
-          title: album.title,
-          description: album.desc,
-          cover_url: album.url,
-          date: album.date
-        })
-        .select()
-        .single();
-      
-      if (error) throw error;
-      album.id = data.id;
-    }
+    if (album.id && album.id > 0) { const { error } = await supabaseClient.from('albums').update({ title: album.title, description: album.desc, cover_url: album.url, date: album.date }).eq('id', album.id); if (error) throw error; } 
+    else { const { data, error } = await supabaseClient.from('albums').insert({ title: album.title, description: album.desc, cover_url: album.url, date: album.date }).select().single(); if (error) throw error; album.id = data.id; }
     return true;
-  } catch(err) {
-    console.error('Error guardando álbum:', err);
-    return false;
-  }
+  } catch(err) { console.error('Error guardando álbum:', err); return false; }
 }
 
 async function savePhotoToDB(photo, albumId) {
   if (!SUPABASE_DB_ENABLED) return false;
-  
-  try {
-    const { data, error } = await supabaseClient
-      .from('photos')
-      .insert({
-        album_id: albumId,
-        title: photo.title,
-        url: photo.url,
-        date: photo.date
-      })
-      .select()
-      .single();
-    
-    if (error) throw error;
-    photo.id = data.id;
-    return true;
-  } catch(err) {
-    console.error('Error guardando foto:', err);
-    return false;
-  }
+  try { const { data, error } = await supabaseClient.from('photos').insert({ album_id: albumId, title: photo.title, url: photo.url, date: photo.date }).select().single(); if (error) throw error; photo.id = data.id; return true; } catch(err) { console.error('Error guardando foto:', err); return false; }
 }
 
-async function deletePhotoFromDB(photoId) {
-  if (!SUPABASE_DB_ENABLED) return false;
-  
-  try {
-    const { error } = await supabaseClient
-      .from('photos')
-      .delete()
-      .eq('id', photoId);
-    
-    if (error) throw error;
-    return true;
-  } catch(err) {
-    console.error('Error eliminando foto:', err);
-    return false;
-  }
-}
+async function deletePhotoFromDB(photoId) { if (!SUPABASE_DB_ENABLED) return false; try { const { error } = await supabaseClient.from('photos').delete().eq('id', photoId); if (error) throw error; return true; } catch(err) { console.error('Error eliminando foto:', err); return false; } }
+async function deleteAlbumFromDB(albumId) { if (!SUPABASE_DB_ENABLED) return false; try { const { error } = await supabaseClient.from('albums').delete().eq('id', albumId); if (error) throw error; return true; } catch(err) { console.error('Error eliminando álbum:', err); return false; } }
 
-async function deleteAlbumFromDB(albumId) {
-  if (!SUPABASE_DB_ENABLED) return false;
-  
-  try {
-    const { error } = await supabaseClient
-      .from('albums')
-      .delete()
-      .eq('id', albumId);
-    
-    if (error) throw error;
-    return true;
-  } catch(err) {
-    console.error('Error eliminando álbum:', err);
-    return false;
-  }
-}
-
-// ==========================================
-// FUNCIONES DE VIDEOS
-// ==========================================
-function extractYouTubeId(url) {
-  if (!url) return null;
-  var regex = /(?:youtube\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/|youtube\.com\/shorts\/)([a-zA-Z0-9_-]{11})/;
-  var match = url.match(regex);
-  return match ? match[1] : null;
-}
-
-function getYouTubeThumbnail(videoId) {
-  return 'https://img.youtube.com/vi/' + videoId + '/hqdefault.jpg';
-}
+// VIDEOS
+function extractYouTubeId(url) { if (!url) return null; var regex = /(?:youtube\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/|youtube\.com\/shorts\/)([a-zA-Z0-9_-]{11})/; var match = url.match(regex); return match ? match[1] : null; }
+function getYouTubeThumbnail(videoId) { return 'https://img.youtube.com/vi/' + videoId + '/hqdefault.jpg'; }
 
 async function loadVideos() {
   if (!SUPABASE_DB_ENABLED) return;
-  
-  try {
-    const { data, error } = await supabaseClient
-      .from('videos')
-      .select('*')
-      .order('display_order', { ascending: true });
-    
-    if (error) throw error;
-    
-    state.videos = data || [];
-    console.log('✅ Videos cargados:', state.videos.length);
-  } catch(err) {
-    console.error('Error cargando videos:', err);
-  }
+  try { const { data, error } = await supabaseClient.from('videos').select('*').order('display_order', { ascending: true }); if (error) throw error; state.videos = data || []; console.log('✅ Videos cargados:', state.videos.length); } catch(err) { console.error('Error cargando videos:', err); }
 }
 
 function renderVideos() {
-  const grid = document.getElementById('videosGrid');
-  if (!grid) return;
-  
+  const grid = document.getElementById('videosGrid'); if (!grid) return;
   var html = state.videos.map(function(v, index) {
-    var videoId = extractYouTubeId(v.youtube_url);
-    var thumbnail = videoId ? getYouTubeThumbnail(videoId) : '';
-    var isFirst = index === 0;
-    var isLast = index === state.videos.length - 1;
-    
+    var videoId = extractYouTubeId(v.youtube_url); var thumbnail = videoId ? getYouTubeThumbnail(videoId) : '';
+    var isFirst = index === 0; var isLast = index === state.videos.length - 1;
     var reorderHtml = '';
-    if (state.loggedIn) {
-      reorderHtml = '<div class="album-reorder-controls">' +
-        '<button class="album-reorder-btn" onclick="event.stopPropagation(); moveVideo(' + v.id + ', -1)" ' + (isFirst ? 'disabled' : '') + ' title="Mover arriba">⬆️</button>' +
-        '<button class="album-reorder-btn" onclick="event.stopPropagation(); moveVideo(' + v.id + ', 1)" ' + (isLast ? 'disabled' : '') + ' title="Mover abajo">⬇️</button>' +
-      '</div>';
-    }
-    
-    return '<div class="video-card" onclick="openVideoLightbox(' + v.id + ')">' +
-      reorderHtml +
-      '<div class="video-thumbnail"><img src="' + thumbnail + '" alt="' + v.title + '" onerror="this.src=\'https://via.placeholder.com/480x360?text=Video\'">' +
-      '<div class="video-play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>' +
-      '</div>' +
-      '<div class="video-info"><h3>' + v.title + '</h3><p>' + (v.description || '').substring(0, 100) + (v.description && v.description.length > 100 ? '...' : '') + '</p></div>' +
-    '</div>';
+    if (state.loggedIn) { reorderHtml = '<div class="album-reorder-controls"><button class="album-reorder-btn" onclick="event.stopPropagation(); moveVideo(' + v.id + ', -1)" ' + (isFirst ? 'disabled' : '') + ' title="Mover arriba">️</button><button class="album-reorder-btn" onclick="event.stopPropagation(); moveVideo(' + v.id + ', 1)" ' + (isLast ? 'disabled' : '') + ' title="Mover abajo">⬇️</button></div>'; }
+    return '<div class="video-card" onclick="openVideoLightbox(' + v.id + ')">' + reorderHtml + '<div class="video-thumbnail"><img src="' + thumbnail + '" alt="' + v.title + '" onerror="this.src=\'https://via.placeholder.com/480x360?text=Video\'"><div class="video-play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><div class="video-info"><h3>' + v.title + '</h3><p>' + (v.description || '').substring(0, 100) + (v.description && v.description.length > 100 ? '...' : '') + '</p></div></div>';
   }).join('');
-  
   if (state.loggedIn) html += '<div class="video-add" onclick="openEditVideo()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg><span>Agregar Nuevo Video</span></div>';
-  
   grid.innerHTML = html;
 }
 
 function renderAdminVideos() {
-  const list = document.getElementById('adminVideosList');
-  if (!list) return;
-  
+  const list = document.getElementById('adminVideosList'); if (!list) return;
   list.innerHTML = state.videos.map(function(v, index) {
-    var videoId = extractYouTubeId(v.youtube_url);
-    var thumbnail = videoId ? getYouTubeThumbnail(videoId) : '';
-    var isFirst = index === 0;
-    var isLast = index === state.videos.length - 1;
-    
-    var reorderHtml = '<div class="album-reorder-controls">' +
-      '<button class="album-reorder-btn" onclick="moveVideo(' + v.id + ', -1)" ' + (isFirst ? 'disabled' : '') + ' title="Mover arriba">⬆️</button>' +
-      '<button class="album-reorder-btn" onclick="moveVideo(' + v.id + ', 1)" ' + (isLast ? 'disabled' : '') + ' title="Mover abajo">⬇️</button>' +
-    '</div>';
-    
-    return '<div class="admin-item">' +
-      reorderHtml +
-      '<div class="admin-item-info" style="display:flex;gap:1rem;align-items:center">' +
-        (thumbnail ? '<img src="' + thumbnail + '" style="width:80px;height:45px;object-fit:cover;border-radius:5px" onerror="this.style.display=\'none\'">' : '') +
-        '<div><div class="admin-item-title">🎬 ' + v.title + '</div><div class="admin-item-meta">' + (v.description || '').substring(0, 50) + '</div></div>' +
-      '</div>' +
-      '<div class="admin-item-actions"><button class="btn-icon btn-edit" onclick="openEditVideo(' + v.id + ')">✏️</button><button class="btn-icon btn-delete" onclick="deleteVideo(' + v.id + ')">🗑️</button></div>' +
-    '</div>';
+    var videoId = extractYouTubeId(v.youtube_url); var thumbnail = videoId ? getYouTubeThumbnail(videoId) : '';
+    var isFirst = index === 0; var isLast = index === state.videos.length - 1;
+    var reorderHtml = '<div class="album-reorder-controls"><button class="album-reorder-btn" onclick="moveVideo(' + v.id + ', -1)" ' + (isFirst ? 'disabled' : '') + ' title="Mover arriba">⬆️</button><button class="album-reorder-btn" onclick="moveVideo(' + v.id + ', 1)" ' + (isLast ? 'disabled' : '') + ' title="Mover abajo">⬇️</button></div>';
+    return '<div class="admin-item">' + reorderHtml + '<div class="admin-item-info" style="display:flex;gap:1rem;align-items:center">' + (thumbnail ? '<img src="' + thumbnail + '" style="width:80px;height:45px;object-fit:cover;border-radius:5px" onerror="this.style.display=\'none\'">' : '') + '<div><div class="admin-item-title">🎬 ' + v.title + '</div><div class="admin-item-meta">' + (v.description || '').substring(0, 50) + '</div></div></div><div class="admin-item-actions"><button class="btn-icon btn-edit" onclick="openEditVideo(' + v.id + ')">✏️</button><button class="btn-icon btn-delete" onclick="deleteVideo(' + v.id + ')">🗑️</button></div></div>';
   }).join('') || '<p style="opacity:.5;text-align:center;padding:2rem">No hay videos agregados</p>';
 }
 
 function moveVideo(videoId, direction) {
   if (!state.loggedIn) { openLogin(); return; }
-  var index = state.videos.findIndex(function(v) { return v.id === videoId; });
-  if (index === -1) return;
-  var newIndex = index + direction;
-  if (newIndex < 0 || newIndex >= state.videos.length) return;
-  var video = state.videos.splice(index, 1)[0];
-  state.videos.splice(newIndex, 0, video);
-  save();
-  updateVideoOrderInDB();
-  renderVideos();
-  renderAdminVideos();
-  toast('✅ Orden actualizado', 'success');
+  var index = state.videos.findIndex(function(v) { return v.id === videoId; }); if (index === -1) return;
+  var newIndex = index + direction; if (newIndex < 0 || newIndex >= state.videos.length) return;
+  var video = state.videos.splice(index, 1)[0]; state.videos.splice(newIndex, 0, video);
+  save(); updateVideoOrderInDB(); renderVideos(); renderAdminVideos(); toast('✅ Orden actualizado', 'success');
 }
 
 async function updateVideoOrderInDB() {
   if (!SUPABASE_DB_ENABLED) return;
-  try {
-    for (var i = 0; i < state.videos.length; i++) {
-      var video = state.videos[i];
-      var { error } = await supabaseClient
-        .from('videos')
-        .update({ display_order: i + 1 })
-        .eq('id', video.id);
-      if (error) console.error('Error actualizando orden del video ' + video.id + ':', error);
-    }
-    console.log('✅ Orden de videos actualizado en Supabase');
-  } catch (error) {
-    console.error('Error guardando orden de videos:', error);
-  }
+  try { for (var i = 0; i < state.videos.length; i++) { var video = state.videos[i]; var { error } = await supabaseClient.from('videos').update({ display_order: i + 1 }).eq('id', video.id); if (error) console.error('Error actualizando orden del video ' + video.id + ':', error); } console.log('✅ Orden de videos actualizado en Supabase'); } catch (error) { console.error('Error guardando orden de videos:', error); }
 }
 
 function openVideoLightbox(videoId) {
-  var video = state.videos.find(function(v) { return v.id === videoId; });
-  if (!video) return;
-  var ytId = extractYouTubeId(video.youtube_url);
-  if (!ytId) { toast('Video no válido', 'error'); return; }
+  var video = state.videos.find(function(v) { return v.id === videoId; }); if (!video) return;
+  var ytId = extractYouTubeId(video.youtube_url); if (!ytId) { toast('Video no válido', 'error'); return; }
   document.getElementById('videoLightboxIframe').src = 'https://www.youtube.com/embed/' + ytId + '?autoplay=1';
   document.getElementById('videoLightboxTitle').textContent = video.title;
-  document.getElementById('videoLightbox').classList.add('active');
-  document.body.style.overflow = 'hidden';
+  document.getElementById('videoLightbox').classList.add('active'); document.body.style.overflow = 'hidden';
 }
 
 function closeVideoLightbox() {
@@ -1188,1166 +861,219 @@ function closeVideoLightbox() {
   document.body.style.overflow = '';
 }
 
+// Cerrar video al hacer clic en el fondo oscuro o con ESC
+document.getElementById('videoLightbox').addEventListener('click', function(e) { if (e.target === this) closeVideoLightbox(); });
+document.addEventListener('keydown', function(e) { if (e.key === 'Escape' && document.getElementById('videoLightbox').classList.contains('active')) closeVideoLightbox(); });
+
 function previewVideoUrl() {
-  var url = document.getElementById('videoField2').value.trim();
-  var ytId = extractYouTubeId(url);
-  var preview = document.getElementById('videoPreview');
-  var previewImg = document.getElementById('videoPreviewImg');
-  if (ytId) {
-    previewImg.src = getYouTubeThumbnail(ytId);
-    preview.style.display = 'block';
-  } else {
-    preview.style.display = 'none';
-  }
+  var url = document.getElementById('videoField2').value.trim(); var ytId = extractYouTubeId(url);
+  var preview = document.getElementById('videoPreview'); var previewImg = document.getElementById('videoPreviewImg');
+  if (ytId) { previewImg.src = getYouTubeThumbnail(ytId); preview.style.display = 'block'; } else { preview.style.display = 'none'; }
 }
 
 function openEditVideo(id) {
-  if (!state.loggedIn) { openLogin(); return; }
-  hideAllErrors();
-  document.getElementById('editVideoId').value = id || '';
-  document.getElementById('editVideoTitle').textContent = id ? 'Editar Video' : 'Nuevo Video';
-  document.getElementById('videoPreview').style.display = 'none';
-  document.getElementById('btnSaveVideo').textContent = '💾 Guardar Video';
-  document.getElementById('btnSaveVideo').disabled = false;
-  
+  if (!state.loggedIn) { openLogin(); return; } hideAllErrors();
+  document.getElementById('editVideoId').value = id || ''; document.getElementById('editVideoTitle').textContent = id ? 'Editar Video' : 'Nuevo Video';
+  document.getElementById('videoPreview').style.display = 'none'; document.getElementById('btnSaveVideo').textContent = '💾 Guardar Video'; document.getElementById('btnSaveVideo').disabled = false;
   if (id) {
     var video = state.videos.find(function(v) { return v.id === id; });
     if (video) {
-      document.getElementById('videoField1').value = video.title;
-      document.getElementById('videoField2').value = video.youtube_url;
-      document.getElementById('videoField3').value = video.description || '';
+      document.getElementById('videoField1').value = video.title; document.getElementById('videoField2').value = video.youtube_url; document.getElementById('videoField3').value = video.description || '';
       var ytId = extractYouTubeId(video.youtube_url);
-      if (ytId) {
-        document.getElementById('videoPreviewImg').src = getYouTubeThumbnail(ytId);
-        document.getElementById('videoPreview').style.display = 'block';
-      }
+      if (ytId) { document.getElementById('videoPreviewImg').src = getYouTubeThumbnail(ytId); document.getElementById('videoPreview').style.display = 'block'; }
     }
-  } else {
-    document.getElementById('videoField1').value = '';
-    document.getElementById('videoField2').value = '';
-    document.getElementById('videoField3').value = '';
-  }
+  } else { document.getElementById('videoField1').value = ''; document.getElementById('videoField2').value = ''; document.getElementById('videoField3').value = ''; }
   document.getElementById('editVideoModal').classList.add('active');
 }
-
-function closeEditVideo() {
-  document.getElementById('editVideoModal').classList.remove('active');
-  hideAllErrors();
-}
+function closeEditVideo() { document.getElementById('editVideoModal').classList.remove('active'); hideAllErrors(); }
 
 async function saveVideo(e) {
-  e.preventDefault();
-  hideAllErrors();
-  var id = document.getElementById('editVideoId').value;
-  var title = document.getElementById('videoField1').value.trim();
-  var youtubeUrl = document.getElementById('videoField2').value.trim();
-  var description = document.getElementById('videoField3').value.trim();
-  
+  e.preventDefault(); hideAllErrors();
+  var id = document.getElementById('editVideoId').value; var title = document.getElementById('videoField1').value.trim();
+  var youtubeUrl = document.getElementById('videoField2').value.trim(); var description = document.getElementById('videoField3').value.trim();
   var hasError = false;
   if (!title) { document.getElementById('errVideoTitle').classList.add('show'); hasError = true; }
   if (!youtubeUrl || !extractYouTubeId(youtubeUrl)) { document.getElementById('errVideoUrl').classList.add('show'); hasError = true; }
   if (hasError) { toast('Revisá los campos marcados', 'error'); return; }
-  
-  var btn = document.getElementById('btnSaveVideo');
-  btn.textContent = '⏳ Guardando...';
-  btn.disabled = true;
-  
+  var btn = document.getElementById('btnSaveVideo'); btn.textContent = '⏳ Guardando...'; btn.disabled = true;
   try {
     if (id) {
-      const { error } = await supabaseClient
-        .from('videos')
-        .update({ title: title, youtube_url: youtubeUrl, description: description })
-        .eq('id', parseInt(id));
-      if (error) throw error;
-      var idx = state.videos.findIndex(v => v.id === parseInt(id));
-      if (idx >= 0) {
-        state.videos[idx].title = title;
-        state.videos[idx].youtube_url = youtubeUrl;
-        state.videos[idx].description = description;
-      }
+      const { error } = await supabaseClient.from('videos').update({ title: title, youtube_url: youtubeUrl, description: description }).eq('id', parseInt(id)); if (error) throw error;
+      var idx = state.videos.findIndex(v => v.id === parseInt(id)); if (idx >= 0) { state.videos[idx].title = title; state.videos[idx].youtube_url = youtubeUrl; state.videos[idx].description = description; }
     } else {
       const maxOrder = state.videos.length > 0 ? Math.max(...state.videos.map(v => v.display_order || 0)) : 0;
-      const { data, error } = await supabaseClient
-        .from('videos')
-        .insert({ title: title, youtube_url: youtubeUrl, description: description, display_order: maxOrder + 1 })
-        .select()
-        .single();
-      if (error) throw error;
-      state.videos.push(data);
+      const { data, error } = await supabaseClient.from('videos').insert({ title: title, youtube_url: youtubeUrl, description: description, display_order: maxOrder + 1 }).select().single(); if (error) throw error; state.videos.push(data);
     }
-    
-    renderVideos();
-    renderAdminVideos();
-    closeEditVideo();
-    toast('✅ Video guardado', 'success');
-  } catch(err) {
-    console.error('Error guardando video:', err);
-    toast('Error al guardar el video', 'error');
-    btn.textContent = '💾 Guardar Video';
-    btn.disabled = false;
-  }
+    renderVideos(); renderAdminVideos(); closeEditVideo(); toast('✅ Video guardado', 'success');
+  } catch(err) { console.error('Error guardando video:', err); toast('Error al guardar el video', 'error'); btn.textContent = '💾 Guardar Video'; btn.disabled = false; }
 }
 
 async function deleteVideo(id) {
   if (!confirm('¿Eliminar este video?')) return;
-  try {
-    const { error } = await supabaseClient.from('videos').delete().eq('id', id);
-    if (error) throw error;
-    state.videos = state.videos.filter(v => v.id !== id);
-    renderVideos();
-    renderAdminVideos();
-    toast('🗑️ Video eliminado', 'success');
-  } catch(err) {
-    console.error('Error eliminando video:', err);
-    toast('Error al eliminar el video', 'error');
-  }
+  try { const { error } = await supabaseClient.from('videos').delete().eq('id', id); if (error) throw error; state.videos = state.videos.filter(v => v.id !== id); renderVideos(); renderAdminVideos(); toast('🗑️ Video eliminado', 'success'); } catch(err) { console.error('Error eliminando video:', err); toast('Error al eliminar el video', 'error'); }
 }
 
-// ==========================================
-// FUNCIONES DE COMENTARIOS
-// ==========================================
-async function loadComments() {
-  if (!SUPABASE_DB_ENABLED) return;
-  
-  try {
-    const { data, error } = await supabaseClient
-      .from('comments')
-      .select('*')
-      .order('created_at', { ascending: false });
-    
-    if (error) throw error;
-    
-    state.comments = data || [];
-    console.log('✅ Comentarios cargados:', state.comments.length);
-  } catch(err) {
-    console.error('Error cargando comentarios:', err);
-  }
-}
-
+// COMENTARIOS
+async function loadComments() { if (!SUPABASE_DB_ENABLED) return; try { const { data, error } = await supabaseClient.from('comments').select('*').order('created_at', { ascending: false }); if (error) throw error; state.comments = data || []; } catch(err) { console.error('Error cargando comentarios:', err); } }
 async function submitComment(e) {
-  e.preventDefault();
-  
-  const name = document.getElementById('commentName').value.trim();
-  const email = document.getElementById('commentEmail').value.trim();
-  const message = document.getElementById('commentMessage').value.trim();
-  
-  if (!name || !message) {
-    toast('Por favor completá los campos obligatorios', 'error');
-    return;
-  }
-  
-  const btn = document.getElementById('btnSubmitComment');
-  btn.disabled = true;
-  btn.textContent = '⏳ Publicando...';
-  
-  try {
-    const { data, error } = await supabaseClient
-      .from('comments')
-      .insert({
-        name: name,
-        email: email || null,
-        message: message
-      })
-      .select()
-      .single();
-    
-    if (error) throw error;
-    
-    state.comments.unshift(data);
-    renderComments();
-    
-    document.getElementById('commentForm').reset();
-    toast('✅ Comentario publicado', 'success');
-  } catch(err) {
-    console.error('Error publicando comentario:', err);
-    toast('Error al publicar el comentario', 'error');
-  } finally {
-    btn.disabled = false;
-    btn.textContent = '💾 Publicar Comentario';
-  }
+  e.preventDefault(); const name = document.getElementById('commentName').value.trim(); const email = document.getElementById('commentEmail').value.trim(); const message = document.getElementById('commentMessage').value.trim();
+  if (!name || !message) { toast('Por favor completá los campos obligatorios', 'error'); return; }
+  const btn = document.getElementById('btnSubmitComment'); btn.disabled = true; btn.textContent = '⏳ Publicando...';
+  try { const { data, error } = await supabaseClient.from('comments').insert({ name: name, email: email || null, message: message }).select().single(); if (error) throw error; state.comments.unshift(data); renderComments(); document.getElementById('commentForm').reset(); toast('✅ Comentario publicado', 'success'); } catch(err) { console.error('Error publicando comentario:', err); toast('Error al publicar el comentario', 'error'); } finally { btn.disabled = false; btn.textContent = '💾 Publicar Comentario'; }
 }
-
-async function deleteComment(commentId) {
-  if (!confirm('¿Eliminar este comentario?')) return;
-  
-  try {
-    const { error } = await supabaseClient
-      .from('comments')
-      .delete()
-      .eq('id', commentId);
-    
-    if (error) throw error;
-    
-    state.comments = state.comments.filter(c => c.id !== commentId);
-    renderComments();
-    renderAdminComments();
-    toast('️ Comentario eliminado', 'success');
-  } catch(err) {
-    console.error('Error eliminando comentario:', err);
-    toast('Error al eliminar el comentario', 'error');
-  }
-}
+async function deleteComment(commentId) { if (!confirm('¿Eliminar este comentario?')) return; try { const { error } = await supabaseClient.from('comments').delete().eq('id', commentId); if (error) throw error; state.comments = state.comments.filter(c => c.id !== commentId); renderComments(); renderAdminComments(); toast('️ Comentario eliminado', 'success'); } catch(err) { console.error('Error eliminando comentario:', err); toast('Error al eliminar el comentario', 'error'); } }
 
 function renderComments() {
-  const list = document.getElementById('commentsList');
-  if (!list) return;
-  
-  if (state.comments.length === 0) {
-    list.innerHTML = '<div class="comments-empty"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg><p>Sé el primero en dejar un comentario</p></div>';
-    return;
-  }
-  
-  list.innerHTML = state.comments.map(comment => {
-    const initial = comment.name.charAt(0).toUpperCase();
-    const date = new Date(comment.created_at).toLocaleDateString('es-AR', { 
-      year: 'numeric', 
-      month: 'long', 
-      day: 'numeric',
-      hour: '2-digit',
-      minute: '2-digit'
-    });
-    
-    return '<div class="comment-item ' + (state.loggedIn ? 'admin-mode' : '') + '">' +
-      '<div class="comment-header">' +
-        '<div class="comment-author">' +
-          '<div class="comment-avatar">' + initial + '</div>' +
-          '<div>' +
-            '<div class="comment-name">' + comment.name + '</div>' +
-            '<div class="comment-date">' + date + '</div>' +
-          '</div>' +
-        '</div>' +
-        '<button class="comment-delete" onclick="deleteComment(' + comment.id + ')" title="Eliminar">🗑️</button>' +
-      '</div>' +
-      '<div class="comment-message">' + comment.message + '</div>' +
-    '</div>';
-  }).join('');
+  const list = document.getElementById('commentsList'); if (!list) return;
+  if (state.comments.length === 0) { list.innerHTML = '<div class="comments-empty"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg><p>Sé el primero en dejar un comentario</p></div>'; return; }
+  list.innerHTML = state.comments.map(comment => { const initial = comment.name.charAt(0).toUpperCase(); const date = new Date(comment.created_at).toLocaleDateString('es-AR', { year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit' }); return '<div class="comment-item ' + (state.loggedIn ? 'admin-mode' : '') + '"><div class="comment-header"><div class="comment-author"><div class="comment-avatar">' + initial + '</div><div><div class="comment-name">' + comment.name + '</div><div class="comment-date">' + date + '</div></div></div><button class="comment-delete" onclick="deleteComment(' + comment.id + ')" title="Eliminar">🗑️</button></div><div class="comment-message">' + comment.message + '</div></div>'; }).join('');
 }
 
 function renderAdminComments() {
-  const list = document.getElementById('adminCommentsList');
-  if (!list) return;
-  
-  if (state.comments.length === 0) {
-    list.innerHTML = '<p style="opacity:.5;text-align:center;padding:2rem">No hay comentarios</p>';
-    return;
-  }
-  
-  list.innerHTML = state.comments.map(comment => {
-    const date = new Date(comment.created_at).toLocaleDateString('es-AR', { 
-      year: 'numeric', 
-      month: 'short', 
-      day: 'numeric'
-    });
-    
-    return '<div class="admin-item">' +
-      '<div class="admin-item-info">' +
-        '<div class="admin-item-title">💬 ' + comment.name + '</div>' +
-        '<div class="admin-item-meta">' + date + ' · ' + comment.message.substring(0, 50) + (comment.message.length > 50 ? '...' : '') + '</div>' +
-      '</div>' +
-      '<div class="admin-item-actions">' +
-        '<button class="btn-icon btn-delete" onclick="deleteComment(' + comment.id + ')">🗑️</button>' +
-      '</div>' +
-    '</div>';
-  }).join('');
+  const list = document.getElementById('adminCommentsList'); if (!list) return;
+  if (state.comments.length === 0) { list.innerHTML = '<p style="opacity:.5;text-align:center;padding:2rem">No hay comentarios</p>'; return; }
+  list.innerHTML = state.comments.map(comment => { const date = new Date(comment.created_at).toLocaleDateString('es-AR', { year: 'numeric', month: 'short', day: 'numeric' }); return '<div class="admin-item"><div class="admin-item-info"><div class="admin-item-title">💬 ' + comment.name + '</div><div class="admin-item-meta">' + date + ' · ' + comment.message.substring(0, 50) + (comment.message.length > 50 ? '...' : '') + '</div></div><div class="admin-item-actions"><button class="btn-icon btn-delete" onclick="deleteComment(' + comment.id + ')">🗑️</button></div></div>'; }).join('');
 }
 
-async function loadVisitCount() {
-  if (!SUPABASE_DB_ENABLED) return;
-  
-  try {
-    const { data, error } = await supabaseClient
-      .from('site_stats')
-      .select('visit_count')
-      .eq('id', 1)
-      .single();
-    
-    if (error) throw error;
-    
-    document.getElementById('visitCount').textContent = data.visit_count || 0;
-  } catch(err) {
-    console.error('Error cargando contador:', err);
-  }
-}
+async function loadVisitCount() { if (!SUPABASE_DB_ENABLED) return; try { const { data, error } = await supabaseClient.from('site_stats').select('visit_count').eq('id', 1).single(); if (error) throw error; document.getElementById('visitCount').textContent = data.visit_count || 0; } catch(err) { console.error('Error cargando contador:', err); } }
+async function incrementVisitCount() { if (!SUPABASE_DB_ENABLED) return; try { const { data: currentData } = await supabaseClient.from('site_stats').select('visit_count').eq('id', 1).single(); const newCount = (currentData?.visit_count || 0) + 1; await supabaseClient.from('site_stats').update({ visit_count: newCount }).eq('id', 1); document.getElementById('visitCount').textContent = newCount; } catch(err) { console.error('Error incrementando contador:', err); } }
 
-async function incrementVisitCount() {
-  if (!SUPABASE_DB_ENABLED) return;
-  
-  try {
-    const { data: currentData } = await supabaseClient
-      .from('site_stats')
-      .select('visit_count')
-      .eq('id', 1)
-      .single();
-    
-    const newCount = (currentData?.visit_count || 0) + 1;
-    
-    await supabaseClient
-      .from('site_stats')
-      .update({ visit_count: newCount })
-      .eq('id', 1);
-    
-    document.getElementById('visitCount').textContent = newCount;
-  } catch(err) {
-    console.error('Error incrementando contador:', err);
-  }
-}
-
-function updateStorageIndicator() {
-  const indicator = document.getElementById('storageIndicator');
-  if (SUPABASE_DB_ENABLED) { 
-    indicator.textContent = '☁️ Supabase DB + Storage'; 
-    indicator.className = 'storage-indicator supabase'; 
-  } else if (supabaseClient) {
-    indicator.textContent = '️ Supabase Storage (sin DB)'; 
-    indicator.className = 'storage-indicator supabase';
-  } else { 
-    indicator.textContent = '⚠️ Modo local (5MB límite)'; 
-    indicator.className = 'storage-indicator local'; 
-  }
-}
+function updateStorageIndicator() { const indicator = document.getElementById('storageIndicator'); if (SUPABASE_DB_ENABLED) { indicator.textContent = '☁️ Supabase DB + Storage'; indicator.className = 'storage-indicator supabase'; } else if (supabaseClient) { indicator.textContent = '☁️ Supabase Storage (sin DB)'; indicator.className = 'storage-indicator supabase'; } else { indicator.textContent = '⚠️ Modo local (5MB límite)'; indicator.className = 'storage-indicator local'; } }
 
 function renderHomeSection() {
-  const hs = state.homeSection;
-  document.getElementById('historiaLabel').textContent = hs.label || 'Nuestra Historia';
-  const titleText = hs.title || 'Tradición y *Pasión*';
-  const titleParts = titleText.split('*');
-  let titleHtml = '';
-  titleParts.forEach((part, i) => {
-    if (i % 2 === 1) titleHtml += '<span class="gold">' + part + '</span>';
-    else titleHtml += part;
-  });
+  const hs = state.homeSection; document.getElementById('historiaLabel').textContent = hs.label || 'Nuestra Historia';
+  const titleText = hs.title || 'Tradición y *Pasión*'; const titleParts = titleText.split('*'); let titleHtml = '';
+  titleParts.forEach((part, i) => { if (i % 2 === 1) titleHtml += '<span class="gold">' + part + '</span>'; else titleHtml += part; });
   document.getElementById('historiaTitle').innerHTML = titleHtml;
   document.getElementById('aboutTitle').textContent = hs.aboutTitle || 'Más que un equipo, una familia';
-  document.getElementById('aboutP1').textContent = hs.p1 || '';
-  document.getElementById('aboutP2').textContent = hs.p2 || '';
-  const aboutImg = document.getElementById('aboutImg');
-  if (hs.image) { aboutImg.src = hs.image; aboutImg.style.display = 'block'; }
-  else { aboutImg.style.display = 'none'; }
-  if (hs.stats && hs.stats.length >= 3) {
-    document.getElementById('stat1Num').textContent = hs.stats[0].number;
-    document.getElementById('stat1Label').textContent = hs.stats[0].label;
-    document.getElementById('stat2Num').textContent = hs.stats[1].number;
-    document.getElementById('stat2Label').textContent = hs.stats[1].label;
-    document.getElementById('stat3Num').textContent = hs.stats[2].number;
-    document.getElementById('stat3Label').textContent = hs.stats[2].label;
-  }
-  const header = document.getElementById('historiaHeader');
-  const aboutText = document.getElementById('aboutText');
-  if (state.loggedIn) { header.classList.add('admin-mode'); aboutText.classList.add('admin-mode'); }
-  else { header.classList.remove('admin-mode'); aboutText.classList.remove('admin-mode'); }
+  document.getElementById('aboutP1').textContent = hs.p1 || ''; document.getElementById('aboutP2').textContent = hs.p2 || '';
+  const aboutImg = document.getElementById('aboutImg'); if (hs.image) { aboutImg.src = hs.image; aboutImg.style.display = 'block'; } else { aboutImg.style.display = 'none'; }
+  if (hs.stats && hs.stats.length >= 3) { document.getElementById('stat1Num').textContent = hs.stats[0].number; document.getElementById('stat1Label').textContent = hs.stats[0].label; document.getElementById('stat2Num').textContent = hs.stats[1].number; document.getElementById('stat2Label').textContent = hs.stats[1].label; document.getElementById('stat3Num').textContent = hs.stats[2].number; document.getElementById('stat3Label').textContent = hs.stats[2].label; }
+  const header = document.getElementById('historiaHeader'); const aboutText = document.getElementById('aboutText');
+  if (state.loggedIn) { header.classList.add('admin-mode'); aboutText.classList.add('admin-mode'); } else { header.classList.remove('admin-mode'); aboutText.classList.remove('admin-mode'); }
 }
 
 function openEditHomeSection() {
-  if (!state.loggedIn) { openLogin(); return; }
-  const hs = state.homeSection;
-  document.getElementById('homeLabel').value = hs.label || '';
-  document.getElementById('homeTitle').value = hs.title || '';
-  document.getElementById('homeAboutTitle').value = hs.aboutTitle || '';
-  document.getElementById('homeP1').value = hs.p1 || '';
-  document.getElementById('homeP2').value = hs.p2 || '';
-  document.getElementById('homeImageUrl').value = '';
-  if (hs.stats && hs.stats.length >= 3) {
-    document.getElementById('homeStat1Num').value = hs.stats[0].number;
-    document.getElementById('homeStat1Label').value = hs.stats[0].label;
-    document.getElementById('homeStat2Num').value = hs.stats[1].number;
-    document.getElementById('homeStat2Label').value = hs.stats[1].label;
-    document.getElementById('homeStat3Num').value = hs.stats[2].number;
-    document.getElementById('homeStat3Label').value = hs.stats[2].label;
-  }
-  state.homePendingImage = null;
-  state.homeOriginalImage = hs.image || '';
-  document.getElementById('homeUploadPreview').style.display = 'none';
-  document.getElementById('homeUploadPlaceholder').style.display = 'block';
-  document.getElementById('homeUploadZone').classList.remove('has-image');
-  document.getElementById('homeFileInput').value = '';
-  if (hs.image) {
-    document.getElementById('homeUploadPreview').src = hs.image;
-    document.getElementById('homeUploadPreview').style.display = 'block';
-    document.getElementById('homeUploadPlaceholder').style.display = 'none';
-    document.getElementById('homeUploadZone').classList.add('has-image');
-  }
-  document.querySelectorAll('#editHomeSectionModal .form-error').forEach(function(e) { e.classList.remove('show'); });
-  document.getElementById('editHomeSectionModal').classList.add('active');
+  if (!state.loggedIn) { openLogin(); return; } const hs = state.homeSection;
+  document.getElementById('homeLabel').value = hs.label || ''; document.getElementById('homeTitle').value = hs.title || ''; document.getElementById('homeAboutTitle').value = hs.aboutTitle || '';
+  document.getElementById('homeP1').value = hs.p1 || ''; document.getElementById('homeP2').value = hs.p2 || ''; document.getElementById('homeImageUrl').value = '';
+  if (hs.stats && hs.stats.length >= 3) { document.getElementById('homeStat1Num').value = hs.stats[0].number; document.getElementById('homeStat1Label').value = hs.stats[0].label; document.getElementById('homeStat2Num').value = hs.stats[1].number; document.getElementById('homeStat2Label').value = hs.stats[1].label; document.getElementById('homeStat3Num').value = hs.stats[2].number; document.getElementById('homeStat3Label').value = hs.stats[2].label; }
+  state.homePendingImage = null; state.homeOriginalImage = hs.image || '';
+  document.getElementById('homeUploadPreview').style.display = 'none'; document.getElementById('homeUploadPlaceholder').style.display = 'block'; document.getElementById('homeUploadZone').classList.remove('has-image'); document.getElementById('homeFileInput').value = '';
+  if (hs.image) { document.getElementById('homeUploadPreview').src = hs.image; document.getElementById('homeUploadPreview').style.display = 'block'; document.getElementById('homeUploadPlaceholder').style.display = 'none'; document.getElementById('homeUploadZone').classList.add('has-image'); }
+  document.querySelectorAll('#editHomeSectionModal .form-error').forEach(function(e) { e.classList.remove('show'); }); document.getElementById('editHomeSectionModal').classList.add('active');
 }
-
-function closeEditHomeSection() {
-  document.getElementById('editHomeSectionModal').classList.remove('active');
-  state.homePendingImage = null;
-  state.homeOriginalImage = null;
-}
-
-function handleHomeImageUpload(e) {
-  var file = e.target.files[0]; if (!file) return;
-  if (file.size > 10 * 1024 * 1024) { toast('La imagen es muy grande (máx 10MB)', 'error'); return; }
-  var reader = new FileReader();
-  reader.onload = function(ev) {
-    state.homePendingImage = ev.target.result;
-    document.getElementById('homeUploadPreview').src = ev.target.result;
-    document.getElementById('homeUploadPreview').style.display = 'block';
-    document.getElementById('homeUploadPlaceholder').style.display = 'none';
-    document.getElementById('homeUploadZone').classList.add('has-image');
-    document.getElementById('homeImageUrl').value = '';
-  };
-  reader.readAsDataURL(file);
-}
-
-function clearHomeImagePreview() {
-  if (document.getElementById('homeImageUrl').value) {
-    state.homePendingImage = null;
-    document.getElementById('homeUploadPreview').style.display = 'none';
-    document.getElementById('homeUploadPlaceholder').style.display = 'block';
-    document.getElementById('homeUploadZone').classList.remove('has-image');
-  }
-}
-
+function closeEditHomeSection() { document.getElementById('editHomeSectionModal').classList.remove('active'); state.homePendingImage = null; state.homeOriginalImage = null; }
+function handleHomeImageUpload(e) { var file = e.target.files[0]; if (!file) return; if (file.size > 10 * 1024 * 1024) { toast('La imagen es muy grande (máx 10MB)', 'error'); return; } var reader = new FileReader(); reader.onload = function(ev) { state.homePendingImage = ev.target.result; document.getElementById('homeUploadPreview').src = ev.target.result; document.getElementById('homeUploadPreview').style.display = 'block'; document.getElementById('homeUploadPlaceholder').style.display = 'none'; document.getElementById('homeUploadZone').classList.add('has-image'); document.getElementById('homeImageUrl').value = ''; }; reader.readAsDataURL(file); }
+function clearHomeImagePreview() { if (document.getElementById('homeImageUrl').value) { state.homePendingImage = null; document.getElementById('homeUploadPreview').style.display = 'none'; document.getElementById('homeUploadPlaceholder').style.display = 'block'; document.getElementById('homeUploadZone').classList.remove('has-image'); } }
 function saveHomeSection(e) {
-  e.preventDefault();
-  if (!state.loggedIn) return;
-  document.querySelectorAll('#editHomeSectionModal .form-error').forEach(function(e) { e.classList.remove('show'); });
-  const label = document.getElementById('homeLabel').value.trim();
-  const title = document.getElementById('homeTitle').value.trim();
-  const aboutTitle = document.getElementById('homeAboutTitle').value.trim();
-  const p1 = document.getElementById('homeP1').value.trim();
-  const p2 = document.getElementById('homeP2').value.trim();
-  let image = document.getElementById('homeImageUrl').value.trim();
-  if (state.homePendingImage) image = state.homePendingImage;
-  if (!image) image = state.homeOriginalImage;
-  const stats = [
-    { number: document.getElementById('homeStat1Num').value.trim() || '0', label: document.getElementById('homeStat1Label').value.trim() || '' },
-    { number: document.getElementById('homeStat2Num').value.trim() || '0', label: document.getElementById('homeStat2Label').value.trim() || '' },
-    { number: document.getElementById('homeStat3Num').value.trim() || '0', label: document.getElementById('homeStat3Label').value.trim() || '' }
-  ];
-  let hasError = false;
-  if (!label) { document.getElementById('errHomeLabel').classList.add('show'); hasError = true; }
-  if (!title) { document.getElementById('errHomeTitle').classList.add('show'); hasError = true; }
-  if (!aboutTitle) { document.getElementById('errHomeAboutTitle').classList.add('show'); hasError = true; }
-  if (!p1) { document.getElementById('errHomeP1').classList.add('show'); hasError = true; }
-  if (!p2) { document.getElementById('errHomeP2').classList.add('show'); hasError = true; }
+  e.preventDefault(); if (!state.loggedIn) return; document.querySelectorAll('#editHomeSectionModal .form-error').forEach(function(e) { e.classList.remove('show'); });
+  const label = document.getElementById('homeLabel').value.trim(); const title = document.getElementById('homeTitle').value.trim(); const aboutTitle = document.getElementById('homeAboutTitle').value.trim();
+  const p1 = document.getElementById('homeP1').value.trim(); const p2 = document.getElementById('homeP2').value.trim(); let image = document.getElementById('homeImageUrl').value.trim();
+  if (state.homePendingImage) image = state.homePendingImage; if (!image) image = state.homeOriginalImage;
+  const stats = [{ number: document.getElementById('homeStat1Num').value.trim() || '0', label: document.getElementById('homeStat1Label').value.trim() || '' }, { number: document.getElementById('homeStat2Num').value.trim() || '0', label: document.getElementById('homeStat2Label').value.trim() || '' }, { number: document.getElementById('homeStat3Num').value.trim() || '0', label: document.getElementById('homeStat3Label').value.trim() || '' }];
+  let hasError = false; if (!label) { document.getElementById('errHomeLabel').classList.add('show'); hasError = true; } if (!title) { document.getElementById('errHomeTitle').classList.add('show'); hasError = true; } if (!aboutTitle) { document.getElementById('errHomeAboutTitle').classList.add('show'); hasError = true; } if (!p1) { document.getElementById('errHomeP1').classList.add('show'); hasError = true; } if (!p2) { document.getElementById('errHomeP2').classList.add('show'); hasError = true; }
   if (hasError) { toast('Revisá los campos marcados', 'error'); return; }
-  state.homeSection = { label, title, aboutTitle, p1, p2, image, stats };
-  if (save()) { renderHomeSection(); closeEditHomeSection(); toast('✅ Sección Historia actualizada', 'success'); }
+  state.homeSection = { label, title, aboutTitle, p1, p2, image, stats }; if (save()) { renderHomeSection(); closeEditHomeSection(); toast('✅ Sección Historia actualizada', 'success'); }
 }
 
 function renderContactSection() {
   const contactInfo = document.getElementById('contactInfo');
-  let contactHtml = state.contactItems.map(function(item) {
-    let actionsHtml = '';
-    if (state.loggedIn) {
-      actionsHtml = '<div class="contact-item-actions">' +
-        '<button class="contact-item-btn edit" onclick="openEditContactItem(' + item.id + ')" title="Editar">✏️</button>' +
-        '<button class="contact-item-btn delete" onclick="deleteContactItem(' + item.id + ')" title="Eliminar">🗑️</button>' +
-      '</div>';
-    }
-    return '<div class="contact-item"><div class="contact-item-icon">' + (item.icon || '📌') + '</div><div><h4>' + item.title + '</h4><p>' + item.content + '</p></div>' + actionsHtml + '</div>';
-  }).join('');
-  if (state.loggedIn) contactHtml += '<div class="contact-add-btn visible" onclick="openEditContactItem()"> Agregar dato de contacto</div>';
-  contactInfo.innerHTML = contactHtml;
-
+  let contactHtml = state.contactItems.map(function(item) { let actionsHtml = ''; if (state.loggedIn) { actionsHtml = '<div class="contact-item-actions"><button class="contact-item-btn edit" onclick="openEditContactItem(' + item.id + ')" title="Editar">✏️</button><button class="contact-item-btn delete" onclick="deleteContactItem(' + item.id + ')" title="Eliminar">🗑️</button></div>'; } return '<div class="contact-item"><div class="contact-item-icon">' + (item.icon || '📌') + '</div><div><h4>' + item.title + '</h4><p>' + item.content + '</p></div>' + actionsHtml + '</div>'; }).join('');
+  if (state.loggedIn) contactHtml += '<div class="contact-add-btn visible" onclick="openEditContactItem()">➕ Agregar dato de contacto</div>'; contactInfo.innerHTML = contactHtml;
   const contactForm = document.getElementById('contactForm');
-  let formHtml = state.formFields.map(function(field) {
-    let inputHtml = '';
-    const requiredAttr = field.required ? 'required' : '';
-    const placeholderAttr = field.placeholder ? 'placeholder="' + field.placeholder + '"' : '';
-    if (field.type === 'textarea') inputHtml = '<textarea ' + requiredAttr + ' ' + placeholderAttr + '></textarea>';
-    else if (field.type === 'select') {
-      const options = (field.options || []).map(function(opt) { return '<option value="' + opt + '">' + opt + '</option>'; }).join('');
-      inputHtml = '<select ' + requiredAttr + '><option value="">Seleccionar...</option>' + options + '</select>';
-    } else inputHtml = '<input type="' + field.type + '" ' + requiredAttr + ' ' + placeholderAttr + '>';
-    let fieldHeaderHtml = '';
-    if (state.loggedIn) {
-      fieldHeaderHtml = '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:.5rem"><label style="color:var(--gold);font-size:.9rem;font-weight:600">' + field.label + (field.required ? ' *' : '') + '</label><div style="display:flex;gap:.3rem"><button class="contact-item-btn edit" onclick="openEditFormField(' + field.id + ')" style="width:28px;height:28px;border-radius:6px;border:none;background:rgba(59,130,246,0.2);color:var(--accent2);cursor:pointer;font-size:.8rem">✏️</button><button class="contact-item-btn delete" onclick="deleteFormField(' + field.id + ')" style="width:28px;height:28px;border-radius:6px;border:none;background:rgba(239,68,68,0.2);color:#fca5a5;cursor:pointer;font-size:.8rem">🗑️</button></div></div>';
-    }
-    return '<div class="contact-form-field-wrapper">' + fieldHeaderHtml + inputHtml + '</div>';
-  }).join('');
-  if (state.loggedIn) formHtml += '<div class="contact-form-add visible" onclick="openEditFormField()">➕ Agregar campo al formulario</div>';
-  formHtml += '<button type="submit" class="btn btn-primary btn-full">Enviar Mensaje</button>';
-  contactForm.innerHTML = formHtml;
+  let formHtml = state.formFields.map(function(field) { let inputHtml = ''; const requiredAttr = field.required ? 'required' : ''; const placeholderAttr = field.placeholder ? 'placeholder="' + field.placeholder + '"' : ''; if (field.type === 'textarea') inputHtml = '<textarea ' + requiredAttr + ' ' + placeholderAttr + '></textarea>'; else if (field.type === 'select') { const options = (field.options || []).map(function(opt) { return '<option value="' + opt + '">' + opt + '</option>'; }).join(''); inputHtml = '<select ' + requiredAttr + '><option value="">Seleccionar...</option>' + options + '</select>'; } else inputHtml = '<input type="' + field.type + '" ' + requiredAttr + ' ' + placeholderAttr + '>'; let fieldHeaderHtml = ''; if (state.loggedIn) { fieldHeaderHtml = '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:.5rem"><label style="color:var(--gold);font-size:.9rem;font-weight:600">' + field.label + (field.required ? ' *' : '') + '</label><div style="display:flex;gap:.3rem"><button class="contact-item-btn edit" onclick="openEditFormField(' + field.id + ')" style="width:28px;height:28px;border-radius:6px;border:none;background:rgba(59,130,246,0.2);color:var(--accent2);cursor:pointer;font-size:.8rem">✏️</button><button class="contact-item-btn delete" onclick="deleteFormField(' + field.id + ')" style="width:28px;height:28px;border-radius:6px;border:none;background:rgba(239,68,68,0.2);color:#fca5a5;cursor:pointer;font-size:.8rem">🗑️</button></div></div>'; } return '<div class="contact-form-field-wrapper">' + fieldHeaderHtml + inputHtml + '</div>'; }).join('');
+  if (state.loggedIn) formHtml += '<div class="contact-form-add visible" onclick="openEditFormField()">➕ Agregar campo al formulario</div>'; formHtml += '<button type="submit" class="btn btn-primary btn-full">Enviar Mensaje</button>'; contactForm.innerHTML = formHtml;
 }
 
-function openEditContactItem(id) {
-  if (!state.loggedIn) { openLogin(); return; }
-  document.getElementById('contactItemId').value = id || '';
-  document.getElementById('editContactItemTitle').textContent = id ? 'Editar dato de contacto' : 'Nuevo dato de contacto';
-  if (id) {
-    const item = state.contactItems.find(function(x) { return x.id === id; });
-    if (item) {
-      document.getElementById('contactItemIcon').value = item.icon || '';
-      document.getElementById('contactItemTitleField').value = item.title;
-      document.getElementById('contactItemContent').value = item.content;
-    }
-  } else {
-    document.getElementById('contactItemIcon').value = '📌';
-    document.getElementById('contactItemTitleField').value = '';
-    document.getElementById('contactItemContent').value = '';
-  }
-  document.querySelectorAll('#editContactItemModal .form-error').forEach(function(e) { e.classList.remove('show'); });
-  document.getElementById('editContactItemModal').classList.add('active');
-}
-
+function openEditContactItem(id) { if (!state.loggedIn) { openLogin(); return; } document.getElementById('contactItemId').value = id || ''; document.getElementById('editContactItemTitle').textContent = id ? 'Editar dato de contacto' : 'Nuevo dato de contacto'; if (id) { const item = state.contactItems.find(function(x) { return x.id === id; }); if (item) { document.getElementById('contactItemIcon').value = item.icon || ''; document.getElementById('contactItemTitleField').value = item.title; document.getElementById('contactItemContent').value = item.content; } } else { document.getElementById('contactItemIcon').value = '📌'; document.getElementById('contactItemTitleField').value = ''; document.getElementById('contactItemContent').value = ''; } document.querySelectorAll('#editContactItemModal .form-error').forEach(function(e) { e.classList.remove('show'); }); document.getElementById('editContactItemModal').classList.add('active'); }
 function closeEditContactItem() { document.getElementById('editContactItemModal').classList.remove('active'); }
+function saveContactItem(e) { e.preventDefault(); if (!state.loggedIn) return; document.querySelectorAll('#editContactItemModal .form-error').forEach(function(e) { e.classList.remove('show'); }); const id = document.getElementById('contactItemId').value; const icon = document.getElementById('contactItemIcon').value.trim() || ''; const title = document.getElementById('contactItemTitleField').value.trim(); const content = document.getElementById('contactItemContent').value.trim(); let hasError = false; if (!title) { document.getElementById('errContactItemTitle').classList.add('show'); hasError = true; } if (!content) { document.getElementById('errContactItemContent').classList.add('show'); hasError = true; } if (hasError) return; if (id) { const item = state.contactItems.find(function(x) { return x.id === parseInt(id); }); if (item) { item.icon = icon; item.title = title; item.content = content; } } else state.contactItems.push({ id: Date.now(), icon: icon, title: title, content: content }); save(); renderContactSection(); renderAdminContact(); closeEditContactItem(); toast('✅ Dato de contacto guardado', 'success'); }
+function deleteContactItem(id) { if (!state.loggedIn) { openLogin(); return; } if (!confirm('¿Eliminar este dato de contacto?')) return; state.contactItems = state.contactItems.filter(function(x) { return x.id !== id; }); save(); renderContactSection(); renderAdminContact(); toast('🗑️ Dato eliminado', 'error'); }
 
-function saveContactItem(e) {
-  e.preventDefault();
-  if (!state.loggedIn) return;
-  document.querySelectorAll('#editContactItemModal .form-error').forEach(function(e) { e.classList.remove('show'); });
-  const id = document.getElementById('contactItemId').value;
-  const icon = document.getElementById('contactItemIcon').value.trim() || '';
-  const title = document.getElementById('contactItemTitleField').value.trim();
-  const content = document.getElementById('contactItemContent').value.trim();
-  let hasError = false;
-  if (!title) { document.getElementById('errContactItemTitle').classList.add('show'); hasError = true; }
-  if (!content) { document.getElementById('errContactItemContent').classList.add('show'); hasError = true; }
-  if (hasError) return;
-  if (id) {
-    const item = state.contactItems.find(function(x) { return x.id === parseInt(id); });
-    if (item) { item.icon = icon; item.title = title; item.content = content; }
-  } else state.contactItems.push({ id: Date.now(), icon: icon, title: title, content: content });
-  save(); renderContactSection(); renderAdminContact(); closeEditContactItem(); toast('✅ Dato de contacto guardado', 'success');
-}
-
-function deleteContactItem(id) {
-  if (!state.loggedIn) { openLogin(); return; }
-  if (!confirm('¿Eliminar este dato de contacto?')) return;
-  state.contactItems = state.contactItems.filter(function(x) { return x.id !== id; });
-  save(); renderContactSection(); renderAdminContact(); toast('🗑️ Dato eliminado', 'error');
-}
-
-function openEditFormField(id) {
-  if (!state.loggedIn) { openLogin(); return; }
-  document.getElementById('formFieldId').value = id || '';
-  document.getElementById('editFormFieldTitle').textContent = id ? 'Editar campo del formulario' : 'Nuevo campo del formulario';
-  if (id) {
-    const field = state.formFields.find(function(x) { return x.id === id; });
-    if (field) {
-      document.getElementById('formFieldLabel').value = field.label;
-      document.getElementById('formFieldType').value = field.type;
-      document.getElementById('formFieldRequired').value = field.required ? 'true' : 'false';
-      document.getElementById('formFieldPlaceholder').value = field.placeholder || '';
-      document.getElementById('formFieldOptions').value = (field.options || []).join('\n');
-    }
-  } else {
-    document.getElementById('formFieldLabel').value = '';
-    document.getElementById('formFieldType').value = 'text';
-    document.getElementById('formFieldRequired').value = 'true';
-    document.getElementById('formFieldPlaceholder').value = '';
-    document.getElementById('formFieldOptions').value = '';
-  }
-  toggleFormFieldOptions();
-  document.querySelectorAll('#editFormFieldModal .form-error').forEach(function(e) { e.classList.remove('show'); });
-  document.getElementById('editFormFieldModal').classList.add('active');
-}
-
+function openEditFormField(id) { if (!state.loggedIn) { openLogin(); return; } document.getElementById('formFieldId').value = id || ''; document.getElementById('editFormFieldTitle').textContent = id ? 'Editar campo del formulario' : 'Nuevo campo del formulario'; if (id) { const field = state.formFields.find(function(x) { return x.id === id; }); if (field) { document.getElementById('formFieldLabel').value = field.label; document.getElementById('formFieldType').value = field.type; document.getElementById('formFieldRequired').value = field.required ? 'true' : 'false'; document.getElementById('formFieldPlaceholder').value = field.placeholder || ''; document.getElementById('formFieldOptions').value = (field.options || []).join('\n'); } } else { document.getElementById('formFieldLabel').value = ''; document.getElementById('formFieldType').value = 'text'; document.getElementById('formFieldRequired').value = 'true'; document.getElementById('formFieldPlaceholder').value = ''; document.getElementById('formFieldOptions').value = ''; } toggleFormFieldOptions(); document.querySelectorAll('#editFormFieldModal .form-error').forEach(function(e) { e.classList.remove('show'); }); document.getElementById('editFormFieldModal').classList.add('active'); }
 function closeEditFormField() { document.getElementById('editFormFieldModal').classList.remove('active'); }
-
-function toggleFormFieldOptions() {
-  const type = document.getElementById('formFieldType').value;
-  document.getElementById('formFieldOptionsGroup').style.display = type === 'select' ? 'block' : 'none';
-}
-
+function toggleFormFieldOptions() { const type = document.getElementById('formFieldType').value; document.getElementById('formFieldOptionsGroup').style.display = type === 'select' ? 'block' : 'none'; }
 document.addEventListener('change', function(e) { if (e.target.id === 'formFieldType') toggleFormFieldOptions(); });
-
-function saveFormField(e) {
-  e.preventDefault();
-  if (!state.loggedIn) return;
-  document.querySelectorAll('#editFormFieldModal .form-error').forEach(function(e) { e.classList.remove('show'); });
-  const id = document.getElementById('formFieldId').value;
-  const label = document.getElementById('formFieldLabel').value.trim();
-  const type = document.getElementById('formFieldType').value;
-  const required = document.getElementById('formFieldRequired').value === 'true';
-  const placeholder = document.getElementById('formFieldPlaceholder').value.trim();
-  const optionsText = document.getElementById('formFieldOptions').value.trim();
-  const options = optionsText ? optionsText.split('\n').map(function(o) { return o.trim(); }).filter(function(o) { return o; }) : [];
-  if (!label) { document.getElementById('errFormFieldLabel').classList.add('show'); return; }
-  if (id) {
-    const field = state.formFields.find(function(x) { return x.id === parseInt(id); });
-    if (field) { field.label = label; field.type = type; field.required = required; field.placeholder = placeholder; field.options = options; }
-  } else state.formFields.push({ id: Date.now(), label: label, type: type, required: required, placeholder: placeholder, options: options });
-  save(); renderContactSection(); renderAdminContact(); closeEditFormField(); toast('✅ Campo del formulario guardado', 'success');
-}
-
-function deleteFormField(id) {
-  if (!state.loggedIn) { openLogin(); return; }
-  if (!confirm('¿Eliminar este campo del formulario?')) return;
-  state.formFields = state.formFields.filter(function(x) { return x.id !== id; });
-  save(); renderContactSection(); renderAdminContact(); toast('🗑️ Campo eliminado', 'error');
-}
+function saveFormField(e) { e.preventDefault(); if (!state.loggedIn) return; document.querySelectorAll('#editFormFieldModal .form-error').forEach(function(e) { e.classList.remove('show'); }); const id = document.getElementById('formFieldId').value; const label = document.getElementById('formFieldLabel').value.trim(); const type = document.getElementById('formFieldType').value; const required = document.getElementById('formFieldRequired').value === 'true'; const placeholder = document.getElementById('formFieldPlaceholder').value.trim(); const optionsText = document.getElementById('formFieldOptions').value.trim(); const options = optionsText ? optionsText.split('\n').map(function(o) { return o.trim(); }).filter(function(o) { return o; }) : []; if (!label) { document.getElementById('errFormFieldLabel').classList.add('show'); return; } if (id) { const field = state.formFields.find(function(x) { return x.id === parseInt(id); }); if (field) { field.label = label; field.type = type; field.required = required; field.placeholder = placeholder; field.options = options; } } else state.formFields.push({ id: Date.now(), label: label, type: type, required: required, placeholder: placeholder, options: options }); save(); renderContactSection(); renderAdminContact(); closeEditFormField(); toast('✅ Campo del formulario guardado', 'success'); }
+function deleteFormField(id) { if (!state.loggedIn) { openLogin(); return; } if (!confirm('¿Eliminar este campo del formulario?')) return; state.formFields = state.formFields.filter(function(x) { return x.id !== id; }); save(); renderContactSection(); renderAdminContact(); toast('🗑️ Campo eliminado', 'error'); }
 
 function renderAdminContact() {
-  const itemsList = document.getElementById('adminContactItemsList');
-  itemsList.innerHTML = state.contactItems.map(function(item) {
-    return '<div class="admin-item"><div class="admin-item-info"><div class="admin-item-title">' + (item.icon || '📌') + ' ' + item.title + '</div><div class="admin-item-meta">' + item.content + '</div></div><div class="admin-item-actions"><button class="btn-icon btn-edit" onclick="openEditContactItem(' + item.id + ')">✏️</button><button class="btn-icon btn-delete" onclick="deleteContactItem(' + item.id + ')">🗑️</button></div></div>';
-  }).join('') || '<p style="opacity:.5;text-align:center;padding:1rem">No hay datos de contacto</p>';
-  const fieldsList = document.getElementById('adminFormFieldsList');
-  fieldsList.innerHTML = state.formFields.map(function(field) {
-    return '<div class="admin-item"><div class="admin-item-info"><div class="admin-item-title">' + field.label + (field.required ? ' *' : '') + '</div><div class="admin-item-meta">Tipo: ' + field.type + '</div></div><div class="admin-item-actions"><button class="btn-icon btn-edit" onclick="openEditFormField(' + field.id + ')">✏️</button><button class="btn-icon btn-delete" onclick="deleteFormField(' + field.id + ')">🗑️</button></div></div>';
-  }).join('') || '<p style="opacity:.5;text-align:center;padding:1rem">No hay campos en el formulario</p>';
+  const itemsList = document.getElementById('adminContactItemsList'); itemsList.innerHTML = state.contactItems.map(function(item) { return '<div class="admin-item"><div class="admin-item-info"><div class="admin-item-title">' + (item.icon || '📌') + ' ' + item.title + '</div><div class="admin-item-meta">' + item.content + '</div></div><div class="admin-item-actions"><button class="btn-icon btn-edit" onclick="openEditContactItem(' + item.id + ')">✏️</button><button class="btn-icon btn-delete" onclick="deleteContactItem(' + item.id + ')">🗑️</button></div></div>'; }).join('') || '<p style="opacity:.5;text-align:center;padding:1rem">No hay datos de contacto</p>';
+  const fieldsList = document.getElementById('adminFormFieldsList'); fieldsList.innerHTML = state.formFields.map(function(field) { return '<div class="admin-item"><div class="admin-item-info"><div class="admin-item-title">' + field.label + (field.required ? ' *' : '') + '</div><div class="admin-item-meta">Tipo: ' + field.type + '</div></div><div class="admin-item-actions"><button class="btn-icon btn-edit" onclick="openEditFormField(' + field.id + ')">️</button><button class="btn-icon btn-delete" onclick="deleteFormField(' + field.id + ')">🗑️</button></div></div>'; }).join('') || '<p style="opacity:.5;text-align:center;padding:1rem">No hay campos en el formulario</p>';
 }
 
-function compressImage(file, maxWidth = 1200, quality = 0.7) {
-  return new Promise(function(resolve, reject) {
-    const reader = new FileReader();
-    reader.onload = function(e) {
-      const img = new Image();
-      img.onload = function() {
-        const canvas = document.createElement('canvas');
-        let width = img.width, height = img.height;
-        if (width > maxWidth) { height = (height * maxWidth) / width; width = maxWidth; }
-        canvas.width = width; canvas.height = height;
-        canvas.getContext('2d').drawImage(img, 0, 0, width, height);
-        canvas.toBlob(function(blob) {
-          if (blob) resolve({ blob: blob, dataUrl: URL.createObjectURL(blob), size: blob.size });
-          else reject(new Error('Error al comprimir'));
-        }, 'image/jpeg', quality);
-      };
-      img.onerror = reject; img.src = e.target.result;
-    };
-    reader.onerror = reject; reader.readAsDataURL(file);
-  });
-}
-
-async function uploadToSupabase(file, folder) {
-  if (!supabaseClient) throw new Error('Supabase no configurado');
-  const compressed = await compressImage(file, 1200, 0.7);
-  const fileName = Date.now() + '_' + Math.random().toString(36).substr(2, 9) + '.jpg';
-  const filePath = folder + '/' + fileName;
-  const { error } = await supabaseClient.storage.from('albums').upload(filePath, compressed.blob, { contentType: 'image/jpeg', upsert: false });
-  if (error) throw new Error(error.message);
-  const { data: urlData } = supabaseClient.storage.from('albums').getPublicUrl(filePath);
-  return urlData.publicUrl;
-}
-
-async function deleteFromSupabase(url) {
-  if (!supabaseClient || !url.includes('supabase.co')) return;
-  try {
-    const match = url.match(/object\/public\/albums\/(.+)$/);
-    if (match) await supabaseClient.storage.from('albums').remove([match[1]]);
-  } catch(e) { console.error('Error al eliminar:', e); }
-}
+function compressImage(file, maxWidth = 1200, quality = 0.7) { return new Promise(function(resolve, reject) { const reader = new FileReader(); reader.onload = function(e) { const img = new Image(); img.onload = function() { const canvas = document.createElement('canvas'); let width = img.width, height = img.height; if (width > maxWidth) { height = (height * maxWidth) / width; width = maxWidth; } canvas.width = width; canvas.height = height; canvas.getContext('2d').drawImage(img, 0, 0, width, height); canvas.toBlob(function(blob) { if (blob) resolve({ blob: blob, dataUrl: URL.createObjectURL(blob), size: blob.size }); else reject(new Error('Error al comprimir')); }, 'image/jpeg', quality); }; img.onerror = reject; img.src = e.target.result; }; reader.onerror = reject; reader.readAsDataURL(file); }); }
+async function uploadToSupabase(file, folder) { if (!supabaseClient) throw new Error('Supabase no configurado'); const compressed = await compressImage(file, 1200, 0.7); const fileName = Date.now() + '_' + Math.random().toString(36).substr(2, 9) + '.jpg'; const filePath = folder + '/' + fileName; const { error } = await supabaseClient.storage.from('albums').upload(filePath, compressed.blob, { contentType: 'image/jpeg', upsert: false }); if (error) throw new Error(error.message); const { data: urlData } = supabaseClient.storage.from('albums').getPublicUrl(filePath); return urlData.publicUrl; }
+async function deleteFromSupabase(url) { if (!supabaseClient || !url.includes('supabase.co')) return; try { const match = url.match(/object\/public\/albums\/(.+)$/); if (match) await supabaseClient.storage.from('albums').remove([match[1]]); } catch(e) { console.error('Error al eliminar:', e); } }
 
 function render() {
-  document.getElementById('heroBg').style.backgroundImage = "url('" + state.heroUrl + "')";
-  document.getElementById('heroUrl').value = state.heroUrl;
-  renderHomeSection();
-  
+  document.getElementById('heroBg').style.backgroundImage = "url('" + state.heroUrl + "')"; document.getElementById('heroUrl').value = state.heroUrl; renderHomeSection();
   var ag = document.getElementById('albumsGrid');
-  var albumsHtml = state.albums.map(function(a) {
-    var photoCount = (a.photos || []).length;
-    var coverUrl = a.url || TEAM_IMAGE;
-    return '<div class="album-card" onclick="openAlbumDetail(' + a.id + ')"><div class="album-cover"><img src="' + coverUrl + '" alt="' + a.title + '" onerror="this.parentElement.style.background=\'#1e3a5f\'"><div class="album-cover-overlay"><span class="album-photo-count">📸 ' + photoCount + ' foto' + (photoCount !== 1 ? 's' : '') + '</span></div></div><div class="album-info"><h3>' + a.title + '</h3><p>' + (a.desc || '').substring(0, 100) + (a.desc && a.desc.length > 100 ? '...' : '') + '</p><div class="album-date">' + (a.date || '') + '</div></div></div>';
-  }).join('');
-  if (state.loggedIn) albumsHtml += '<div class="album-add" onclick="openEditAlbum()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg><span>Crear Nuevo Álbum</span></div>';
-  ag.innerHTML = albumsHtml;
-  
+  var albumsHtml = state.albums.map(function(a) { var photoCount = (a.photos || []).length; var coverUrl = a.url || TEAM_IMAGE; return '<div class="album-card" onclick="openAlbumDetail(' + a.id + ')"><div class="album-cover"><img src="' + coverUrl + '" alt="' + a.title + '" onerror="this.parentElement.style.background=\'#1e3a5f\'"><div class="album-cover-overlay"><span class="album-photo-count">📸 ' + photoCount + ' foto' + (photoCount !== 1 ? 's' : '') + '</span></div></div><div class="album-info"><h3>' + a.title + '</h3><p>' + (a.desc || '').substring(0, 100) + (a.desc && a.desc.length > 100 ? '...' : '') + '</p><div class="album-date">' + (a.date || '') + '</div></div></div>'; }).join('');
+  if (state.loggedIn) albumsHtml += '<div class="album-add" onclick="openEditAlbum()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg><span>Crear Nuevo Álbum</span></div>'; ag.innerHTML = albumsHtml;
   renderVideos();
-  
-  var pg = document.getElementById('pagesGrid');
-  pg.innerHTML = state.pages.map(function(p) {
-    var pc = (p.gallery || []).length;
-    var adminClass = state.loggedIn ? 'admin-mode' : '';
-    return '<div class="page-card ' + adminClass + '" onclick="handlePageCardClick(event,' + p.id + ')"><button class="page-edit-btn" onclick="event.stopPropagation();openEditPage(' + p.id + ')" title="Editar sección">✏️</button><div class="page-card-icon">' + (p.icon || '') + '</div><h3>' + p.title + '</h3><p>' + (p.desc || '').substring(0, 120) + ((p.desc || '').length > 120 ? '...' : '') + '</p><div class="page-card-photos"> ' + pc + ' foto' + (pc !== 1 ? 's' : '') + '</div><div class="page-card-date">' + (p.date || '') + '</div></div>';
-  }).join('');
-  
-  renderContactSection(); 
-  renderComments();
-  renderAdminComments();
-  renderAdmin(); 
-  updateStorageIndicator();
-  
-  incrementVisitCount();
+  var pg = document.getElementById('pagesGrid'); pg.innerHTML = state.pages.map(function(p) { var pc = (p.gallery || []).length; var adminClass = state.loggedIn ? 'admin-mode' : ''; return '<div class="page-card ' + adminClass + '" onclick="handlePageCardClick(event,' + p.id + ')"><button class="page-edit-btn" onclick="event.stopPropagation();openEditPage(' + p.id + ')" title="Editar sección">✏️</button><div class="page-card-icon">' + (p.icon || '') + '</div><h3>' + p.title + '</h3><p>' + (p.desc || '').substring(0, 120) + ((p.desc || '').length > 120 ? '...' : '') + '</p><div class="page-card-photos"> ' + pc + ' foto' + (pc !== 1 ? 's' : '') + '</div><div class="page-card-date">' + (p.date || '') + '</div></div>'; }).join('');
+  renderContactSection(); renderComments(); renderAdminComments(); renderAdmin(); updateStorageIndicator(); incrementVisitCount();
 }
 
-function handlePageCardClick(event, id) {
-  if (state.loggedIn) openEditPage(id);
-  else { var page = state.pages.find(function(p) { return p.id === id; }); toast('Sección: ' + (page ? page.title : ''), ''); }
-}
+function handlePageCardClick(event, id) { if (state.loggedIn) openEditPage(id); else { var page = state.pages.find(function(p) { return p.id === id; }); toast('Sección: ' + (page ? page.title : ''), ''); } }
 
 function renderAdmin() {
-  document.getElementById('adminAlbumsList').innerHTML = state.albums.map(function(a) {
-    return '<div class="admin-item"><div class="admin-item-info"><div class="admin-item-title">🖼️ ' + a.title + '</div><div class="admin-item-meta">' + (a.date || '') + ' · ' + ((a.photos || []).length) + ' fotos</div></div><div class="admin-item-actions"><button class="btn-icon btn-edit" onclick="openEditAlbum(' + a.id + ')">✏️</button><button class="btn-icon btn-delete" onclick="deleteAlbum(' + a.id + ')">🗑️</button></div></div>';
-  }).join('') || '<p style="opacity:.5;text-align:center;padding:2rem">No hay álbumes creados</p>';
-  
+  document.getElementById('adminAlbumsList').innerHTML = state.albums.map(function(a) { return '<div class="admin-item"><div class="admin-item-info"><div class="admin-item-title">🖼️ ' + a.title + '</div><div class="admin-item-meta">' + (a.date || '') + ' · ' + ((a.photos || []).length) + ' fotos</div></div><div class="admin-item-actions"><button class="btn-icon btn-edit" onclick="openEditAlbum(' + a.id + ')">✏️</button><button class="btn-icon btn-delete" onclick="deleteAlbum(' + a.id + ')">🗑️</button></div></div>'; }).join('') || '<p style="opacity:.5;text-align:center;padding:2rem">No hay álbumes creados</p>';
   renderAdminVideos();
-  
-  document.getElementById('adminPagesList').innerHTML = state.pages.map(function(p) {
-    return '<div class="admin-item"><div class="admin-item-info"><div class="admin-item-title">' + (p.icon || '') + ' ' + p.title + '</div><div class="admin-item-meta">' + (p.date || '') + '</div></div><div class="admin-item-actions"><button class="btn-icon btn-edit" onclick="openEditPage(' + p.id + ')">✏️</button><button class="btn-icon btn-delete" onclick="deletePage(' + p.id + ')">🗑️</button></div></div>';
-  }).join('') || '<p style="opacity:.5;text-align:center;padding:2rem">No hay secciones</p>';
+  document.getElementById('adminPagesList').innerHTML = state.pages.map(function(p) { return '<div class="admin-item"><div class="admin-item-info"><div class="admin-item-title">' + (p.icon || '') + ' ' + p.title + '</div><div class="admin-item-meta">' + (p.date || '') + '</div></div><div class="admin-item-actions"><button class="btn-icon btn-edit" onclick="openEditPage(' + p.id + ')">✏️</button><button class="btn-icon btn-delete" onclick="deletePage(' + p.id + ')">️</button></div></div>'; }).join('') || '<p style="opacity:.5;text-align:center;padding:2rem">No hay secciones</p>';
   renderAdminContact();
 }
 
-function openAlbumDetail(id) {
-  var album = state.albums.find(function(a) { return a.id === id; });
-  if (!album) return;
-  state.currentAlbumId = id; state.manageMode = false;
-  document.getElementById('albumDetailHeroImg').src = album.url || TEAM_IMAGE;
-  document.getElementById('albumDetailTitle').textContent = album.title;
-  document.getElementById('albumDetailSubtitle').textContent = album.desc || '';
-  document.getElementById('albumPhotosTitleName').textContent = album.title;
-  var photos = album.photos || [];
-  document.getElementById('albumPhotosCount').textContent = photos.length + ' foto' + (photos.length !== 1 ? 's' : '');
-  var actionsHtml = '';
-  if (state.loggedIn) actionsHtml = '<button class="manage-mode-toggle" id="manageModeBtn" onclick="toggleManageMode()">🗑️ Gestionar fotos</button><button class="btn btn-primary btn-sm" onclick="window._addPhotosToAlbum(' + id + ')">+ Agregar Fotos</button>';
-  document.getElementById('albumPhotosActions').innerHTML = actionsHtml;
-  var grid = document.getElementById('albumPhotosGrid');
-  grid.innerHTML = photos.map(function(ph) {
-    return '<div class="album-photo-item" id="photo-' + ph.id + '" onclick="handlePhotoClick(event,' + id + ',' + ph.id + ')"><button class="album-photo-delete" onclick="event.stopPropagation();confirmDeletePhoto(' + id + ',' + ph.id + ')" title="Eliminar foto">🗑️</button><img src="' + ph.url + '" alt="' + ph.title + '" onerror="this.parentElement.style.background=\'#1e3a5f\';this.style.display=\'none\'"><div class="album-photo-item-overlay"><div><div class="album-photo-item-title">' + ph.title + '</div><div class="album-photo-item-date">' + (ph.date || '') + '</div></div></div></div>';
-  }).join('');
-  if (state.loggedIn) grid.innerHTML += '<div class="album-photo-add-btn" onclick="window._addPhotosToAlbum(' + id + ')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg><span>Agregar Múltiples Fotos</span></div>';
-  if (photos.length === 0 && !state.loggedIn) grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:3rem;opacity:.6"><p>No hay fotos en este álbum aún</p></div>';
-  document.getElementById('albumDetail').classList.add('open'); document.body.style.overflow = 'hidden';
-}
-
+function openAlbumDetail(id) { var album = state.albums.find(function(a) { return a.id === id; }); if (!album) return; state.currentAlbumId = id; state.manageMode = false; document.getElementById('albumDetailHeroImg').src = album.url || TEAM_IMAGE; document.getElementById('albumDetailTitle').textContent = album.title; document.getElementById('albumDetailSubtitle').textContent = album.desc || ''; document.getElementById('albumPhotosTitleName').textContent = album.title; var photos = album.photos || []; document.getElementById('albumPhotosCount').textContent = photos.length + ' foto' + (photos.length !== 1 ? 's' : ''); var actionsHtml = ''; if (state.loggedIn) actionsHtml = '<button class="manage-mode-toggle" id="manageModeBtn" onclick="toggleManageMode()">🗑️ Gestionar fotos</button><button class="btn btn-primary btn-sm" onclick="window._addPhotosToAlbum(' + id + ')">+ Agregar Fotos</button>'; document.getElementById('albumPhotosActions').innerHTML = actionsHtml; var grid = document.getElementById('albumPhotosGrid'); grid.innerHTML = photos.map(function(ph) { return '<div class="album-photo-item" id="photo-' + ph.id + '" onclick="handlePhotoClick(event,' + id + ',' + ph.id + ')"><button class="album-photo-delete" onclick="event.stopPropagation();confirmDeletePhoto(' + id + ',' + ph.id + ')" title="Eliminar foto">🗑️</button><img src="' + ph.url + '" alt="' + ph.title + '" onerror="this.parentElement.style.background=\'#1e3a5f\';this.style.display=\'none\'"><div class="album-photo-item-overlay"><div><div class="album-photo-item-title">' + ph.title + '</div><div class="album-photo-item-date">' + (ph.date || '') + '</div></div></div></div>'; }).join(''); if (state.loggedIn) grid.innerHTML += '<div class="album-photo-add-btn" onclick="window._addPhotosToAlbum(' + id + ')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg><span>Agregar Múltiples Fotos</span></div>'; if (photos.length === 0 && !state.loggedIn) grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:3rem;opacity:.6"><p>No hay fotos en este álbum aún</p></div>'; document.getElementById('albumDetail').classList.add('open'); document.body.style.overflow = 'hidden'; }
 window._addPhotosToAlbum = function(albumId) { openMultiUploadForAlbum(albumId); };
-
-function toggleManageMode() {
-  state.manageMode = !state.manageMode;
-  var btn = document.getElementById('manageModeBtn');
-  if (btn) { btn.classList.toggle('active', state.manageMode); btn.innerHTML = state.manageMode ? '✕ Salir de gestión' : '🗑️ Gestionar fotos'; }
-  document.querySelectorAll('.album-photo-item').forEach(function(item) { item.classList.toggle('manage-mode', state.manageMode); });
-  if (state.manageMode) toast('Modo eliminar activado. Hacé clic en 🗑️ para borrar fotos.', '');
-}
-
-function handlePhotoClick(event, albumId, photoId) {
-  if (state.manageMode) { event.preventDefault(); event.stopPropagation(); confirmDeletePhoto(albumId, photoId); }
-  else openAlbumLightbox(albumId, photoId);
-}
-
-async function confirmDeletePhoto(albumId, photoId) {
-  var album = state.albums.find(a => a.id === albumId);
-  if (!album) return;
-  var photo = album.photos.find(p => p.id === photoId);
-  if (!photo) return;
-  
-  if (confirm('¿Eliminar la foto "' + photo.title + '"?\n\nEsta acción no se puede deshacer.')) {
-    if (SUPABASE_DB_ENABLED) await deletePhotoFromDB(photoId);
-    if (supabaseClient && photo.url && photo.url.includes('supabase.co')) deleteFromSupabase(photo.url);
-    album.photos = album.photos.filter(p => p.id !== photoId);
-    save(); 
-    openAlbumDetail(albumId); 
-    toast('🗑️ Foto eliminada', 'success');
-  }
-}
-
+function toggleManageMode() { state.manageMode = !state.manageMode; var btn = document.getElementById('manageModeBtn'); if (btn) { btn.classList.toggle('active', state.manageMode); btn.innerHTML = state.manageMode ? '✕ Salir de gestión' : '️ Gestionar fotos'; } document.querySelectorAll('.album-photo-item').forEach(function(item) { item.classList.toggle('manage-mode', state.manageMode); }); if (state.manageMode) toast('Modo eliminar activado. Hacé clic en 🗑️ para borrar fotos.', ''); }
+function handlePhotoClick(event, albumId, photoId) { if (state.manageMode) { event.preventDefault(); event.stopPropagation(); confirmDeletePhoto(albumId, photoId); } else openAlbumLightbox(albumId, photoId); }
+async function confirmDeletePhoto(albumId, photoId) { var album = state.albums.find(a => a.id === albumId); if (!album) return; var photo = album.photos.find(p => p.id === photoId); if (!photo) return; if (confirm('¿Eliminar la foto "' + photo.title + '"?\n\nEsta acción no se puede deshacer.')) { if (SUPABASE_DB_ENABLED) await deletePhotoFromDB(photoId); if (supabaseClient && photo.url && photo.url.includes('supabase.co')) deleteFromSupabase(photo.url); album.photos = album.photos.filter(p => p.id !== photoId); save(); openAlbumDetail(albumId); toast('🗑️ Foto eliminada', 'success'); } }
 function closeAlbumDetail() { document.getElementById('albumDetail').classList.remove('open'); document.body.style.overflow = ''; state.currentAlbumId = null; state.manageMode = false; }
 function goHome() { closeAlbumDetail(); window.scrollTo({ top: 0, behavior: 'smooth' }); }
-
-function openAlbumLightbox(albumId, photoId) {
-  var album = state.albums.find(function(a) { return a.id === albumId; });
-  if (!album) return;
-  var photos = album.photos || [];
-  state.lightboxImages = photos.map(function(ph) { return ph.url; });
-  var idx = photos.findIndex(function(ph) { return ph.id === photoId; });
-  state.lightboxIndex = idx >= 0 ? idx : 0;
-  showLightbox();
-}
-
-function showLightbox() {
-  document.getElementById('lightboxImg').src = state.lightboxImages[state.lightboxIndex];
-  document.getElementById('lightboxCounter').textContent = (state.lightboxIndex + 1) + ' / ' + state.lightboxImages.length;
-  document.getElementById('lightbox').classList.add('active'); document.body.style.overflow = 'hidden';
-}
+function openAlbumLightbox(albumId, photoId) { var album = state.albums.find(function(a) { return a.id === albumId; }); if (!album) return; var photos = album.photos || []; state.lightboxImages = photos.map(function(ph) { return ph.url; }); var idx = photos.findIndex(function(ph) { return ph.id === photoId; }); state.lightboxIndex = idx >= 0 ? idx : 0; showLightbox(); }
+function showLightbox() { document.getElementById('lightboxImg').src = state.lightboxImages[state.lightboxIndex]; document.getElementById('lightboxCounter').textContent = (state.lightboxIndex + 1) + ' / ' + state.lightboxImages.length; document.getElementById('lightbox').classList.add('active'); document.body.style.overflow = 'hidden'; }
 function closeLightbox() { document.getElementById('lightbox').classList.remove('active'); document.body.style.overflow = ''; }
 function lightboxNav(dir) { state.lightboxIndex = (state.lightboxIndex + dir + state.lightboxImages.length) % state.lightboxImages.length; showLightbox(); }
-document.addEventListener('keydown', function(e) {
-  if (!document.getElementById('lightbox').classList.contains('active')) return;
-  if (e.key === 'Escape') closeLightbox();
-  if (e.key === 'ArrowLeft') lightboxNav(-1);
-  if (e.key === 'ArrowRight') lightboxNav(1);
-});
+document.addEventListener('keydown', function(e) { if (!document.getElementById('lightbox').classList.contains('active')) return; if (e.key === 'Escape') closeLightbox(); if (e.key === 'ArrowLeft') lightboxNav(-1); if (e.key === 'ArrowRight') lightboxNav(1); });
 
 function openLogin() { document.getElementById('loginModal').classList.add('active'); }
 function closeLogin() { document.getElementById('loginModal').classList.remove('active'); document.getElementById('loginError').classList.remove('show'); }
-function doLogin(e) {
-  e.preventDefault();
-  if (document.getElementById('loginUser').value === 'admin' && document.getElementById('loginPass').value === state.password) {
-    state.loggedIn = true; sessionStorage.setItem('larr_logged', 'true');
-    document.getElementById('adminToggle').classList.add('show');
-    closeLogin(); toast('¡Bienvenido, Administrador!', 'success'); render();
-    if (state.currentAlbumId) openAlbumDetail(state.currentAlbumId);
-  } else document.getElementById('loginError').classList.add('show');
-}
-function logout() {
-  state.loggedIn = false; sessionStorage.removeItem('larr_logged');
-  document.getElementById('adminToggle').classList.remove('show'); document.getElementById('adminPanel').classList.remove('open');
-  toast('Sesión cerrada'); render();
-  if (state.currentAlbumId) openAlbumDetail(state.currentAlbumId);
-}
-
+function doLogin(e) { e.preventDefault(); if (document.getElementById('loginUser').value === 'admin' && document.getElementById('loginPass').value === state.password) { state.loggedIn = true; sessionStorage.setItem('larr_logged', 'true'); document.getElementById('adminToggle').classList.add('show'); closeLogin(); toast('¡Bienvenido, Administrador!', 'success'); render(); if (state.currentAlbumId) openAlbumDetail(state.currentAlbumId); } else document.getElementById('loginError').classList.add('show'); }
+function logout() { state.loggedIn = false; sessionStorage.removeItem('larr_logged'); document.getElementById('adminToggle').classList.remove('show'); document.getElementById('adminPanel').classList.remove('open'); toast('Sesión cerrada'); render(); if (state.currentAlbumId) openAlbumDetail(state.currentAlbumId); }
 function toggleAdmin() { document.getElementById('adminPanel').classList.toggle('open'); }
-function switchTab(tab, btn) {
-  document.querySelectorAll('.admin-tab').forEach(function(t) { t.classList.remove('active'); });
-  document.querySelectorAll('.admin-section').forEach(function(s) { s.classList.remove('active'); });
-  btn.classList.add('active'); document.getElementById('tab-' + tab).classList.add('active');
-}
-
+function switchTab(tab, btn) { document.querySelectorAll('.admin-tab').forEach(function(t) { t.classList.remove('active'); }); document.querySelectorAll('.admin-section').forEach(function(s) { s.classList.remove('active'); }); btn.classList.add('active'); document.getElementById('tab-' + tab).classList.add('active'); }
 function hideAllErrors() { document.querySelectorAll('.form-error').forEach(function(e) { e.classList.remove('show'); }); }
 
-function openEditAlbum(id) {
-  if (!state.loggedIn) { openLogin(); return; }
-  hideAllErrors();
-  document.getElementById('editAlbumId').value = id || '';
-  document.getElementById('editAlbumTitle').textContent = id ? 'Editar Álbum' : 'Nuevo Álbum';
-  state.pendingImage = null; state.originalUrl = null;
-  document.getElementById('albumUploadPreview').style.display = 'none';
-  document.getElementById('albumUploadPlaceholder').style.display = 'block';
-  document.getElementById('albumUploadZone').classList.remove('has-image');
-  document.getElementById('albumFileInput').value = '';
-  document.getElementById('btnSaveAlbum').textContent = '💾 Guardar Álbum'; document.getElementById('btnSaveAlbum').disabled = false;
-  if (id) {
-    var album = state.albums.find(function(a) { return a.id === id; });
-    if (album) {
-      document.getElementById('albumField1').value = album.title;
-      document.getElementById('albumField2').value = album.desc || '';
-      document.getElementById('albumField3').value = '';
-      document.getElementById('albumField4').value = album.date || '';
-      state.originalUrl = album.url || '';
-      if (album.url) {
-        document.getElementById('albumUploadPreview').src = album.url;
-        document.getElementById('albumUploadPreview').style.display = 'block';
-        document.getElementById('albumUploadPlaceholder').style.display = 'none';
-        document.getElementById('albumUploadZone').classList.add('has-image');
-        if (!album.url.startsWith('data:')) document.getElementById('albumField3').value = album.url;
-      }
-    }
-  } else {
-    document.getElementById('albumField1').value = ''; document.getElementById('albumField2').value = '';
-    document.getElementById('albumField3').value = '';
-    document.getElementById('albumField4').value = new Date().toLocaleDateString('es-AR', { year: 'numeric', month: 'long' });
-  }
-  document.getElementById('editAlbumModal').classList.add('active');
-}
+function openEditAlbum(id) { if (!state.loggedIn) { openLogin(); return; } hideAllErrors(); document.getElementById('editAlbumId').value = id || ''; document.getElementById('editAlbumTitle').textContent = id ? 'Editar Álbum' : 'Nuevo Álbum'; state.pendingImage = null; state.originalUrl = null; document.getElementById('albumUploadPreview').style.display = 'none'; document.getElementById('albumUploadPlaceholder').style.display = 'block'; document.getElementById('albumUploadZone').classList.remove('has-image'); document.getElementById('albumFileInput').value = ''; document.getElementById('btnSaveAlbum').textContent = '💾 Guardar Álbum'; document.getElementById('btnSaveAlbum').disabled = false; if (id) { var album = state.albums.find(function(a) { return a.id === id; }); if (album) { document.getElementById('albumField1').value = album.title; document.getElementById('albumField2').value = album.desc || ''; document.getElementById('albumField3').value = ''; document.getElementById('albumField4').value = album.date || ''; state.originalUrl = album.url || ''; if (album.url) { document.getElementById('albumUploadPreview').src = album.url; document.getElementById('albumUploadPreview').style.display = 'block'; document.getElementById('albumUploadPlaceholder').style.display = 'none'; document.getElementById('albumUploadZone').classList.add('has-image'); if (!album.url.startsWith('data:')) document.getElementById('albumField3').value = album.url; } } } else { document.getElementById('albumField1').value = ''; document.getElementById('albumField2').value = ''; document.getElementById('albumField3').value = ''; document.getElementById('albumField4').value = new Date().toLocaleDateString('es-AR', { year: 'numeric', month: 'long' }); } document.getElementById('editAlbumModal').classList.add('active'); }
 function closeEditAlbum() { document.getElementById('editAlbumModal').classList.remove('active'); state.pendingImage = null; state.originalUrl = null; hideAllErrors(); }
+function handleAlbumCoverUpload(e) { var file = e.target.files[0]; if (!file) return; if (file.size > 10 * 1024 * 1024) { toast('La imagen es muy grande (máx 10MB)', 'error'); return; } var reader = new FileReader(); reader.onload = function(ev) { state.pendingImage = ev.target.result; document.getElementById('albumUploadPreview').src = ev.target.result; document.getElementById('albumUploadPreview').style.display = 'block'; document.getElementById('albumUploadPlaceholder').style.display = 'none'; document.getElementById('albumUploadZone').classList.add('has-image'); document.getElementById('albumField3').value = ''; hideAllErrors(); }; reader.readAsDataURL(file); }
+function clearAlbumCoverPreview() { if (document.getElementById('albumField3').value) { state.pendingImage = null; document.getElementById('albumUploadPreview').style.display = 'none'; document.getElementById('albumUploadPlaceholder').style.display = 'block'; document.getElementById('albumUploadZone').classList.remove('has-image'); hideAllErrors(); } }
 
-function handleAlbumCoverUpload(e) {
-  var file = e.target.files[0]; if (!file) return;
-  if (file.size > 10 * 1024 * 1024) { toast('La imagen es muy grande (máx 10MB)', 'error'); return; }
-  var reader = new FileReader();
-  reader.onload = function(ev) {
-    state.pendingImage = ev.target.result;
-    document.getElementById('albumUploadPreview').src = ev.target.result;
-    document.getElementById('albumUploadPreview').style.display = 'block';
-    document.getElementById('albumUploadPlaceholder').style.display = 'none';
-    document.getElementById('albumUploadZone').classList.add('has-image');
-    document.getElementById('albumField3').value = ''; hideAllErrors();
-  };
-  reader.readAsDataURL(file);
-}
-function clearAlbumCoverPreview() {
-  if (document.getElementById('albumField3').value) {
-    state.pendingImage = null;
-    document.getElementById('albumUploadPreview').style.display = 'none';
-    document.getElementById('albumUploadPlaceholder').style.display = 'block';
-    document.getElementById('albumUploadZone').classList.remove('has-image'); hideAllErrors();
-  }
-}
+async function saveAlbum(e) { e.preventDefault(); hideAllErrors(); var id = document.getElementById('editAlbumId').value; var title = document.getElementById('albumField1').value.trim(); var desc = document.getElementById('albumField2').value.trim(); var url = document.getElementById('albumField3').value.trim(); var date = document.getElementById('albumField4').value.trim(); if (state.pendingImage) url = state.pendingImage; var hasError = false; if (!title) { document.getElementById('errAlbumTitle').classList.add('show'); hasError = true; } if (!url && !id) { document.getElementById('errAlbumCover').classList.add('show'); hasError = true; } if (hasError) { toast('Revisá los campos marcados', 'error'); return; } var btn = document.getElementById('btnSaveAlbum'); btn.textContent = '⏳ Guardando...'; btn.disabled = true; const albumData = { id: id ? parseInt(id) : null, title: title, desc: desc, url: url || state.originalUrl, date: date, photos: [] }; const dbSaved = await saveAlbumToDB(albumData); if (dbSaved) { if (id) { const idx = state.albums.findIndex(a => a.id === parseInt(id)); if (idx >= 0) { albumData.photos = state.albums[idx].photos; state.albums[idx] = albumData; } } else { state.albums.push(albumData); } save(); render(); closeEditAlbum(); toast('✅ Álbum guardado en la nube', 'success'); } else { if (id) { const album = state.albums.find(a => a.id === parseInt(id)); if (album) { album.title = title; album.desc = desc; if (url) album.url = url; album.date = date; } } else { state.albums.push({ id: Date.now(), title, desc, url: url || state.originalUrl, date, photos: [] }); } save(); render(); closeEditAlbum(); toast('✅ Álbum guardado (local)', 'success'); } }
+async function deleteAlbum(id) { if (!confirm('¿Eliminar este álbum y todas sus fotos?\n\nEsta acción no se puede deshacer.')) return; if (SUPABASE_DB_ENABLED) await deleteAlbumFromDB(id); state.albums = state.albums.filter(function(a) { return a.id !== id; }); save(); render(); toast('Álbum eliminado', 'error'); }
 
-async function saveAlbum(e) {
-  e.preventDefault(); hideAllErrors();
-  var id = document.getElementById('editAlbumId').value;
-  var title = document.getElementById('albumField1').value.trim();
-  var desc = document.getElementById('albumField2').value.trim();
-  var url = document.getElementById('albumField3').value.trim();
-  var date = document.getElementById('albumField4').value.trim();
-  
-  if (state.pendingImage) url = state.pendingImage;
-  
-  var hasError = false;
-  if (!title) { document.getElementById('errAlbumTitle').classList.add('show'); hasError = true; }
-  if (!url && !id) { document.getElementById('errAlbumCover').classList.add('show'); hasError = true; }
-  if (hasError) { toast('Revisá los campos marcados', 'error'); return; }
-  
-  var btn = document.getElementById('btnSaveAlbum'); 
-  btn.textContent = '⏳ Guardando...'; 
-  btn.disabled = true;
-  
-  const albumData = {
-    id: id ? parseInt(id) : null,
-    title: title,
-    desc: desc,
-    url: url || state.originalUrl,
-    date: date,
-    photos: []
-  };
-  
-  const dbSaved = await saveAlbumToDB(albumData);
-  
-  if (dbSaved) {
-    if (id) {
-      const idx = state.albums.findIndex(a => a.id === parseInt(id));
-      if (idx >= 0) {
-        albumData.photos = state.albums[idx].photos;
-        state.albums[idx] = albumData;
-      }
-    } else {
-      state.albums.push(albumData);
-    }
-    save();
-    render(); 
-    closeEditAlbum(); 
-    toast('✅ Álbum guardado en la nube', 'success');
-  } else {
-    if (id) {
-      const album = state.albums.find(a => a.id === parseInt(id));
-      if (album) { album.title = title; album.desc = desc; if (url) album.url = url; album.date = date; }
-    } else {
-      state.albums.push({ id: Date.now(), title, desc, url: url || state.originalUrl, date, photos: [] });
-    }
-    save();
-    render();
-    closeEditAlbum();
-    toast('✅ Álbum guardado (local)', 'success');
-  }
-}
-
-async function deleteAlbum(id) {
-  if (!confirm('¿Eliminar este álbum y todas sus fotos?\n\nEsta acción no se puede deshacer.')) return;
-  if (SUPABASE_DB_ENABLED) await deleteAlbumFromDB(id);
-  state.albums = state.albums.filter(function(a) { return a.id !== id; });
-  save(); render(); toast('Álbum eliminado', 'error');
-}
-
-function openEditPage(id) {
-  if (!state.loggedIn) { openLogin(); return; }
-  hideAllErrors();
-  document.getElementById('editPageId').value = id || '';
-  document.getElementById('editPageTitle').textContent = id ? 'Editar Sección' : 'Nueva Sección';
-  state.pagePendingBg = null; state.pageOriginalBg = null; state.selectedIcon = '⚽';
-  document.getElementById('pageUploadPreview').style.display = 'none';
-  document.getElementById('pageUploadPlaceholder').style.display = 'block';
-  document.getElementById('pageUploadZone').classList.remove('has-image');
-  document.getElementById('pageFileInput').value = '';
-  document.getElementById('btnSavePage').textContent = '💾 Guardar Sección'; document.getElementById('btnSavePage').disabled = false;
-  var iconHtml = ''; ICONS.forEach(function(ic) { iconHtml += '<div class="icon-option" data-icon="' + ic + '" onclick="selectIcon(this,\'' + ic + '\')">' + ic + '</div>'; });
-  document.getElementById('iconSelector').innerHTML = iconHtml;
-  if (id) {
-    var page = state.pages.find(function(p) { return p.id === id; });
-    if (page) {
-      document.getElementById('pageField1').value = page.title;
-      document.getElementById('pageField2').value = page.desc || '';
-      document.getElementById('pageField3').value = '';
-      document.getElementById('pageField4').value = page.date || '';
-      document.getElementById('pageField5').value = page.header || '';
-      state.pageOriginalBg = page.url || ''; state.selectedIcon = page.icon || '';
-      document.querySelectorAll('.icon-option').forEach(function(el) { el.classList.toggle('selected', el.dataset.icon === state.selectedIcon); });
-      if (page.url) {
-        document.getElementById('pageUploadPreview').src = page.url;
-        document.getElementById('pageUploadPreview').style.display = 'block';
-        document.getElementById('pageUploadPlaceholder').style.display = 'none';
-        document.getElementById('pageUploadZone').classList.add('has-image');
-        if (!page.url.startsWith('data:')) document.getElementById('pageField3').value = page.url;
-      }
-    }
-  } else {
-    document.getElementById('pageField1').value = ''; document.getElementById('pageField2').value = '';
-    document.getElementById('pageField3').value = ''; document.getElementById('pageField4').value = '';
-    document.getElementById('pageField5').value = '';
-  }
-  document.getElementById('editPageModal').classList.add('active');
-}
-
-function selectIcon(el, icon) {
-  document.querySelectorAll('.icon-option').forEach(function(e) { e.classList.remove('selected'); });
-  el.classList.add('selected'); state.selectedIcon = icon;
-}
+function openEditPage(id) { if (!state.loggedIn) { openLogin(); return; } hideAllErrors(); document.getElementById('editPageId').value = id || ''; document.getElementById('editPageTitle').textContent = id ? 'Editar Sección' : 'Nueva Sección'; state.pagePendingBg = null; state.pageOriginalBg = null; state.selectedIcon = ''; document.getElementById('pageUploadPreview').style.display = 'none'; document.getElementById('pageUploadPlaceholder').style.display = 'block'; document.getElementById('pageUploadZone').classList.remove('has-image'); document.getElementById('pageFileInput').value = ''; document.getElementById('btnSavePage').textContent = '💾 Guardar Sección'; document.getElementById('btnSavePage').disabled = false; var iconHtml = ''; ICONS.forEach(function(ic) { iconHtml += '<div class="icon-option" data-icon="' + ic + '" onclick="selectIcon(this,\'' + ic + '\')">' + ic + '</div>'; }); document.getElementById('iconSelector').innerHTML = iconHtml; if (id) { var page = state.pages.find(function(p) { return p.id === id; }); if (page) { document.getElementById('pageField1').value = page.title; document.getElementById('pageField2').value = page.desc || ''; document.getElementById('pageField3').value = ''; document.getElementById('pageField4').value = page.date || ''; document.getElementById('pageField5').value = page.header || ''; state.pageOriginalBg = page.url || ''; state.selectedIcon = page.icon || ''; document.querySelectorAll('.icon-option').forEach(function(el) { el.classList.toggle('selected', el.dataset.icon === state.selectedIcon); }); if (page.url) { document.getElementById('pageUploadPreview').src = page.url; document.getElementById('pageUploadPreview').style.display = 'block'; document.getElementById('pageUploadPlaceholder').style.display = 'none'; document.getElementById('pageUploadZone').classList.add('has-image'); if (!page.url.startsWith('data:')) document.getElementById('pageField3').value = page.url; } } } else { document.getElementById('pageField1').value = ''; document.getElementById('pageField2').value = ''; document.getElementById('pageField3').value = ''; document.getElementById('pageField4').value = ''; document.getElementById('pageField5').value = ''; } document.getElementById('editPageModal').classList.add('active'); }
+function selectIcon(el, icon) { document.querySelectorAll('.icon-option').forEach(function(e) { e.classList.remove('selected'); }); el.classList.add('selected'); state.selectedIcon = icon; }
 function closeEditPage() { document.getElementById('editPageModal').classList.remove('active'); state.pagePendingBg = null; state.pageOriginalBg = null; hideAllErrors(); }
+function handlePageBgUpload(e) { var file = e.target.files[0]; if (!file) return; if (file.size > 10 * 1024 * 1024) { toast('La imagen es muy grande (máx 10MB)', 'error'); return; } var reader = new FileReader(); reader.onload = function(ev) { state.pagePendingBg = ev.target.result; document.getElementById('pageUploadPreview').src = ev.target.result; document.getElementById('pageUploadPreview').style.display = 'block'; document.getElementById('pageUploadPlaceholder').style.display = 'none'; document.getElementById('pageUploadZone').classList.add('has-image'); document.getElementById('pageField3').value = ''; hideAllErrors(); }; reader.readAsDataURL(file); }
+function clearPageBgPreview() { if (document.getElementById('pageField3').value) { state.pagePendingBg = null; document.getElementById('pageUploadPreview').style.display = 'none'; document.getElementById('pageUploadPlaceholder').style.display = 'block'; document.getElementById('pageUploadZone').classList.remove('has-image'); hideAllErrors(); } }
+function savePage(e) { e.preventDefault(); hideAllErrors(); var id = document.getElementById('editPageId').value; var title = document.getElementById('pageField1').value.trim(); var header = document.getElementById('pageField5').value.trim(); var desc = document.getElementById('pageField2').value.trim(); var url = document.getElementById('pageField3').value.trim(); var date = document.getElementById('pageField4').value.trim(); var hasError = false; if (!title) { document.getElementById('errPageTitle').classList.add('show'); hasError = true; } if (!desc) { document.getElementById('errPageDesc').classList.add('show'); hasError = true; } if (state.pagePendingBg) url = state.pagePendingBg; if (!url && !id) { document.getElementById('errPageBg').classList.add('show'); hasError = true; } if (hasError) { toast('Revisá los campos marcados', 'error'); return; } var btn = document.getElementById('btnSavePage'); btn.textContent = '⏳ Guardando...'; btn.disabled = true; setTimeout(function() { if (id) { var page = state.pages.find(function(p) { return p.id === parseInt(id); }); if (page) { page.title = title; page.header = header; page.desc = desc; if (url) page.url = url; else if (state.pageOriginalBg) page.url = state.pageOriginalBg; page.date = date; page.icon = state.selectedIcon; } } else state.pages.push({ id: Date.now(), title: title, header: header, desc: desc, url: url, date: date, icon: state.selectedIcon, gallery: [] }); if (save()) { render(); closeEditPage(); toast('✅ Sección guardada correctamente', 'success'); } else { btn.textContent = '💾 Guardar Sección'; btn.disabled = false; } }, 300); }
+function deletePage(id) { if (!confirm('¿Eliminar esta sección?\n\nEsta acción no se puede deshacer.')) return; state.pages = state.pages.filter(function(x) { return x.id !== id; }); save(); render(); toast('Sección eliminada', 'error'); }
 
-function handlePageBgUpload(e) {
-  var file = e.target.files[0]; if (!file) return;
-  if (file.size > 10 * 1024 * 1024) { toast('La imagen es muy grande (máx 10MB)', 'error'); return; }
-  var reader = new FileReader();
-  reader.onload = function(ev) {
-    state.pagePendingBg = ev.target.result;
-    document.getElementById('pageUploadPreview').src = ev.target.result;
-    document.getElementById('pageUploadPreview').style.display = 'block';
-    document.getElementById('pageUploadPlaceholder').style.display = 'none';
-    document.getElementById('pageUploadZone').classList.add('has-image');
-    document.getElementById('pageField3').value = ''; hideAllErrors();
-  };
-  reader.readAsDataURL(file);
-}
-function clearPageBgPreview() {
-  if (document.getElementById('pageField3').value) {
-    state.pagePendingBg = null;
-    document.getElementById('pageUploadPreview').style.display = 'none';
-    document.getElementById('pageUploadPlaceholder').style.display = 'block';
-    document.getElementById('pageUploadZone').classList.remove('has-image'); hideAllErrors();
-  }
-}
-
-function savePage(e) {
-  e.preventDefault(); hideAllErrors();
-  var id = document.getElementById('editPageId').value;
-  var title = document.getElementById('pageField1').value.trim();
-  var header = document.getElementById('pageField5').value.trim();
-  var desc = document.getElementById('pageField2').value.trim();
-  var url = document.getElementById('pageField3').value.trim();
-  var date = document.getElementById('pageField4').value.trim();
-  var hasError = false;
-  if (!title) { document.getElementById('errPageTitle').classList.add('show'); hasError = true; }
-  if (!desc) { document.getElementById('errPageDesc').classList.add('show'); hasError = true; }
-  if (state.pagePendingBg) url = state.pagePendingBg;
-  if (!url && !id) { document.getElementById('errPageBg').classList.add('show'); hasError = true; }
-  if (hasError) { toast('Revisá los campos marcados', 'error'); return; }
-  var btn = document.getElementById('btnSavePage'); btn.textContent = '⏳ Guardando...'; btn.disabled = true;
-  setTimeout(function() {
-    if (id) {
-      var page = state.pages.find(function(p) { return p.id === parseInt(id); });
-      if (page) { page.title = title; page.header = header; page.desc = desc; if (url) page.url = url; else if (state.pageOriginalBg) page.url = state.pageOriginalBg; page.date = date; page.icon = state.selectedIcon; }
-    } else state.pages.push({ id: Date.now(), title: title, header: header, desc: desc, url: url, date: date, icon: state.selectedIcon, gallery: [] });
-    if (save()) { render(); closeEditPage(); toast('✅ Sección guardada correctamente', 'success'); }
-    else { btn.textContent = '💾 Guardar Sección'; btn.disabled = false; }
-  }, 300);
-}
-
-function deletePage(id) {
-  if (!confirm('¿Eliminar esta sección?\n\nEsta acción no se puede deshacer.')) return;
-  state.pages = state.pages.filter(function(x) { return x.id !== id; });
-  save(); render(); toast('Sección eliminada', 'error');
-}
-
-function openMultiUpload() {
-  if (!state.loggedIn) { openLogin(); return; }
-  state.multiFiles = []; state.currentAlbumId = null;
-  document.getElementById('multiUploadSubtitle').textContent = 'Seleccioná fotos para la galería general';
-  document.getElementById('multiPreview').innerHTML = '';
-  document.getElementById('multiUploadPlaceholder').style.display = 'block';
-  document.getElementById('multiCount').textContent = '';
-  document.getElementById('multiDate').value = new Date().toLocaleDateString('es-AR', { year: 'numeric', month: 'long' });
-  document.getElementById('multiFileInput').value = '';
-  document.getElementById('uploadProgress').style.display = 'none';
-  document.getElementById('btnMultiSave').style.display = 'block';
-  document.getElementById('multiUploadModal').classList.add('active');
-}
-function openMultiUploadForAlbum(albumId) {
-  if (!state.loggedIn) { openLogin(); return; }
-  state.multiFiles = []; state.currentAlbumId = albumId;
-  var album = state.albums.find(function(a) { return a.id === albumId; });
-  document.getElementById('multiUploadSubtitle').textContent = 'Agregando fotos al álbum: ' + (album ? album.title : '');
-  document.getElementById('multiPreview').innerHTML = '';
-  document.getElementById('multiUploadPlaceholder').style.display = 'block';
-  document.getElementById('multiCount').textContent = '';
-  document.getElementById('multiDate').value = new Date().toLocaleDateString('es-AR', { year: 'numeric', month: 'long' });
-  document.getElementById('multiFileInput').value = '';
-  document.getElementById('uploadProgress').style.display = 'none';
-  document.getElementById('btnMultiSave').style.display = 'block';
-  document.getElementById('multiUploadModal').classList.add('active');
-}
+function openMultiUpload() { if (!state.loggedIn) { openLogin(); return; } state.multiFiles = []; state.currentAlbumId = null; document.getElementById('multiUploadSubtitle').textContent = 'Seleccioná fotos para la galería general'; document.getElementById('multiPreview').innerHTML = ''; document.getElementById('multiUploadPlaceholder').style.display = 'block'; document.getElementById('multiCount').textContent = ''; document.getElementById('multiDate').value = new Date().toLocaleDateString('es-AR', { year: 'numeric', month: 'long' }); document.getElementById('multiFileInput').value = ''; document.getElementById('uploadProgress').style.display = 'none'; document.getElementById('btnMultiSave').style.display = 'block'; document.getElementById('multiUploadModal').classList.add('active'); }
+function openMultiUploadForAlbum(albumId) { if (!state.loggedIn) { openLogin(); return; } state.multiFiles = []; state.currentAlbumId = albumId; var album = state.albums.find(function(a) { return a.id === albumId; }); document.getElementById('multiUploadSubtitle').textContent = 'Agregando fotos al álbum: ' + (album ? album.title : ''); document.getElementById('multiPreview').innerHTML = ''; document.getElementById('multiUploadPlaceholder').style.display = 'block'; document.getElementById('multiCount').textContent = ''; document.getElementById('multiDate').value = new Date().toLocaleDateString('es-AR', { year: 'numeric', month: 'long' }); document.getElementById('multiFileInput').value = ''; document.getElementById('uploadProgress').style.display = 'none'; document.getElementById('btnMultiSave').style.display = 'block'; document.getElementById('multiUploadModal').classList.add('active'); }
 function closeMultiUpload() { document.getElementById('multiUploadModal').classList.remove('active'); state.multiFiles = []; }
-
-async function handleMultiFileUpload(e) {
-  var files = Array.from(e.target.files); if (files.length === 0) return;
-  var placeholder = document.getElementById('multiUploadPlaceholder');
-  placeholder.innerHTML = '<p style="font-size:1rem">⏳ Procesando imágenes...</p>';
-  var processed = 0, totalSize = 0;
-  for (var i = 0; i < files.length; i++) {
-    var file = files[i];
-    if (file.size > 10 * 1024 * 1024) { toast('⚠️ "' + file.name + '" supera 10MB, se omitió', 'error'); processed++; continue; }
-    try {
-      var compressed = await compressImage(file, 1200, 0.7);
-      state.multiFiles.push({ blob: compressed.blob, dataUrl: compressed.dataUrl, name: file.name, originalSize: file.size, compressedSize: compressed.size });
-      totalSize += compressed.size;
-    } catch(err) { console.error('Error procesando ' + file.name, err); }
-    processed++;
-  }
-  placeholder.innerHTML = '<p style="font-size:1.1rem;margin-bottom:.5rem"> Hacé clic para agregar más fotos</p><p style="font-size:.85rem;opacity:.6">Podés seleccionar varias imágenes a la vez</p><p style="font-size:.75rem;opacity:.5;margin-top:.5rem">Las imágenes se comprimirán automáticamente</p>';
-  placeholder.style.display = 'block';
-  updateMultiPreview();
-  toast('✅ ' + state.multiFiles.length + ' imágenes procesadas (' + (totalSize / (1024 * 1024)).toFixed(2) + ' MB)', 'success');
-}
-
-function updateMultiPreview() {
-  var container = document.getElementById('multiPreview');
-  var placeholder = document.getElementById('multiUploadPlaceholder');
-  placeholder.style.display = state.multiFiles.length > 0 ? 'none' : 'block';
-  var html = '';
-  state.multiFiles.forEach(function(f, idx) { html += '<div class="multi-preview-item"><img src="' + f.dataUrl + '" alt="' + f.name + '"><button class="multi-preview-remove" onclick="removeMultiFile(' + idx + ')" title="Eliminar">✕</button></div>'; });
-  if (state.multiFiles.length > 0) {
-    var totalSize = state.multiFiles.reduce(function(sum, f) { return sum + (f.compressedSize || 0); }, 0);
-    html += '<div class="multi-preview-count">' + state.multiFiles.length + ' foto' + (state.multiFiles.length !== 1 ? 's' : '') + ' · ' + (totalSize / (1024 * 1024)).toFixed(2) + ' MB</div>';
-  }
-  container.innerHTML = html;
-  document.getElementById('multiCount').textContent = state.multiFiles.length > 0 ? state.multiFiles.length + ' fotos listas para agregar' : '';
-}
+async function handleMultiFileUpload(e) { var files = Array.from(e.target.files); if (files.length === 0) return; var placeholder = document.getElementById('multiUploadPlaceholder'); placeholder.innerHTML = '<p style="font-size:1rem">⏳ Procesando imágenes...</p>'; var processed = 0, totalSize = 0; for (var i = 0; i < files.length; i++) { var file = files[i]; if (file.size > 10 * 1024 * 1024) { toast('⚠️ "' + file.name + '" supera 10MB, se omitió', 'error'); processed++; continue; } try { var compressed = await compressImage(file, 1200, 0.7); state.multiFiles.push({ blob: compressed.blob, dataUrl: compressed.dataUrl, name: file.name, originalSize: file.size, compressedSize: compressed.size }); totalSize += compressed.size; } catch(err) { console.error('Error procesando ' + file.name, err); } processed++; } placeholder.innerHTML = '<p style="font-size:1.1rem;margin-bottom:.5rem">📁 Hacé clic para agregar más fotos</p><p style="font-size:.85rem;opacity:.6">Podés seleccionar varias imágenes a la vez</p><p style="font-size:.75rem;opacity:.5;margin-top:.5rem">Las imágenes se comprimirán automáticamente</p>'; placeholder.style.display = 'block'; updateMultiPreview(); toast('✅ ' + state.multiFiles.length + ' imágenes procesadas (' + (totalSize / (1024 * 1024)).toFixed(2) + ' MB)', 'success'); }
+function updateMultiPreview() { var container = document.getElementById('multiPreview'); var placeholder = document.getElementById('multiUploadPlaceholder'); placeholder.style.display = state.multiFiles.length > 0 ? 'none' : 'block'; var html = ''; state.multiFiles.forEach(function(f, idx) { html += '<div class="multi-preview-item"><img src="' + f.dataUrl + '" alt="' + f.name + '"><button class="multi-preview-remove" onclick="removeMultiFile(' + idx + ')" title="Eliminar">✕</button></div>'; }); if (state.multiFiles.length > 0) { var totalSize = state.multiFiles.reduce(function(sum, f) { return sum + (f.compressedSize || 0); }, 0); html += '<div class="multi-preview-count">' + state.multiFiles.length + ' foto' + (state.multiFiles.length !== 1 ? 's' : '') + ' · ' + (totalSize / (1024 * 1024)).toFixed(2) + ' MB</div>'; } container.innerHTML = html; document.getElementById('multiCount').textContent = state.multiFiles.length > 0 ? state.multiFiles.length + ' fotos listas para agregar' : ''; }
 function removeMultiFile(idx) { state.multiFiles.splice(idx, 1); updateMultiPreview(); }
+async function saveMultiPhotos() { if (state.multiFiles.length === 0) { toast('Seleccioná al menos una foto', 'error'); return; } var date = document.getElementById('multiDate').value.trim() || new Date().toLocaleDateString('es-AR', { year: 'numeric', month: 'long' }); var btn = document.getElementById('btnMultiSave'); var progressDiv = document.getElementById('uploadProgress'); var progressBar = document.getElementById('uploadProgressBar'); var progressText = document.getElementById('uploadProgressText'); btn.style.display = 'none'; progressDiv.style.display = 'block'; var total = state.multiFiles.length; var added = 0; var failed = 0; try { for (var i = 0; i < state.multiFiles.length; i++) { var f = state.multiFiles[i]; var photoUrl = null; if (supabaseClient && f.blob) { try { var folder = state.currentAlbumId ? 'albums/' + state.currentAlbumId : 'albums/general'; photoUrl = await uploadToSupabase(f.blob, folder); console.log('✅ Foto subida a Storage:', photoUrl); } catch(uploadErr) { console.error('❌ Error subiendo:', uploadErr); toast('⚠️ Error subiendo "' + f.name + '"', 'error'); failed++; continue; } } if (photoUrl) { var photoData = { id: null, title: f.name.replace(/\.[^/.]+$/, ''), url: photoUrl, date: date }; if (SUPABASE_DB_ENABLED && state.currentAlbumId) { const dbSaved = await savePhotoToDB(photoData, state.currentAlbumId); if (dbSaved) console.log('✅ Foto registrada en DB'); } if (state.currentAlbumId) { var album = state.albums.find(a => a.id === state.currentAlbumId); if (album) { if (!album.photos) album.photos = []; photoData.id = photoData.id || Date.now() + added; album.photos.push(photoData); } } added++; } else { failed++; } progressBar.style.width = Math.round(((added + failed) / total) * 100) + '%'; progressText.textContent = 'Subiendo ' + (added + failed) + ' de ' + total + '...'; } save(); render(); closeMultiUpload(); var msg = '✅ ' + added + ' fotos agregadas'; if (failed > 0) msg += ' (' + failed + ' fallaron)'; toast(msg, 'success'); if (state.currentAlbumId) openAlbumDetail(state.currentAlbumId); } catch(err) { console.error('Error:', err); toast('❌ Error: ' + err.message, 'error'); btn.style.display = 'block'; progressDiv.style.display = 'none'; } }
 
-async function saveMultiPhotos() {
-  if (state.multiFiles.length === 0) { toast('Seleccioná al menos una foto', 'error'); return; }
-  var date = document.getElementById('multiDate').value.trim() || new Date().toLocaleDateString('es-AR', { year: 'numeric', month: 'long' });
-  var btn = document.getElementById('btnMultiSave');
-  var progressDiv = document.getElementById('uploadProgress');
-  var progressBar = document.getElementById('uploadProgressBar');
-  var progressText = document.getElementById('uploadProgressText');
-  btn.style.display = 'none'; progressDiv.style.display = 'block';
-  var total = state.multiFiles.length;
-  var added = 0;
-  var failed = 0;
-  try {
-    for (var i = 0; i < state.multiFiles.length; i++) {
-      var f = state.multiFiles[i];
-      var photoUrl = null;
-      if (supabaseClient && f.blob) {
-        try {
-          var folder = state.currentAlbumId ? 'albums/' + state.currentAlbumId : 'albums/general';
-          photoUrl = await uploadToSupabase(f.blob, folder);
-          console.log('✅ Foto subida a Storage:', photoUrl);
-        } catch(uploadErr) {
-          console.error('❌ Error subiendo:', uploadErr);
-          toast('⚠️ Error subiendo "' + f.name + '"', 'error');
-          failed++;
-          continue;
-        }
-      }
-      if (photoUrl) {
-        var photoData = { id: null, title: f.name.replace(/\.[^/.]+$/, ''), url: photoUrl, date: date };
-        if (SUPABASE_DB_ENABLED && state.currentAlbumId) {
-          const dbSaved = await savePhotoToDB(photoData, state.currentAlbumId);
-          if (dbSaved) console.log('✅ Foto registrada en DB');
-        }
-        if (state.currentAlbumId) {
-          var album = state.albums.find(a => a.id === state.currentAlbumId);
-          if (album) { 
-            if (!album.photos) album.photos = []; 
-            photoData.id = photoData.id || Date.now() + added;
-            album.photos.push(photoData); 
-          }
-        }
-        added++;
-      } else { failed++; }
-      progressBar.style.width = Math.round(((added + failed) / total) * 100) + '%';
-      progressText.textContent = 'Subiendo ' + (added + failed) + ' de ' + total + '...';
-    }
-    save(); render(); closeMultiUpload();
-    var msg = '✅ ' + added + ' fotos agregadas';
-    if (failed > 0) msg += ' (' + failed + ' fallaron)';
-    toast(msg, 'success');
-    if (state.currentAlbumId) openAlbumDetail(state.currentAlbumId);
-  } catch(err) {
-    console.error('Error:', err); toast('❌ Error: ' + err.message, 'error');
-    btn.style.display = 'block'; progressDiv.style.display = 'none';
-  }
-}
-
-function changePassword(e) {
-  e.preventDefault(); var newP = document.getElementById('newPass').value;
-  if (newP.length < 4) { toast('La contraseña debe tener al menos 4 caracteres', 'error'); return; }
-  state.password = newP; save(); document.getElementById('newPass').value = ''; toast('Contraseña actualizada', 'success');
-}
+function changePassword(e) { e.preventDefault(); var newP = document.getElementById('newPass').value; if (newP.length < 4) { toast('La contraseña debe tener al menos 4 caracteres', 'error'); return; } state.password = newP; save(); document.getElementById('newPass').value = ''; toast('Contraseña actualizada', 'success'); }
 function changeHero(e) { e.preventDefault(); state.heroUrl = document.getElementById('heroUrl').value; save(); render(); toast('Imagen hero actualizada', 'success'); }
-
-function sendContact(e) {
-  e.preventDefault();
-  const form = e.target;
-  let message = 'Nuevo mensaje de contacto desde el sitio Larramendi:\n\n';
-  const inputs = form.querySelectorAll('input, textarea, select');
-  inputs.forEach(function(input) {
-    if (input.placeholder) message += input.placeholder + ': ' + input.value + '\n';
-  });
-  const subject = encodeURIComponent('Contacto desde sitio web Larramendi');
-  const body = encodeURIComponent(message);
-  window.open('mailto:' + CONTACT_EMAIL + '?subject=' + subject + '&body=' + body);
-  toast('✅ Se abrió tu cliente de correo para enviar el mensaje a ' + CONTACT_EMAIL, 'success');
-  form.reset();
-}
-
+function sendContact(e) { e.preventDefault(); const form = e.target; let message = 'Nuevo mensaje de contacto desde el sitio Larramendi:\n\n'; const inputs = form.querySelectorAll('input, textarea, select'); inputs.forEach(function(input) { if (input.placeholder) message += input.placeholder + ': ' + input.value + '\n'; }); const subject = encodeURIComponent('Contacto desde sitio web Larramendi'); const body = encodeURIComponent(message); window.open('mailto:' + CONTACT_EMAIL + '?subject=' + subject + '&body=' + body); toast('✅ Se abrió tu cliente de correo para enviar el mensaje a ' + CONTACT_EMAIL, 'success'); form.reset(); }
 function toast(msg, type) { var t = document.getElementById('toast'); t.textContent = msg; t.className = 'toast show ' + (type || ''); setTimeout(function() { t.classList.remove('show'); }, 3500); }
 function toggleMenu() { document.getElementById('navLinks').classList.toggle('open'); }
 function closeMenu() { document.getElementById('navLinks').classList.remove('open'); }
