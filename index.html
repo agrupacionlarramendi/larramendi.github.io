@@ -275,7 +275,6 @@ body{font-family:'Montserrat',sans-serif;background:var(--primary);color:#fff;ov
 @media(max-width:968px){.nav-links{position:fixed;top:0;right:-100%;width:70%;height:100vh;background:rgba(10,22,40,0.98);backdrop-filter:blur(20px);flex-direction:column;justify-content:center;gap:2rem;transition:right .4s;padding:2rem}.nav-links.open{right:0}.hamburger{display:flex}.about-grid,.contact-grid{grid-template-columns:1fr}.stats{grid-template-columns:repeat(3,1fr)}.admin-panel{width:100%}.hero-logo{width:160px}}
 @media(max-width:600px){.stats{grid-template-columns:1fr}.hero-title{font-size:2.5rem}.section{padding:4rem 1rem}.album-detail-hero{height:30vh;min-height:180px}.lightbox-prev{left:1rem}.lightbox-next{right:1rem}.multi-preview{grid-template-columns:repeat(auto-fill,minmax(80px,1fr))}.albums-grid,.videos-grid{grid-template-columns:1fr}.album-photos-header{flex-direction:column;align-items:flex-start}.icon-selector{grid-template-columns:repeat(6,1fr)}.hero-logo{width:130px}.nav-logo .logo-text .main{font-size:1rem}.nav-logo .logo-text .sub{font-size:.55rem}.nav-logo .shield-logo{width:45px;height:50px}.footer-logo .shield-logo{width:55px;height:60px}}
 
-/* BOTONES REORDENAR */
 .album-reorder-controls { position: absolute; top: 10px; right: 10px; display: flex; flex-direction: column; gap: 5px; z-index: 10; }
 .album-reorder-btn { width: 32px; height: 32px; background: rgba(251, 191, 36, 0.95); border: 2px solid rgba(255,255,255,0.3); border-radius: 50%; cursor: pointer; font-size: 1rem; display: flex; align-items: center; justify-content: center; transition: all 0.2s; backdrop-filter: blur(10px); color: var(--dark); font-weight: bold; }
 .album-reorder-btn:hover { background: var(--gold); transform: scale(1.15); border-color: #fff; }
@@ -283,7 +282,6 @@ body{font-family:'Montserrat',sans-serif;background:var(--primary);color:#fff;ov
 .album-reorder-btn:disabled:hover { transform: none; }
 .admin-item .album-reorder-controls { position: static; flex-direction: row; margin-right: 0.5rem; }
 
-/* VIDEO LIGHTBOX (CORREGIDO) */
 .video-play-btn{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:70px;height:70px;background:rgba(255,0,0,0.9);border-radius:50%;display:flex;align-items:center;justify-content:center;transition:all .3s;box-shadow:0 8px 25px rgba(0,0,0,0.5)}
 .video-card:hover .video-play-btn{transform:translate(-50%,-50%) scale(1.15);background:#ff0000}
 .video-play-btn svg{width:30px;height:30px;fill:#fff;margin-left:4px}
@@ -296,7 +294,6 @@ body{font-family:'Montserrat',sans-serif;background:var(--primary);color:#fff;ov
 .video-lightbox-title{position:absolute;bottom:-50px;left:0;right:0;color:#fff;font-family:'Playfair Display',serif;font-size:1.3rem;text-align:center}
 @media(max-width:600px){.video-lightbox-close{top:10px;right:10px}.video-lightbox-title{bottom:-40px;font-size:1rem}}
 
-/* COMENTARIOS */
 .comments-section{background:linear-gradient(180deg,var(--secondary) 0%,var(--primary) 100%);padding:6rem 2rem}
 .comments-container{max-width:900px;margin:0 auto}
 .comments-header{text-align:center;margin-bottom:3rem}
@@ -327,11 +324,16 @@ body{font-family:'Montserrat',sans-serif;background:var(--primary);color:#fff;ov
 .visit-counter .counter-number{font-size:2.5rem;font-weight:900;color:var(--gold);font-family:'Playfair Display',serif}
 .visit-counter .counter-label{font-size:.9rem;opacity:.7;margin-top:.3rem}
 @media(max-width:600px){.comments-form .form-row{grid-template-columns:1fr}}
+
+.platform-badge{position:absolute;top:10px;left:10px;padding:5px 10px;border-radius:15px;font-size:.75rem;font-weight:700;z-index:5;backdrop-filter:blur(10px)}
+.platform-badge.youtube{background:rgba(255,0,0,0.9);color:#fff}
+.platform-badge.facebook{background:rgba(24,119,242,0.9);color:#fff}
+.platform-badge.instagram{background:linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);color:#fff}
 </style>
 </head>
 <body>
 
-<div class="storage-indicator local" id="storageIndicator">⚠️ Modo local</div>
+<div class="storage-indicator local" id="storageIndicator">️ Modo local</div>
 
 <nav class="nav" id="nav">
 <div class="nav-logo" onclick="goHome()">
@@ -362,10 +364,10 @@ body{font-family:'Montserrat',sans-serif;background:var(--primary);color:#fff;ov
 <div class="hero-logo-glow"></div>
 <img src="logo.png" alt="Escudo Larramendi" class="hero-logo">
 </div>
-<span class="hero-badge"> Agrupación de Veteranos de Fútbol</span>
+<span class="hero-badge">⚽ Agrupación de Veteranos de Fútbol</span>
 <h1 class="hero-title"><span class="half-white">LARRA</span><span class="half-blue">MENDI</span></h1>
 <p class="hero-subtitle">Paraná, Entre Ríos · Pasión por el fútbol que trasciende el tiempo</p>
-<div class="hero-founded">️ Fundada el <span>16 de Enero de 1989</span></div>
+<div class="hero-founded">🏛️ Fundada el <span>16 de Enero de 1989</span></div>
 <div class="hero-buttons">
 <a href="#historia" class="btn btn-primary">Conocer Más</a>
 <a href="#galeria" class="btn btn-outline">Ver Galería</a>
@@ -447,7 +449,7 @@ body{font-family:'Montserrat',sans-serif;background:var(--primary);color:#fff;ov
 <div class="form-group"><label>Email (opcional)</label><input type="email" id="commentEmail" placeholder="tu@email.com"></div>
 </div>
 <div class="form-group"><label>Comentario *</label><textarea id="commentMessage" required placeholder="Compartí tu opinión sobre la agrupación..."></textarea></div>
-<button type="submit" class="btn-submit" id="btnSubmitComment">💾 Publicar Comentario</button>
+<button type="submit" class="btn-submit" id="btnSubmitComment"> Publicar Comentario</button>
 </form>
 </div>
 <div class="comments-list fade-in" id="commentsList"></div>
@@ -472,7 +474,7 @@ body{font-family:'Montserrat',sans-serif;background:var(--primary);color:#fff;ov
 </footer>
 
 <div class="album-detail" id="albumDetail">
-<button class="album-detail-close" onclick="closeAlbumDetail()">✕</button>
+<button class="album-detail-close" onclick="closeAlbumDetail()"></button>
 <div class="album-detail-hero"><img id="albumDetailHeroImg" src="" alt=""><div class="album-detail-hero-overlay"></div><div class="album-detail-hero-content"><a class="album-detail-back" onclick="closeAlbumDetail()">← Volver a álbumes</a><h1 class="album-detail-hero-title" id="albumDetailTitle"></h1><p class="album-detail-hero-subtitle" id="albumDetailSubtitle"></p></div></div>
 <div class="album-photos-section"><div class="album-photos-header"><div><div class="album-photos-title">Fotos del álbum <span id="albumPhotosTitleName"></span></div><div class="album-photos-count" id="albumPhotosCount"></div></div><div class="album-photos-actions" id="albumPhotosActions"></div></div><div class="album-photos-grid" id="albumPhotosGrid"></div></div>
 </div>
@@ -494,7 +496,7 @@ body{font-family:'Montserrat',sans-serif;background:var(--primary);color:#fff;ov
 
 <div class="modal-overlay" id="editAlbumModal">
 <div class="modal modal-lg">
-<button class="modal-close" onclick="closeEditAlbum()"></button>
+<button class="modal-close" onclick="closeEditAlbum()">✕</button>
 <h2 id="editAlbumTitle">Nuevo Álbum</h2>
 <p class="modal-subtitle">Completá los datos del álbum</p>
 <form onsubmit="saveAlbum(event)" novalidate>
@@ -503,7 +505,7 @@ body{font-family:'Montserrat',sans-serif;background:var(--primary);color:#fff;ov
 <div class="form-group"><label>Descripción</label><textarea id="albumField2" placeholder="Descripción breve del álbum..."></textarea></div>
 <div class="form-group"><label>Imagen de portada *</label>
 <div class="upload-zone" id="albumUploadZone" onclick="document.getElementById('albumFileInput').click()">
-<div id="albumUploadPlaceholder"><p style="margin-bottom:.5rem"> Hacé clic para subir la portada</p><p style="font-size:.8rem;opacity:.6">o pegá una URL abajo</p></div>
+<div id="albumUploadPlaceholder"><p style="margin-bottom:.5rem">📁 Hacé clic para subir la portada</p><p style="font-size:.8rem;opacity:.6">o pegá una URL abajo</p></div>
 <img id="albumUploadPreview" style="display:none">
 <input type="file" id="albumFileInput" accept="image/*" onchange="handleAlbumCoverUpload(event)">
 </div>
@@ -520,13 +522,15 @@ body{font-family:'Montserrat',sans-serif;background:var(--primary);color:#fff;ov
 <div class="modal modal-lg">
 <button class="modal-close" onclick="closeEditVideo()">✕</button>
 <h2 id="editVideoTitle">Nuevo Video</h2>
-<p class="modal-subtitle">Pegá el link de YouTube</p>
+<p class="modal-subtitle">Pegá el link de YouTube, Facebook o Instagram</p>
 <form onsubmit="saveVideo(event)" novalidate>
 <input type="hidden" id="editVideoId">
 <div class="form-group"><label>Título del video *</label><input type="text" id="videoField1" required placeholder="Ej: Partido vs. Rivales 2024"><div class="form-error" id="errVideoTitle">El título es obligatorio</div></div>
-<div class="form-group"><label>Link de YouTube *</label><input type="url" id="videoField2" required placeholder="https://www.youtube.com/watch?v=..." oninput="previewVideoUrl()"><div class="form-error" id="errVideoUrl">Pegá un link válido de YouTube</div>
+<div class="form-group"><label>Link del video *</label><input type="url" id="videoField2" required placeholder="https://www.youtube.com/watch?v=... o https://www.facebook.com/... o https://www.instagram.com/reel/..." oninput="previewVideoUrl()"><div class="form-error" id="errVideoUrl">Pegá un link válido de YouTube, Facebook o Instagram</div>
 <div id="videoPreview" style="margin-top:1rem;display:none"><img id="videoPreviewImg" style="width:100%;border-radius:10px"></div>
+<div id="videoPlatform" style="margin-top:.5rem;font-size:.85rem;color:var(--gold);font-weight:600"></div>
 </div>
+<div class="form-group"><label>Imagen de portada (opcional)</label><input type="url" id="videoField4" placeholder="URL de imagen personalizada (opcional)" oninput="updateVideoPreview()"><div style="font-size:.8rem;opacity:.6;margin-top:.3rem">Para YouTube se usa automática. Para Facebook/Instagram podés pegar una URL de imagen.</div></div>
 <div class="form-group"><label>Descripción</label><textarea id="videoField3" placeholder="Descripción breve del video..."></textarea></div>
 <button type="submit" class="btn btn-primary btn-full" id="btnSaveVideo">💾 Guardar Video</button>
 </form>
@@ -541,11 +545,11 @@ body{font-family:'Montserrat',sans-serif;background:var(--primary);color:#fff;ov
 <form onsubmit="savePage(event)" novalidate>
 <input type="hidden" id="editPageId">
 <div class="form-group"><label>📝 Título de la sección *</label><input type="text" id="pageField1" required placeholder="Ej: Nuestro Equipo"><div class="form-error" id="errPageTitle">El título es obligatorio</div></div>
-<div class="form-group"><label>📄 Encabezado / Subtítulo</label><input type="text" id="pageField5" placeholder="Ej: Conocé a nuestro equipo"></div>
+<div class="form-group"><label> Encabezado / Subtítulo</label><input type="text" id="pageField5" placeholder="Ej: Conocé a nuestro equipo"></div>
 <div class="form-group"><label>📋 Contenido / Descripción *</label><textarea id="pageField2" style="min-height:150px" placeholder="Escribí el contenido completo de la página..."></textarea><div class="form-error" id="errPageDesc">La descripción es obligatoria</div></div>
 <div class="form-group"><label>🖼️ Imagen de fondo (Hero) *</label>
 <div class="upload-zone" id="pageUploadZone" onclick="document.getElementById('pageFileInput').click()">
-<div id="pageUploadPlaceholder"><p style="margin-bottom:.5rem">️ Hacé clic para subir la imagen de fondo</p><p style="font-size:.8rem;opacity:.6">Esta imagen aparecerá como fondo al abrir la sección</p></div>
+<div id="pageUploadPlaceholder"><p style="margin-bottom:.5rem">🖼️ Hacé clic para subir la imagen de fondo</p><p style="font-size:.8rem;opacity:.6">Esta imagen aparecerá como fondo al abrir la sección</p></div>
 <img id="pageUploadPreview" style="display:none">
 <input type="file" id="pageFileInput" accept="image/*" onchange="handlePageBgUpload(event)">
 </div>
@@ -553,8 +557,8 @@ body{font-family:'Montserrat',sans-serif;background:var(--primary);color:#fff;ov
 <div class="form-error" id="errPageBg">Debés subir una imagen o pegar una URL</div>
 </div>
 <div class="form-group"><label>🎨 Ícono de la sección</label><div class="icon-selector" id="iconSelector"></div><input type="hidden" id="pageFieldIcon"></div>
-<div class="form-group"><label> Fecha / Período</label><input type="text" id="pageField4" placeholder="Octubre 2025"></div>
-<button type="submit" class="btn btn-primary btn-full" id="btnSavePage">💾 Guardar Sección</button>
+<div class="form-group"><label>📅 Fecha / Período</label><input type="text" id="pageField4" placeholder="Octubre 2025"></div>
+<button type="submit" class="btn btn-primary btn-full" id="btnSavePage"> Guardar Sección</button>
 </form>
 </div>
 </div>
@@ -570,7 +574,7 @@ body{font-family:'Montserrat',sans-serif;background:var(--primary);color:#fff;ov
 <div class="form-group"><label>📝 Subtítulo del bloque</label><input type="text" id="homeAboutTitle" placeholder="Más que un equipo, una familia"><div class="form-error" id="errHomeAboutTitle">El subtítulo es obligatorio</div></div>
 <div class="form-group"><label>📄 Primer párrafo</label><textarea id="homeP1" style="min-height:100px"></textarea><div class="form-error" id="errHomeP1">El primer párrafo es obligatorio</div></div>
 <div class="form-group"><label>📄 Segundo párrafo</label><textarea id="homeP2" style="min-height:100px"></textarea><div class="form-error" id="errHomeP2">El segundo párrafo es obligatorio</div></div>
-<div class="form-group"><label>️ Imagen del bloque</label>
+<div class="form-group"><label>🖼️ Imagen del bloque</label>
 <div class="upload-zone" id="homeUploadZone" onclick="document.getElementById('homeFileInput').click()">
 <div id="homeUploadPlaceholder"><p style="margin-bottom:.5rem">🖼️ Hacé clic para subir la imagen</p><p style="font-size:.8rem;opacity:.6">o pegá una URL abajo</p></div>
 <img id="homeUploadPreview" style="display:none">
@@ -579,7 +583,7 @@ body{font-family:'Montserrat',sans-serif;background:var(--primary);color:#fff;ov
 <input type="url" id="homeImageUrl" placeholder="https://... (opcional si subiste archivo)" oninput="clearHomeImagePreview()">
 </div>
 <div style="border-top:1px solid var(--glass2);padding-top:1rem;margin-top:1rem">
-<h3 style="color:var(--gold);margin-bottom:1rem;font-size:1.1rem">📊 Estadísticas</h3>
+<h3 style="color:var(--gold);margin-bottom:1rem;font-size:1.1rem"> Estadísticas</h3>
 <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem">
 <div class="form-group"><label>Stat 1 - Número</label><input type="text" id="homeStat1Num" placeholder="36+"></div>
 <div class="form-group"><label>Stat 1 - Etiqueta</label><input type="text" id="homeStat1Label" placeholder="Años de historia"></div>
@@ -597,11 +601,11 @@ body{font-family:'Montserrat',sans-serif;background:var(--primary);color:#fff;ov
 <div class="modal-overlay" id="multiUploadModal">
 <div class="modal modal-xl">
 <button class="modal-close" onclick="closeMultiUpload()">✕</button>
-<h2>📸 Agregar Múltiples Fotos</h2>
+<h2> Agregar Múltiples Fotos</h2>
 <p class="modal-subtitle" id="multiUploadSubtitle">Seleccioná todas las fotos que quieras agregar</p>
 <div class="upload-zone" id="multiUploadZone" onclick="document.getElementById('multiFileInput').click()" style="min-height:120px">
 <div id="multiUploadPlaceholder">
-<p style="font-size:1.1rem;margin-bottom:.5rem">📁 Hacé clic para seleccionar fotos</p>
+<p style="font-size:1.1rem;margin-bottom:.5rem"> Hacé clic para seleccionar fotos</p>
 <p style="font-size:.85rem;opacity:.6">Podés seleccionar varias imágenes a la vez</p>
 <p style="font-size:.75rem;opacity:.5;margin-top:.5rem">Las imágenes se comprimirán automáticamente</p>
 </div>
@@ -614,7 +618,7 @@ body{font-family:'Montserrat',sans-serif;background:var(--primary);color:#fff;ov
 <div style="background:var(--glass);border-radius:10px;height:8px;overflow:hidden;margin-bottom:.5rem"><div id="uploadProgressBar" style="background:linear-gradient(90deg,var(--accent),var(--accent2));height:100%;width:0%;transition:width .3s"></div></div>
 <p style="font-size:.85rem;opacity:.7" id="uploadProgressText">Subiendo 0 de 0...</p>
 </div>
-<button class="btn btn-primary btn-full" id="btnMultiSave" onclick="saveMultiPhotos()">💾 Agregar Todas las Fotos</button>
+<button class="btn btn-primary btn-full" id="btnMultiSave" onclick="saveMultiPhotos()"> Agregar Todas las Fotos</button>
 </div>
 </div>
 
@@ -659,7 +663,7 @@ body{font-family:'Montserrat',sans-serif;background:var(--primary);color:#fff;ov
 </div>
 
 <div class="video-lightbox" id="videoLightbox">
-<button class="video-lightbox-close" onclick="closeVideoLightbox()">✕</button>
+<button class="video-lightbox-close" onclick="closeVideoLightbox()"></button>
 <div class="video-lightbox-content">
 <iframe id="videoLightboxIframe" src="" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>
 <div class="video-lightbox-title" id="videoLightboxTitle"></div>
@@ -672,7 +676,7 @@ body{font-family:'Montserrat',sans-serif;background:var(--primary);color:#fff;ov
 <div class="admin-tabs">
 <button class="admin-tab active" onclick="switchTab('home',this)">🏠 Inicio</button>
 <button class="admin-tab" onclick="switchTab('albums',this)">🖼️ Álbumes</button>
-<button class="admin-tab" onclick="switchTab('videos',this)">🎬 Videos</button>
+<button class="admin-tab" onclick="switchTab('videos',this)"> Videos</button>
 <button class="admin-tab" onclick="switchTab('pages',this)">📄 Secciones</button>
 <button class="admin-tab" onclick="switchTab('contact',this)">📞 Contacto</button>
 <button class="admin-tab" onclick="switchTab('comments',this)">💬 Comentarios</button>
@@ -684,22 +688,22 @@ body{font-family:'Montserrat',sans-serif;background:var(--primary);color:#fff;ov
 <button class="btn-add" onclick="openEditHomeSection()">✏️ Editar sección Historia</button>
 </div>
 <div class="admin-section" id="tab-albums">
-<div class="help-box"><h4> Cómo gestionar álbumes</h4><ul><li>Cada álbum es una galería temática independiente</li><li>Hacé clic en "+ Nuevo Álbum" para crear uno</li><li>Dentro de cada álbum podés agregar/eliminar fotos</li><li>Usá ⬆️ ⬇️ para reordenar los álbumes</li></ul></div>
+<div class="help-box"><h4>💡 Cómo gestionar álbumes</h4><ul><li>Cada álbum es una galería temática independiente</li><li>Hacé clic en "+ Nuevo Álbum" para crear uno</li><li>Dentro de cada álbum podés agregar/eliminar fotos</li><li>Usá ⬆️ ⬇️ para reordenar los álbumes</li></ul></div>
 <div id="adminAlbumsList"></div>
 <button class="btn-add" onclick="openEditAlbum()">+ Nuevo Álbum</button>
 </div>
 <div class="admin-section" id="tab-videos">
-<div class="help-box"><h4>🎬 Cómo gestionar videos</h4><ul><li>Pegá el link de YouTube y el sistema extrae la miniatura automáticamente</li><li>Usá ⬆️ ⬇️ para reordenar los videos</li><li>Hacé clic en ✏️ para editar o 🗑️ para eliminar</li></ul></div>
+<div class="help-box"><h4> Cómo gestionar videos</h4><ul><li>Soporta YouTube, Facebook e Instagram</li><li>Pegá el link y el sistema detecta la plataforma</li><li>Para Facebook/Instagram podés agregar imagen de portada</li><li>Usá ⬆️ ️ para reordenar</li></ul></div>
 <div id="adminVideosList"></div>
 <button class="btn-add" onclick="openEditVideo()">+ Nuevo Video</button>
 </div>
 <div class="admin-section" id="tab-pages">
-<div class="help-box"><h4> Cómo gestionar secciones</h4><ul><li>Cada sección es una página con título, fondo y contenido propios</li><li>Hacé clic en ✏️ para editar</li><li>Usá 🗑️ para eliminar</li></ul></div>
+<div class="help-box"><h4>💡 Cómo gestionar secciones</h4><ul><li>Cada sección es una página con título, fondo y contenido propios</li><li>Hacé clic en ✏️ para editar</li><li>Usá 🗑️ para eliminar</li></ul></div>
 <div id="adminPagesList"></div>
 <button class="btn-add" onclick="openEditPage()">+ Nueva Sección</button>
 </div>
 <div class="admin-section" id="tab-contact">
-<div class="help-box"><h4> Gestión de Contacto</h4><ul><li>Editá los datos de contacto (ubicación, email, etc.)</li><li>Agregá o eliminá campos del formulario</li><li>Los cambios se reflejan inmediatamente en el sitio</li></ul></div>
+<div class="help-box"><h4>📞 Gestión de Contacto</h4><ul><li>Editá los datos de contacto (ubicación, email, etc.)</li><li>Agregá o eliminá campos del formulario</li><li>Los cambios se reflejan inmediatamente en el sitio</li></ul></div>
 <h3 style="margin-bottom:1rem;color:var(--gold)">Datos de contacto</h3>
 <div id="adminContactItemsList"></div>
 <button class="btn-add" onclick="openEditContactItem()">+ Agregar dato de contacto</button>
@@ -737,7 +741,7 @@ try {
   supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
   console.log('✅ Cliente Supabase creado');
   supabaseClient.from('albums').select('count').then(function(result) {
-    if (result.error) { console.error(' Error DB:', result.error.message); } 
+    if (result.error) { console.error('❌ Error DB:', result.error.message); } 
     else { SUPABASE_DB_ENABLED = true; console.log('✅ Base de datos conectada. Álbumes:', result.count); loadFromDatabase(); }
   });
 } catch(e) { console.error('Error:', e); }
@@ -747,7 +751,7 @@ const DEFAULT_HOME_SECTION = { label: 'Nuestra Historia', title: 'Tradición y *
 const DEFAULT_CONTACT_ITEMS = [{ id: 1, icon: '📍', title: 'Ubicación', content: 'Paraná, Entre Ríos, Argentina' }, { id: 2, icon: '📧', title: 'Email', content: CONTACT_EMAIL }, { id: 3, icon: '📱', title: 'Teléfono', content: '+54 343 555-0000' }];
 const DEFAULT_FORM_FIELDS = [{ id: 1, label: 'Nombre completo', type: 'text', required: true, placeholder: 'Tu nombre', options: [] }, { id: 2, label: 'Email', type: 'email', required: true, placeholder: 'tu@email.com', options: [] }, { id: 3, label: 'Asunto', type: 'text', required: false, placeholder: 'Motivo de contacto', options: [] }, { id: 4, label: 'Mensaje', type: 'textarea', required: true, placeholder: 'Tu mensaje...', options: [] }];
 const TEAM_IMAGE = 'https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=1920';
-const ICONS = ['⚽','🏆','🎉','🎊','⭐','👥','🏟️','','🎖️','','','🏅','🎖️',''];
+const ICONS = ['⚽','🏆','🎉','🎊','⭐','','🏟️','🎯','️','🎊','🥅','🏅','🎖️',''];
 
 let state = {
   homeSection: JSON.parse(localStorage.getItem('larr_home_section')) || DEFAULT_HOME_SECTION,
@@ -782,7 +786,7 @@ async function loadFromDatabase() {
 
 function save() {
   try { localStorage.setItem('larr_home_section', JSON.stringify(state.homeSection)); localStorage.setItem('larr_pages', JSON.stringify(state.pages)); localStorage.setItem('larr_contact_items', JSON.stringify(state.contactItems)); localStorage.setItem('larr_form_fields', JSON.stringify(state.formFields)); localStorage.setItem('larr_hero', state.heroUrl); localStorage.setItem('larr_pass', state.password); return true; } 
-  catch(e) { toast('️ Error: almacenamiento local lleno.', 'error'); return false; }
+  catch(e) { toast('⚠️ Error: almacenamiento local lleno.', 'error'); return false; }
 }
 
 async function saveAlbumToDB(album) {
@@ -802,9 +806,57 @@ async function savePhotoToDB(photo, albumId) {
 async function deletePhotoFromDB(photoId) { if (!SUPABASE_DB_ENABLED) return false; try { const { error } = await supabaseClient.from('photos').delete().eq('id', photoId); if (error) throw error; return true; } catch(err) { console.error('Error eliminando foto:', err); return false; } }
 async function deleteAlbumFromDB(albumId) { if (!SUPABASE_DB_ENABLED) return false; try { const { error } = await supabaseClient.from('albums').delete().eq('id', albumId); if (error) throw error; return true; } catch(err) { console.error('Error eliminando álbum:', err); return false; } }
 
-// VIDEOS
+// VIDEOS - SOPORTE MULTIPLATAFORMA
+function detectVideoPlatform(url) {
+  if (!url) return null;
+  if (url.match(/youtube\.com|youtu\.be/)) return 'youtube';
+  if (url.match(/facebook\.com|fb\.watch/)) return 'facebook';
+  if (url.match(/instagram\.com/)) return 'instagram';
+  return null;
+}
+
 function extractYouTubeId(url) { if (!url) return null; var regex = /(?:youtube\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/|youtube\.com\/shorts\/)([a-zA-Z0-9_-]{11})/; var match = url.match(regex); return match ? match[1] : null; }
 function getYouTubeThumbnail(videoId) { return 'https://img.youtube.com/vi/' + videoId + '/hqdefault.jpg'; }
+
+function getVideoEmbedUrl(url) {
+  const platform = detectVideoPlatform(url);
+  if (!platform) return null;
+  
+  if (platform === 'youtube') {
+    const videoId = extractYouTubeId(url);
+    return videoId ? 'https://www.youtube.com/embed/' + videoId + '?autoplay=1' : null;
+  }
+  
+  if (platform === 'facebook') {
+    return 'https://www.facebook.com/plugins/video.php?href=' + encodeURIComponent(url) + '&show_text=false&width=560';
+  }
+  
+  if (platform === 'instagram') {
+    const match = url.match(/instagram\.com\/(?:reel|p)\/([a-zA-Z0-9_-]+)/);
+    return match ? 'https://www.instagram.com/' + match[1] + '/embed' : null;
+  }
+  
+  return null;
+}
+
+function getVideoThumbnail(video) {
+  const platform = detectVideoPlatform(video.youtube_url);
+  
+  // Si hay imagen personalizada, usarla
+  if (video.thumbnail_url) return video.thumbnail_url;
+  
+  // Para YouTube, usar thumbnail automático
+  if (platform === 'youtube') {
+    const videoId = extractYouTubeId(video.youtube_url);
+    return videoId ? getYouTubeThumbnail(videoId) : '';
+  }
+  
+  // Para Facebook/Instagram, usar placeholder
+  if (platform === 'facebook') return 'https://via.placeholder.com/480x360/1877F2/FFFFFF?text=Facebook+Video';
+  if (platform === 'instagram') return 'https://via.placeholder.com/480x360/E4405F/FFFFFF?text=Instagram+Reel';
+  
+  return '';
+}
 
 async function loadVideos() {
   if (!SUPABASE_DB_ENABLED) return;
@@ -814,11 +866,13 @@ async function loadVideos() {
 function renderVideos() {
   const grid = document.getElementById('videosGrid'); if (!grid) return;
   var html = state.videos.map(function(v, index) {
-    var videoId = extractYouTubeId(v.youtube_url); var thumbnail = videoId ? getYouTubeThumbnail(videoId) : '';
+    const platform = detectVideoPlatform(v.youtube_url);
+    const thumbnail = getVideoThumbnail(v);
     var isFirst = index === 0; var isLast = index === state.videos.length - 1;
     var reorderHtml = '';
     if (state.loggedIn) { reorderHtml = '<div class="album-reorder-controls"><button class="album-reorder-btn" onclick="event.stopPropagation(); moveVideo(' + v.id + ', -1)" ' + (isFirst ? 'disabled' : '') + ' title="Mover arriba">️</button><button class="album-reorder-btn" onclick="event.stopPropagation(); moveVideo(' + v.id + ', 1)" ' + (isLast ? 'disabled' : '') + ' title="Mover abajo">⬇️</button></div>'; }
-    return '<div class="video-card" onclick="openVideoLightbox(' + v.id + ')">' + reorderHtml + '<div class="video-thumbnail"><img src="' + thumbnail + '" alt="' + v.title + '" onerror="this.src=\'https://via.placeholder.com/480x360?text=Video\'"><div class="video-play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><div class="video-info"><h3>' + v.title + '</h3><p>' + (v.description || '').substring(0, 100) + (v.description && v.description.length > 100 ? '...' : '') + '</p></div></div>';
+    var platformBadge = platform ? '<div class="platform-badge ' + platform + '">' + (platform === 'youtube' ? '▶️ YouTube' : platform === 'facebook' ? '📘 Facebook' : '📷 Instagram') + '</div>' : '';
+    return '<div class="video-card" onclick="openVideoLightbox(' + v.id + ')">' + reorderHtml + platformBadge + '<div class="video-thumbnail"><img src="' + thumbnail + '" alt="' + v.title + '" onerror="this.src=\'https://via.placeholder.com/480x360?text=Video\'"><div class="video-play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><div class="video-info"><h3>' + v.title + '</h3><p>' + (v.description || '').substring(0, 100) + (v.description && v.description.length > 100 ? '...' : '') + '</p></div></div>';
   }).join('');
   if (state.loggedIn) html += '<div class="video-add" onclick="openEditVideo()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg><span>Agregar Nuevo Video</span></div>';
   grid.innerHTML = html;
@@ -827,10 +881,12 @@ function renderVideos() {
 function renderAdminVideos() {
   const list = document.getElementById('adminVideosList'); if (!list) return;
   list.innerHTML = state.videos.map(function(v, index) {
-    var videoId = extractYouTubeId(v.youtube_url); var thumbnail = videoId ? getYouTubeThumbnail(videoId) : '';
+    const platform = detectVideoPlatform(v.youtube_url);
+    const thumbnail = getVideoThumbnail(v);
     var isFirst = index === 0; var isLast = index === state.videos.length - 1;
     var reorderHtml = '<div class="album-reorder-controls"><button class="album-reorder-btn" onclick="moveVideo(' + v.id + ', -1)" ' + (isFirst ? 'disabled' : '') + ' title="Mover arriba">⬆️</button><button class="album-reorder-btn" onclick="moveVideo(' + v.id + ', 1)" ' + (isLast ? 'disabled' : '') + ' title="Mover abajo">⬇️</button></div>';
-    return '<div class="admin-item">' + reorderHtml + '<div class="admin-item-info" style="display:flex;gap:1rem;align-items:center">' + (thumbnail ? '<img src="' + thumbnail + '" style="width:80px;height:45px;object-fit:cover;border-radius:5px" onerror="this.style.display=\'none\'">' : '') + '<div><div class="admin-item-title">🎬 ' + v.title + '</div><div class="admin-item-meta">' + (v.description || '').substring(0, 50) + '</div></div></div><div class="admin-item-actions"><button class="btn-icon btn-edit" onclick="openEditVideo(' + v.id + ')">✏️</button><button class="btn-icon btn-delete" onclick="deleteVideo(' + v.id + ')">🗑️</button></div></div>';
+    var platformIcon = platform === 'youtube' ? '▶️' : platform === 'facebook' ? '📘' : platform === 'instagram' ? '📷' : '🎬';
+    return '<div class="admin-item">' + reorderHtml + '<div class="admin-item-info" style="display:flex;gap:1rem;align-items:center">' + (thumbnail ? '<img src="' + thumbnail + '" style="width:80px;height:45px;object-fit:cover;border-radius:5px" onerror="this.style.display=\'none\'">' : '') + '<div><div class="admin-item-title">' + platformIcon + ' ' + v.title + '</div><div class="admin-item-meta">' + (v.description || '').substring(0, 50) + '</div></div></div><div class="admin-item-actions"><button class="btn-icon btn-edit" onclick="openEditVideo(' + v.id + ')">✏️</button><button class="btn-icon btn-delete" onclick="deleteVideo(' + v.id + ')">🗑️</button></div></div>';
   }).join('') || '<p style="opacity:.5;text-align:center;padding:2rem">No hay videos agregados</p>';
 }
 
@@ -849,8 +905,9 @@ async function updateVideoOrderInDB() {
 
 function openVideoLightbox(videoId) {
   var video = state.videos.find(function(v) { return v.id === videoId; }); if (!video) return;
-  var ytId = extractYouTubeId(video.youtube_url); if (!ytId) { toast('Video no válido', 'error'); return; }
-  document.getElementById('videoLightboxIframe').src = 'https://www.youtube.com/embed/' + ytId + '?autoplay=1';
+  const embedUrl = getVideoEmbedUrl(video.youtube_url);
+  if (!embedUrl) { toast('Video no válido', 'error'); return; }
+  document.getElementById('videoLightboxIframe').src = embedUrl;
   document.getElementById('videoLightboxTitle').textContent = video.title;
   document.getElementById('videoLightbox').classList.add('active'); document.body.style.overflow = 'hidden';
 }
@@ -861,28 +918,57 @@ function closeVideoLightbox() {
   document.body.style.overflow = '';
 }
 
-// Cerrar video al hacer clic en el fondo oscuro o con ESC
 document.getElementById('videoLightbox').addEventListener('click', function(e) { if (e.target === this) closeVideoLightbox(); });
 document.addEventListener('keydown', function(e) { if (e.key === 'Escape' && document.getElementById('videoLightbox').classList.contains('active')) closeVideoLightbox(); });
 
 function previewVideoUrl() {
-  var url = document.getElementById('videoField2').value.trim(); var ytId = extractYouTubeId(url);
-  var preview = document.getElementById('videoPreview'); var previewImg = document.getElementById('videoPreviewImg');
-  if (ytId) { previewImg.src = getYouTubeThumbnail(ytId); preview.style.display = 'block'; } else { preview.style.display = 'none'; }
+  var url = document.getElementById('videoField2').value.trim(); 
+  const platform = detectVideoPlatform(url);
+  var preview = document.getElementById('videoPreview'); 
+  var previewImg = document.getElementById('videoPreviewImg');
+  var platformDiv = document.getElementById('videoPlatform');
+  
+  if (platform === 'youtube') {
+    const videoId = extractYouTubeId(url);
+    if (videoId) { previewImg.src = getYouTubeThumbnail(videoId); preview.style.display = 'block'; platformDiv.textContent = '▶️ YouTube detectado'; }
+    else { preview.style.display = 'none'; platformDiv.textContent = ''; }
+  } else if (platform === 'facebook') {
+    previewImg.src = 'https://via.placeholder.com/480x360/1877F2/FFFFFF?text=Facebook+Video';
+    preview.style.display = 'block';
+    platformDiv.textContent = '📘 Facebook detectado - Agregá imagen de portada opcional';
+  } else if (platform === 'instagram') {
+    previewImg.src = 'https://via.placeholder.com/480x360/E4405F/FFFFFF?text=Instagram+Reel';
+    preview.style.display = 'block';
+    platformDiv.textContent = ' Instagram detectado - Agregá imagen de portada opcional';
+  } else {
+    preview.style.display = 'none';
+    platformDiv.textContent = '';
+  }
+}
+
+function updateVideoPreview() {
+  var customUrl = document.getElementById('videoField4').value.trim();
+  var previewImg = document.getElementById('videoPreviewImg');
+  if (customUrl) { previewImg.src = customUrl; }
+  else { previewVideoUrl(); }
 }
 
 function openEditVideo(id) {
   if (!state.loggedIn) { openLogin(); return; } hideAllErrors();
   document.getElementById('editVideoId').value = id || ''; document.getElementById('editVideoTitle').textContent = id ? 'Editar Video' : 'Nuevo Video';
-  document.getElementById('videoPreview').style.display = 'none'; document.getElementById('btnSaveVideo').textContent = '💾 Guardar Video'; document.getElementById('btnSaveVideo').disabled = false;
+  document.getElementById('videoPreview').style.display = 'none'; document.getElementById('videoPlatform').textContent = '';
+  document.getElementById('btnSaveVideo').textContent = '💾 Guardar Video'; document.getElementById('btnSaveVideo').disabled = false;
   if (id) {
     var video = state.videos.find(function(v) { return v.id === id; });
     if (video) {
-      document.getElementById('videoField1').value = video.title; document.getElementById('videoField2').value = video.youtube_url; document.getElementById('videoField3').value = video.description || '';
-      var ytId = extractYouTubeId(video.youtube_url);
-      if (ytId) { document.getElementById('videoPreviewImg').src = getYouTubeThumbnail(ytId); document.getElementById('videoPreview').style.display = 'block'; }
+      document.getElementById('videoField1').value = video.title; 
+      document.getElementById('videoField2').value = video.youtube_url; 
+      document.getElementById('videoField3').value = video.description || '';
+      document.getElementById('videoField4').value = video.thumbnail_url || '';
+      previewVideoUrl();
+      if (video.thumbnail_url) { document.getElementById('videoPreviewImg').src = video.thumbnail_url; document.getElementById('videoPreview').style.display = 'block'; }
     }
-  } else { document.getElementById('videoField1').value = ''; document.getElementById('videoField2').value = ''; document.getElementById('videoField3').value = ''; }
+  } else { document.getElementById('videoField1').value = ''; document.getElementById('videoField2').value = ''; document.getElementById('videoField3').value = ''; document.getElementById('videoField4').value = ''; }
   document.getElementById('editVideoModal').classList.add('active');
 }
 function closeEditVideo() { document.getElementById('editVideoModal').classList.remove('active'); hideAllErrors(); }
@@ -891,21 +977,22 @@ async function saveVideo(e) {
   e.preventDefault(); hideAllErrors();
   var id = document.getElementById('editVideoId').value; var title = document.getElementById('videoField1').value.trim();
   var youtubeUrl = document.getElementById('videoField2').value.trim(); var description = document.getElementById('videoField3').value.trim();
+  var thumbnailUrl = document.getElementById('videoField4').value.trim();
   var hasError = false;
   if (!title) { document.getElementById('errVideoTitle').classList.add('show'); hasError = true; }
-  if (!youtubeUrl || !extractYouTubeId(youtubeUrl)) { document.getElementById('errVideoUrl').classList.add('show'); hasError = true; }
+  if (!youtubeUrl || !detectVideoPlatform(youtubeUrl)) { document.getElementById('errVideoUrl').classList.add('show'); hasError = true; }
   if (hasError) { toast('Revisá los campos marcados', 'error'); return; }
   var btn = document.getElementById('btnSaveVideo'); btn.textContent = '⏳ Guardando...'; btn.disabled = true;
   try {
     if (id) {
-      const { error } = await supabaseClient.from('videos').update({ title: title, youtube_url: youtubeUrl, description: description }).eq('id', parseInt(id)); if (error) throw error;
-      var idx = state.videos.findIndex(v => v.id === parseInt(id)); if (idx >= 0) { state.videos[idx].title = title; state.videos[idx].youtube_url = youtubeUrl; state.videos[idx].description = description; }
+      const { error } = await supabaseClient.from('videos').update({ title: title, youtube_url: youtubeUrl, description: description, thumbnail_url: thumbnailUrl || null }).eq('id', parseInt(id)); if (error) throw error;
+      var idx = state.videos.findIndex(v => v.id === parseInt(id)); if (idx >= 0) { state.videos[idx].title = title; state.videos[idx].youtube_url = youtubeUrl; state.videos[idx].description = description; state.videos[idx].thumbnail_url = thumbnailUrl || null; }
     } else {
       const maxOrder = state.videos.length > 0 ? Math.max(...state.videos.map(v => v.display_order || 0)) : 0;
-      const { data, error } = await supabaseClient.from('videos').insert({ title: title, youtube_url: youtubeUrl, description: description, display_order: maxOrder + 1 }).select().single(); if (error) throw error; state.videos.push(data);
+      const { data, error } = await supabaseClient.from('videos').insert({ title: title, youtube_url: youtubeUrl, description: description, thumbnail_url: thumbnailUrl || null, display_order: maxOrder + 1 }).select().single(); if (error) throw error; state.videos.push(data);
     }
     renderVideos(); renderAdminVideos(); closeEditVideo(); toast('✅ Video guardado', 'success');
-  } catch(err) { console.error('Error guardando video:', err); toast('Error al guardar el video', 'error'); btn.textContent = '💾 Guardar Video'; btn.disabled = false; }
+  } catch(err) { console.error('Error guardando video:', err); toast('Error al guardar el video', 'error'); btn.textContent = ' Guardar Video'; btn.disabled = false; }
 }
 
 async function deleteVideo(id) {
@@ -918,7 +1005,7 @@ async function loadComments() { if (!SUPABASE_DB_ENABLED) return; try { const { 
 async function submitComment(e) {
   e.preventDefault(); const name = document.getElementById('commentName').value.trim(); const email = document.getElementById('commentEmail').value.trim(); const message = document.getElementById('commentMessage').value.trim();
   if (!name || !message) { toast('Por favor completá los campos obligatorios', 'error'); return; }
-  const btn = document.getElementById('btnSubmitComment'); btn.disabled = true; btn.textContent = '⏳ Publicando...';
+  const btn = document.getElementById('btnSubmitComment'); btn.disabled = true; btn.textContent = ' Publicando...';
   try { const { data, error } = await supabaseClient.from('comments').insert({ name: name, email: email || null, message: message }).select().single(); if (error) throw error; state.comments.unshift(data); renderComments(); document.getElementById('commentForm').reset(); toast('✅ Comentario publicado', 'success'); } catch(err) { console.error('Error publicando comentario:', err); toast('Error al publicar el comentario', 'error'); } finally { btn.disabled = false; btn.textContent = '💾 Publicar Comentario'; }
 }
 async function deleteComment(commentId) { if (!confirm('¿Eliminar este comentario?')) return; try { const { error } = await supabaseClient.from('comments').delete().eq('id', commentId); if (error) throw error; state.comments = state.comments.filter(c => c.id !== commentId); renderComments(); renderAdminComments(); toast('️ Comentario eliminado', 'success'); } catch(err) { console.error('Error eliminando comentario:', err); toast('Error al eliminar el comentario', 'error'); } }
@@ -938,7 +1025,7 @@ function renderAdminComments() {
 async function loadVisitCount() { if (!SUPABASE_DB_ENABLED) return; try { const { data, error } = await supabaseClient.from('site_stats').select('visit_count').eq('id', 1).single(); if (error) throw error; document.getElementById('visitCount').textContent = data.visit_count || 0; } catch(err) { console.error('Error cargando contador:', err); } }
 async function incrementVisitCount() { if (!SUPABASE_DB_ENABLED) return; try { const { data: currentData } = await supabaseClient.from('site_stats').select('visit_count').eq('id', 1).single(); const newCount = (currentData?.visit_count || 0) + 1; await supabaseClient.from('site_stats').update({ visit_count: newCount }).eq('id', 1); document.getElementById('visitCount').textContent = newCount; } catch(err) { console.error('Error incrementando contador:', err); } }
 
-function updateStorageIndicator() { const indicator = document.getElementById('storageIndicator'); if (SUPABASE_DB_ENABLED) { indicator.textContent = '☁️ Supabase DB + Storage'; indicator.className = 'storage-indicator supabase'; } else if (supabaseClient) { indicator.textContent = '☁️ Supabase Storage (sin DB)'; indicator.className = 'storage-indicator supabase'; } else { indicator.textContent = '⚠️ Modo local (5MB límite)'; indicator.className = 'storage-indicator local'; } }
+function updateStorageIndicator() { const indicator = document.getElementById('storageIndicator'); if (SUPABASE_DB_ENABLED) { indicator.textContent = '☁️ Supabase DB + Storage'; indicator.className = 'storage-indicator supabase'; } else if (supabaseClient) { indicator.textContent = '☁️ Supabase Storage (sin DB)'; indicator.className = 'storage-indicator supabase'; } else { indicator.textContent = '️ Modo local (5MB límite)'; indicator.className = 'storage-indicator local'; } }
 
 function renderHomeSection() {
   const hs = state.homeSection; document.getElementById('historiaLabel').textContent = hs.label || 'Nuestra Historia';
@@ -1000,7 +1087,7 @@ function deleteFormField(id) { if (!state.loggedIn) { openLogin(); return; } if 
 
 function renderAdminContact() {
   const itemsList = document.getElementById('adminContactItemsList'); itemsList.innerHTML = state.contactItems.map(function(item) { return '<div class="admin-item"><div class="admin-item-info"><div class="admin-item-title">' + (item.icon || '📌') + ' ' + item.title + '</div><div class="admin-item-meta">' + item.content + '</div></div><div class="admin-item-actions"><button class="btn-icon btn-edit" onclick="openEditContactItem(' + item.id + ')">✏️</button><button class="btn-icon btn-delete" onclick="deleteContactItem(' + item.id + ')">🗑️</button></div></div>'; }).join('') || '<p style="opacity:.5;text-align:center;padding:1rem">No hay datos de contacto</p>';
-  const fieldsList = document.getElementById('adminFormFieldsList'); fieldsList.innerHTML = state.formFields.map(function(field) { return '<div class="admin-item"><div class="admin-item-info"><div class="admin-item-title">' + field.label + (field.required ? ' *' : '') + '</div><div class="admin-item-meta">Tipo: ' + field.type + '</div></div><div class="admin-item-actions"><button class="btn-icon btn-edit" onclick="openEditFormField(' + field.id + ')">️</button><button class="btn-icon btn-delete" onclick="deleteFormField(' + field.id + ')">🗑️</button></div></div>'; }).join('') || '<p style="opacity:.5;text-align:center;padding:1rem">No hay campos en el formulario</p>';
+  const fieldsList = document.getElementById('adminFormFieldsList'); fieldsList.innerHTML = state.formFields.map(function(field) { return '<div class="admin-item"><div class="admin-item-info"><div class="admin-item-title">' + field.label + (field.required ? ' *' : '') + '</div><div class="admin-item-meta">Tipo: ' + field.type + '</div></div><div class="admin-item-actions"><button class="btn-icon btn-edit" onclick="openEditFormField(' + field.id + ')">✏️</button><button class="btn-icon btn-delete" onclick="deleteFormField(' + field.id + ')">🗑️</button></div></div>'; }).join('') || '<p style="opacity:.5;text-align:center;padding:1rem">No hay campos en el formulario</p>';
 }
 
 function compressImage(file, maxWidth = 1200, quality = 0.7) { return new Promise(function(resolve, reject) { const reader = new FileReader(); reader.onload = function(e) { const img = new Image(); img.onload = function() { const canvas = document.createElement('canvas'); let width = img.width, height = img.height; if (width > maxWidth) { height = (height * maxWidth) / width; width = maxWidth; } canvas.width = width; canvas.height = height; canvas.getContext('2d').drawImage(img, 0, 0, width, height); canvas.toBlob(function(blob) { if (blob) resolve({ blob: blob, dataUrl: URL.createObjectURL(blob), size: blob.size }); else reject(new Error('Error al comprimir')); }, 'image/jpeg', quality); }; img.onerror = reject; img.src = e.target.result; }; reader.onerror = reject; reader.readAsDataURL(file); }); }
@@ -1022,13 +1109,13 @@ function handlePageCardClick(event, id) { if (state.loggedIn) openEditPage(id); 
 function renderAdmin() {
   document.getElementById('adminAlbumsList').innerHTML = state.albums.map(function(a) { return '<div class="admin-item"><div class="admin-item-info"><div class="admin-item-title">🖼️ ' + a.title + '</div><div class="admin-item-meta">' + (a.date || '') + ' · ' + ((a.photos || []).length) + ' fotos</div></div><div class="admin-item-actions"><button class="btn-icon btn-edit" onclick="openEditAlbum(' + a.id + ')">✏️</button><button class="btn-icon btn-delete" onclick="deleteAlbum(' + a.id + ')">🗑️</button></div></div>'; }).join('') || '<p style="opacity:.5;text-align:center;padding:2rem">No hay álbumes creados</p>';
   renderAdminVideos();
-  document.getElementById('adminPagesList').innerHTML = state.pages.map(function(p) { return '<div class="admin-item"><div class="admin-item-info"><div class="admin-item-title">' + (p.icon || '') + ' ' + p.title + '</div><div class="admin-item-meta">' + (p.date || '') + '</div></div><div class="admin-item-actions"><button class="btn-icon btn-edit" onclick="openEditPage(' + p.id + ')">✏️</button><button class="btn-icon btn-delete" onclick="deletePage(' + p.id + ')">️</button></div></div>'; }).join('') || '<p style="opacity:.5;text-align:center;padding:2rem">No hay secciones</p>';
+  document.getElementById('adminPagesList').innerHTML = state.pages.map(function(p) { return '<div class="admin-item"><div class="admin-item-info"><div class="admin-item-title">' + (p.icon || '') + ' ' + p.title + '</div><div class="admin-item-meta">' + (p.date || '') + '</div></div><div class="admin-item-actions"><button class="btn-icon btn-edit" onclick="openEditPage(' + p.id + ')">✏️</button><button class="btn-icon btn-delete" onclick="deletePage(' + p.id + ')">🗑️</button></div></div>'; }).join('') || '<p style="opacity:.5;text-align:center;padding:2rem">No hay secciones</p>';
   renderAdminContact();
 }
 
 function openAlbumDetail(id) { var album = state.albums.find(function(a) { return a.id === id; }); if (!album) return; state.currentAlbumId = id; state.manageMode = false; document.getElementById('albumDetailHeroImg').src = album.url || TEAM_IMAGE; document.getElementById('albumDetailTitle').textContent = album.title; document.getElementById('albumDetailSubtitle').textContent = album.desc || ''; document.getElementById('albumPhotosTitleName').textContent = album.title; var photos = album.photos || []; document.getElementById('albumPhotosCount').textContent = photos.length + ' foto' + (photos.length !== 1 ? 's' : ''); var actionsHtml = ''; if (state.loggedIn) actionsHtml = '<button class="manage-mode-toggle" id="manageModeBtn" onclick="toggleManageMode()">🗑️ Gestionar fotos</button><button class="btn btn-primary btn-sm" onclick="window._addPhotosToAlbum(' + id + ')">+ Agregar Fotos</button>'; document.getElementById('albumPhotosActions').innerHTML = actionsHtml; var grid = document.getElementById('albumPhotosGrid'); grid.innerHTML = photos.map(function(ph) { return '<div class="album-photo-item" id="photo-' + ph.id + '" onclick="handlePhotoClick(event,' + id + ',' + ph.id + ')"><button class="album-photo-delete" onclick="event.stopPropagation();confirmDeletePhoto(' + id + ',' + ph.id + ')" title="Eliminar foto">🗑️</button><img src="' + ph.url + '" alt="' + ph.title + '" onerror="this.parentElement.style.background=\'#1e3a5f\';this.style.display=\'none\'"><div class="album-photo-item-overlay"><div><div class="album-photo-item-title">' + ph.title + '</div><div class="album-photo-item-date">' + (ph.date || '') + '</div></div></div></div>'; }).join(''); if (state.loggedIn) grid.innerHTML += '<div class="album-photo-add-btn" onclick="window._addPhotosToAlbum(' + id + ')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg><span>Agregar Múltiples Fotos</span></div>'; if (photos.length === 0 && !state.loggedIn) grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:3rem;opacity:.6"><p>No hay fotos en este álbum aún</p></div>'; document.getElementById('albumDetail').classList.add('open'); document.body.style.overflow = 'hidden'; }
 window._addPhotosToAlbum = function(albumId) { openMultiUploadForAlbum(albumId); };
-function toggleManageMode() { state.manageMode = !state.manageMode; var btn = document.getElementById('manageModeBtn'); if (btn) { btn.classList.toggle('active', state.manageMode); btn.innerHTML = state.manageMode ? '✕ Salir de gestión' : '️ Gestionar fotos'; } document.querySelectorAll('.album-photo-item').forEach(function(item) { item.classList.toggle('manage-mode', state.manageMode); }); if (state.manageMode) toast('Modo eliminar activado. Hacé clic en 🗑️ para borrar fotos.', ''); }
+function toggleManageMode() { state.manageMode = !state.manageMode; var btn = document.getElementById('manageModeBtn'); if (btn) { btn.classList.toggle('active', state.manageMode); btn.innerHTML = state.manageMode ? '✕ Salir de gestión' : '🗑️ Gestionar fotos'; } document.querySelectorAll('.album-photo-item').forEach(function(item) { item.classList.toggle('manage-mode', state.manageMode); }); if (state.manageMode) toast('Modo eliminar activado. Hacé clic en ️ para borrar fotos.', ''); }
 function handlePhotoClick(event, albumId, photoId) { if (state.manageMode) { event.preventDefault(); event.stopPropagation(); confirmDeletePhoto(albumId, photoId); } else openAlbumLightbox(albumId, photoId); }
 async function confirmDeletePhoto(albumId, photoId) { var album = state.albums.find(a => a.id === albumId); if (!album) return; var photo = album.photos.find(p => p.id === photoId); if (!photo) return; if (confirm('¿Eliminar la foto "' + photo.title + '"?\n\nEsta acción no se puede deshacer.')) { if (SUPABASE_DB_ENABLED) await deletePhotoFromDB(photoId); if (supabaseClient && photo.url && photo.url.includes('supabase.co')) deleteFromSupabase(photo.url); album.photos = album.photos.filter(p => p.id !== photoId); save(); openAlbumDetail(albumId); toast('🗑️ Foto eliminada', 'success'); } }
 function closeAlbumDetail() { document.getElementById('albumDetail').classList.remove('open'); document.body.style.overflow = ''; state.currentAlbumId = null; state.manageMode = false; }
@@ -1055,7 +1142,7 @@ function clearAlbumCoverPreview() { if (document.getElementById('albumField3').v
 async function saveAlbum(e) { e.preventDefault(); hideAllErrors(); var id = document.getElementById('editAlbumId').value; var title = document.getElementById('albumField1').value.trim(); var desc = document.getElementById('albumField2').value.trim(); var url = document.getElementById('albumField3').value.trim(); var date = document.getElementById('albumField4').value.trim(); if (state.pendingImage) url = state.pendingImage; var hasError = false; if (!title) { document.getElementById('errAlbumTitle').classList.add('show'); hasError = true; } if (!url && !id) { document.getElementById('errAlbumCover').classList.add('show'); hasError = true; } if (hasError) { toast('Revisá los campos marcados', 'error'); return; } var btn = document.getElementById('btnSaveAlbum'); btn.textContent = '⏳ Guardando...'; btn.disabled = true; const albumData = { id: id ? parseInt(id) : null, title: title, desc: desc, url: url || state.originalUrl, date: date, photos: [] }; const dbSaved = await saveAlbumToDB(albumData); if (dbSaved) { if (id) { const idx = state.albums.findIndex(a => a.id === parseInt(id)); if (idx >= 0) { albumData.photos = state.albums[idx].photos; state.albums[idx] = albumData; } } else { state.albums.push(albumData); } save(); render(); closeEditAlbum(); toast('✅ Álbum guardado en la nube', 'success'); } else { if (id) { const album = state.albums.find(a => a.id === parseInt(id)); if (album) { album.title = title; album.desc = desc; if (url) album.url = url; album.date = date; } } else { state.albums.push({ id: Date.now(), title, desc, url: url || state.originalUrl, date, photos: [] }); } save(); render(); closeEditAlbum(); toast('✅ Álbum guardado (local)', 'success'); } }
 async function deleteAlbum(id) { if (!confirm('¿Eliminar este álbum y todas sus fotos?\n\nEsta acción no se puede deshacer.')) return; if (SUPABASE_DB_ENABLED) await deleteAlbumFromDB(id); state.albums = state.albums.filter(function(a) { return a.id !== id; }); save(); render(); toast('Álbum eliminado', 'error'); }
 
-function openEditPage(id) { if (!state.loggedIn) { openLogin(); return; } hideAllErrors(); document.getElementById('editPageId').value = id || ''; document.getElementById('editPageTitle').textContent = id ? 'Editar Sección' : 'Nueva Sección'; state.pagePendingBg = null; state.pageOriginalBg = null; state.selectedIcon = ''; document.getElementById('pageUploadPreview').style.display = 'none'; document.getElementById('pageUploadPlaceholder').style.display = 'block'; document.getElementById('pageUploadZone').classList.remove('has-image'); document.getElementById('pageFileInput').value = ''; document.getElementById('btnSavePage').textContent = '💾 Guardar Sección'; document.getElementById('btnSavePage').disabled = false; var iconHtml = ''; ICONS.forEach(function(ic) { iconHtml += '<div class="icon-option" data-icon="' + ic + '" onclick="selectIcon(this,\'' + ic + '\')">' + ic + '</div>'; }); document.getElementById('iconSelector').innerHTML = iconHtml; if (id) { var page = state.pages.find(function(p) { return p.id === id; }); if (page) { document.getElementById('pageField1').value = page.title; document.getElementById('pageField2').value = page.desc || ''; document.getElementById('pageField3').value = ''; document.getElementById('pageField4').value = page.date || ''; document.getElementById('pageField5').value = page.header || ''; state.pageOriginalBg = page.url || ''; state.selectedIcon = page.icon || ''; document.querySelectorAll('.icon-option').forEach(function(el) { el.classList.toggle('selected', el.dataset.icon === state.selectedIcon); }); if (page.url) { document.getElementById('pageUploadPreview').src = page.url; document.getElementById('pageUploadPreview').style.display = 'block'; document.getElementById('pageUploadPlaceholder').style.display = 'none'; document.getElementById('pageUploadZone').classList.add('has-image'); if (!page.url.startsWith('data:')) document.getElementById('pageField3').value = page.url; } } } else { document.getElementById('pageField1').value = ''; document.getElementById('pageField2').value = ''; document.getElementById('pageField3').value = ''; document.getElementById('pageField4').value = ''; document.getElementById('pageField5').value = ''; } document.getElementById('editPageModal').classList.add('active'); }
+function openEditPage(id) { if (!state.loggedIn) { openLogin(); return; } hideAllErrors(); document.getElementById('editPageId').value = id || ''; document.getElementById('editPageTitle').textContent = id ? 'Editar Sección' : 'Nueva Sección'; state.pagePendingBg = null; state.pageOriginalBg = null; state.selectedIcon = '⚽'; document.getElementById('pageUploadPreview').style.display = 'none'; document.getElementById('pageUploadPlaceholder').style.display = 'block'; document.getElementById('pageUploadZone').classList.remove('has-image'); document.getElementById('pageFileInput').value = ''; document.getElementById('btnSavePage').textContent = '💾 Guardar Sección'; document.getElementById('btnSavePage').disabled = false; var iconHtml = ''; ICONS.forEach(function(ic) { iconHtml += '<div class="icon-option" data-icon="' + ic + '" onclick="selectIcon(this,\'' + ic + '\')">' + ic + '</div>'; }); document.getElementById('iconSelector').innerHTML = iconHtml; if (id) { var page = state.pages.find(function(p) { return p.id === id; }); if (page) { document.getElementById('pageField1').value = page.title; document.getElementById('pageField2').value = page.desc || ''; document.getElementById('pageField3').value = ''; document.getElementById('pageField4').value = page.date || ''; document.getElementById('pageField5').value = page.header || ''; state.pageOriginalBg = page.url || ''; state.selectedIcon = page.icon || ''; document.querySelectorAll('.icon-option').forEach(function(el) { el.classList.toggle('selected', el.dataset.icon === state.selectedIcon); }); if (page.url) { document.getElementById('pageUploadPreview').src = page.url; document.getElementById('pageUploadPreview').style.display = 'block'; document.getElementById('pageUploadPlaceholder').style.display = 'none'; document.getElementById('pageUploadZone').classList.add('has-image'); if (!page.url.startsWith('data:')) document.getElementById('pageField3').value = page.url; } } } else { document.getElementById('pageField1').value = ''; document.getElementById('pageField2').value = ''; document.getElementById('pageField3').value = ''; document.getElementById('pageField4').value = ''; document.getElementById('pageField5').value = ''; } document.getElementById('editPageModal').classList.add('active'); }
 function selectIcon(el, icon) { document.querySelectorAll('.icon-option').forEach(function(e) { e.classList.remove('selected'); }); el.classList.add('selected'); state.selectedIcon = icon; }
 function closeEditPage() { document.getElementById('editPageModal').classList.remove('active'); state.pagePendingBg = null; state.pageOriginalBg = null; hideAllErrors(); }
 function handlePageBgUpload(e) { var file = e.target.files[0]; if (!file) return; if (file.size > 10 * 1024 * 1024) { toast('La imagen es muy grande (máx 10MB)', 'error'); return; } var reader = new FileReader(); reader.onload = function(ev) { state.pagePendingBg = ev.target.result; document.getElementById('pageUploadPreview').src = ev.target.result; document.getElementById('pageUploadPreview').style.display = 'block'; document.getElementById('pageUploadPlaceholder').style.display = 'none'; document.getElementById('pageUploadZone').classList.add('has-image'); document.getElementById('pageField3').value = ''; hideAllErrors(); }; reader.readAsDataURL(file); }
