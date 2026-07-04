@@ -276,7 +276,80 @@ body{font-family:'Montserrat',sans-serif;background:var(--primary);color:#fff;ov
 @media(max-width:600px){.stats{grid-template-columns:1fr}.hero-title{font-size:2.5rem}.section{padding:4rem 1rem}.album-detail-hero{height:30vh;min-height:180px}.lightbox-prev{left:1rem}.lightbox-next{right:1rem}.multi-preview{grid-template-columns:repeat(auto-fill,minmax(80px,1fr))}.albums-grid{grid-template-columns:1fr}.album-photos-header{flex-direction:column;align-items:flex-start}.icon-selector{grid-template-columns:repeat(6,1fr)}.hero-logo{width:130px}.nav-logo .logo-text .main{font-size:1rem}.nav-logo .logo-text .sub{font-size:.55rem}.nav-logo .shield-logo{width:45px;height:50px}.footer-logo .shield-logo{width:55px;height:60px}}
 
 /* ========================================== */
-/* CAMBIO: ESTILOS SECCIÓN COMENTARIOS        */
+/* ESTILOS BOTONES REORDENAR                  */
+/* ========================================== */
+.album-reorder-controls {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    z-index: 10;
+}
+.album-reorder-btn {
+    width: 32px;
+    height: 32px;
+    background: rgba(251, 191, 36, 0.95);
+    border: 2px solid rgba(255,255,255,0.3);
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    backdrop-filter: blur(10px);
+    color: var(--dark);
+    font-weight: bold;
+}
+.album-reorder-btn:hover {
+    background: var(--gold);
+    transform: scale(1.15);
+    border-color: #fff;
+}
+.album-reorder-btn:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+}
+.album-reorder-btn:disabled:hover {
+    transform: none;
+}
+.admin-item .album-reorder-controls {
+    position: static;
+    flex-direction: row;
+    margin-right: 0.5rem;
+}
+
+/* ========================================== */
+/* ESTILOS SECCIÓN VIDEOS                     */
+/* ========================================== */
+.videos-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:2rem}
+.video-card{background:var(--glass);border:1px solid var(--glass2);border-radius:20px;overflow:hidden;cursor:pointer;transition:all .4s;position:relative}
+.video-card:hover{transform:translateY(-8px);box-shadow:0 20px 50px rgba(0,0,0,0.4);background:var(--glass2)}
+.video-thumbnail{aspect-ratio:16/9;overflow:hidden;position:relative;background:var(--secondary)}
+.video-thumbnail img{width:100%;height:100%;object-fit:cover;transition:transform .6s}
+.video-card:hover .video-thumbnail img{transform:scale(1.1)}
+.video-play-btn{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:70px;height:70px;background:rgba(255,0,0,0.9);border-radius:50%;display:flex;align-items:center;justify-content:center;transition:all .3s;box-shadow:0 8px 25px rgba(0,0,0,0.5)}
+.video-card:hover .video-play-btn{transform:translate(-50%,-50%) scale(1.15);background:#ff0000}
+.video-play-btn svg{width:30px;height:30px;fill:#fff;margin-left:4px}
+.video-info{padding:1.5rem}
+.video-info h3{font-family:'Playfair Display',serif;font-size:1.3rem;margin-bottom:.5rem}
+.video-info p{font-size:.9rem;opacity:.7;line-height:1.5}
+.video-add{background:var(--glass);border:2px dashed var(--glass2);border-radius:20px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.8rem;min-height:280px;cursor:pointer;transition:all .3s;color:var(--gold)}
+.video-add:hover{background:var(--glass2);border-color:var(--gold)}
+.video-add svg{width:50px;height:50px}
+.video-lightbox{position:fixed;inset:0;background:rgba(0,0,0,0.95);z-index:3000;display:none;align-items:center;justify-content:center;padding:2rem}
+.video-lightbox.active{display:flex}
+.video-lightbox-content{width:100%;max-width:1000px;aspect-ratio:16/9;position:relative}
+.video-lightbox-content iframe{width:100%;height:100%;border:none;border-radius:15px}
+.video-lightbox-close{position:absolute;top:-50px;right:0;background:var(--glass);border:none;color:#fff;width:45px;height:45px;border-radius:50%;cursor:pointer;font-size:1.5rem;transition:all .3s}
+.video-lightbox-close:hover{background:#ef4444;transform:rotate(90deg)}
+.video-lightbox-title{position:absolute;bottom:-50px;left:0;right:0;color:#fff;font-family:'Playfair Display',serif;font-size:1.3rem;text-align:center}
+@media(max-width:600px){.video-lightbox-close{top:10px;right:10px}.video-lightbox-title{bottom:-40px;font-size:1rem}}
+
+/* ========================================== */
+/* ESTILOS SECCIÓN COMENTARIOS                */
 /* ========================================== */
 .comments-section{background:linear-gradient(180deg,var(--secondary) 0%,var(--primary) 100%);padding:6rem 2rem}
 .comments-container{max-width:900px;margin:0 auto}
@@ -326,6 +399,7 @@ body{font-family:'Montserrat',sans-serif;background:var(--primary);color:#fff;ov
 <li><a href="#inicio" onclick="closeMenu()">Inicio</a></li>
 <li><a href="#historia" onclick="closeMenu()">Historia</a></li>
 <li><a href="#galeria" onclick="closeMenu()">Galería</a></li>
+<li><a href="#videos" onclick="closeMenu()">Videos</a></li>
 <li><a href="#paginas" onclick="closeMenu()">Secciones</a></li>
 <li><a href="#contacto" onclick="closeMenu()">Contacto</a></li>
 <li><a href="#comentarios" onclick="closeMenu()">Comentarios</a></li>
@@ -388,7 +462,15 @@ body{font-family:'Montserrat',sans-serif;background:var(--primary);color:#fff;ov
 </div>
 </section>
 
-<section class="section section-alt" id="paginas">
+<!-- NUEVA SECCIÓN VIDEOS -->
+<section class="section section-alt" id="videos">
+<div class="container">
+<div class="section-header fade-in"><span class="section-label">Multimedia</span><h2 class="section-title">Nuestros <span style="color:var(--gold)">Videos</span></h2><div class="section-divider"></div></div>
+<div class="videos-grid fade-in" id="videosGrid"></div>
+</div>
+</section>
+
+<section class="section" id="paginas">
 <div class="container">
 <div class="section-header fade-in"><span class="section-label">Contenido</span><h2 class="section-title">Nuestras <span style="color:var(--gold)">Secciones</span></h2><div class="section-divider"></div></div>
 <div class="pages-grid fade-in" id="pagesGrid"></div>
@@ -405,7 +487,7 @@ body{font-family:'Montserrat',sans-serif;background:var(--primary);color:#fff;ov
 </div>
 </section>
 
-<!-- CAMBIO: NUEVA SECCIÓN DE COMENTARIOS -->
+<!-- SECCIÓN COMENTARIOS -->
 <section class="comments-section" id="comentarios">
 <div class="comments-container">
 <div class="comments-header fade-in">
@@ -415,7 +497,7 @@ body{font-family:'Montserrat',sans-serif;background:var(--primary);color:#fff;ov
 </div>
 
 <div class="comments-form fade-in">
-<h3> Escribí tu mensaje</h3>
+<h3>📝 Escribí tu mensaje</h3>
 <form id="commentForm" onsubmit="submitComment(event)">
 <div class="form-row">
 <div class="form-group">
@@ -435,9 +517,7 @@ body{font-family:'Montserrat',sans-serif;background:var(--primary);color:#fff;ov
 </form>
 </div>
 
-<div class="comments-list fade-in" id="commentsList">
-<!-- Los comentarios se cargan dinámicamente -->
-</div>
+<div class="comments-list fade-in" id="commentsList"></div>
 
 <div class="visit-counter fade-in">
 <div class="counter-number" id="visitCount">0</div>
@@ -455,16 +535,18 @@ body{font-family:'Montserrat',sans-serif;background:var(--primary);color:#fff;ov
 </div>
 </div>
 <p>Paraná, Entre Ríos · Desde 1989</p>
-<div class="footer-social"><a href="#">📘</a><a href="#">📷</a><a href="#">🐦</a><a href="#">▶️</a></div>
+<div class="footer-social"><a href="#">📘</a><a href="#">📷</a><a href="#"></a><a href="#">▶️</a></div>
 <div class="footer-copy">© 2025 Larramendi. Todos los derechos reservados.</div>
 </footer>
 
+<!-- Modal detalle álbum -->
 <div class="album-detail" id="albumDetail">
 <button class="album-detail-close" onclick="closeAlbumDetail()">✕</button>
 <div class="album-detail-hero"><img id="albumDetailHeroImg" src="" alt=""><div class="album-detail-hero-overlay"></div><div class="album-detail-hero-content"><a class="album-detail-back" onclick="closeAlbumDetail()">← Volver a álbumes</a><h1 class="album-detail-hero-title" id="albumDetailTitle"></h1><p class="album-detail-hero-subtitle" id="albumDetailSubtitle"></p></div></div>
 <div class="album-photos-section"><div class="album-photos-header"><div><div class="album-photos-title">Fotos del álbum <span id="albumPhotosTitleName"></span></div><div class="album-photos-count" id="albumPhotosCount"></div></div><div class="album-photos-actions" id="albumPhotosActions"></div></div><div class="album-photos-grid" id="albumPhotosGrid"></div></div>
 </div>
 
+<!-- Modal Login -->
 <div class="modal-overlay" id="loginModal">
 <div class="modal">
 <button class="modal-close" onclick="closeLogin()">✕</button>
@@ -480,6 +562,7 @@ body{font-family:'Montserrat',sans-serif;background:var(--primary);color:#fff;ov
 </div>
 </div>
 
+<!-- Modal Editar Álbum -->
 <div class="modal-overlay" id="editAlbumModal">
 <div class="modal modal-lg">
 <button class="modal-close" onclick="closeEditAlbum()">✕</button>
@@ -504,6 +587,25 @@ body{font-family:'Montserrat',sans-serif;background:var(--primary);color:#fff;ov
 </div>
 </div>
 
+<!-- Modal Editar Video -->
+<div class="modal-overlay" id="editVideoModal">
+<div class="modal modal-lg">
+<button class="modal-close" onclick="closeEditVideo()">✕</button>
+<h2 id="editVideoTitle">Nuevo Video</h2>
+<p class="modal-subtitle">Pegá el link de YouTube</p>
+<form onsubmit="saveVideo(event)" novalidate>
+<input type="hidden" id="editVideoId">
+<div class="form-group"><label>Título del video *</label><input type="text" id="videoField1" required placeholder="Ej: Partido vs. Rivales 2024"><div class="form-error" id="errVideoTitle">El título es obligatorio</div></div>
+<div class="form-group"><label>Link de YouTube *</label><input type="url" id="videoField2" required placeholder="https://www.youtube.com/watch?v=..." oninput="previewVideoUrl()"><div class="form-error" id="errVideoUrl">Pegá un link válido de YouTube</div>
+<div id="videoPreview" style="margin-top:1rem;display:none"><img id="videoPreviewImg" style="width:100%;border-radius:10px"></div>
+</div>
+<div class="form-group"><label>Descripción</label><textarea id="videoField3" placeholder="Descripción breve del video..."></textarea></div>
+<button type="submit" class="btn btn-primary btn-full" id="btnSaveVideo">💾 Guardar Video</button>
+</form>
+</div>
+</div>
+
+<!-- Modal Editar Sección -->
 <div class="modal-overlay" id="editPageModal">
 <div class="modal modal-xl">
 <button class="modal-close" onclick="closeEditPage()">✕</button>
@@ -511,10 +613,10 @@ body{font-family:'Montserrat',sans-serif;background:var(--primary);color:#fff;ov
 <p class="modal-subtitle">Modificá todos los elementos visibles de la sección</p>
 <form onsubmit="savePage(event)" novalidate>
 <input type="hidden" id="editPageId">
-<div class="form-group"><label>📝 Título de la sección *</label><input type="text" id="pageField1" required placeholder="Ej: Nuestro Equipo"><div class="form-error" id="errPageTitle">El título es obligatorio</div></div>
-<div class="form-group"><label>📄 Encabezado / Subtítulo</label><input type="text" id="pageField5" placeholder="Ej: Conocé a nuestro equipo"></div>
+<div class="form-group"><label> Título de la sección *</label><input type="text" id="pageField1" required placeholder="Ej: Nuestro Equipo"><div class="form-error" id="errPageTitle">El título es obligatorio</div></div>
+<div class="form-group"><label> Encabezado / Subtítulo</label><input type="text" id="pageField5" placeholder="Ej: Conocé a nuestro equipo"></div>
 <div class="form-group"><label>📋 Contenido / Descripción *</label><textarea id="pageField2" style="min-height:150px" placeholder="Escribí el contenido completo de la página..."></textarea><div class="form-error" id="errPageDesc">La descripción es obligatoria</div></div>
-<div class="form-group"><label>🖼️ Imagen de fondo (Hero) *</label>
+<div class="form-group"><label>️ Imagen de fondo (Hero) *</label>
 <div class="upload-zone" id="pageUploadZone" onclick="document.getElementById('pageFileInput').click()">
 <div id="pageUploadPlaceholder"><p style="margin-bottom:.5rem">🖼️ Hacé clic para subir la imagen de fondo</p><p style="font-size:.8rem;opacity:.6">Esta imagen aparecerá como fondo al abrir la sección</p></div>
 <img id="pageUploadPreview" style="display:none">
@@ -530,6 +632,7 @@ body{font-family:'Montserrat',sans-serif;background:var(--primary);color:#fff;ov
 </div>
 </div>
 
+<!-- Modal Editar Historia -->
 <div class="modal-overlay" id="editHomeSectionModal">
 <div class="modal modal-xl">
 <button class="modal-close" onclick="closeEditHomeSection()">✕</button>
@@ -565,6 +668,7 @@ body{font-family:'Montserrat',sans-serif;background:var(--primary);color:#fff;ov
 </div>
 </div>
 
+<!-- Modal Subir Múltiples Fotos -->
 <div class="modal-overlay" id="multiUploadModal">
 <div class="modal modal-xl">
 <button class="modal-close" onclick="closeMultiUpload()">✕</button>
@@ -589,6 +693,7 @@ body{font-family:'Montserrat',sans-serif;background:var(--primary);color:#fff;ov
 </div>
 </div>
 
+<!-- Modal Editar Contacto -->
 <div class="modal-overlay" id="editContactItemModal">
 <div class="modal">
 <button class="modal-close" onclick="closeEditContactItem()">✕</button>
@@ -596,14 +701,15 @@ body{font-family:'Montserrat',sans-serif;background:var(--primary);color:#fff;ov
 <p class="modal-subtitle">Modificá la información de contacto</p>
 <form onsubmit="saveContactItem(event)" novalidate>
 <input type="hidden" id="contactItemId">
-<div class="form-group"><label>Ícono (emoji)</label><input type="text" id="contactItemIcon" placeholder="Ej: 📍 📱 " maxlength="4"></div>
+<div class="form-group"><label>Ícono (emoji)</label><input type="text" id="contactItemIcon" placeholder="Ej:  📱 " maxlength="4"></div>
 <div class="form-group"><label>Título *</label><input type="text" id="contactItemTitleField" required placeholder="Ej: Ubicación"><div class="form-error" id="errContactItemTitle">El título es obligatorio</div></div>
 <div class="form-group"><label>Contenido *</label><input type="text" id="contactItemContent" required placeholder="Ej: Paraná, Entre Ríos"><div class="form-error" id="errContactItemContent">El contenido es obligatorio</div></div>
-<button type="submit" class="btn btn-primary btn-full"> Guardar</button>
+<button type="submit" class="btn btn-primary btn-full">💾 Guardar</button>
 </form>
 </div>
 </div>
 
+<!-- Modal Editar Campo Formulario -->
 <div class="modal-overlay" id="editFormFieldModal">
 <div class="modal">
 <button class="modal-close" onclick="closeEditFormField()">✕</button>
@@ -621,20 +727,32 @@ body{font-family:'Montserrat',sans-serif;background:var(--primary);color:#fff;ov
 </div>
 </div>
 
+<!-- Lightbox fotos -->
 <div class="lightbox" id="lightbox">
 <button class="lightbox-close" onclick="closeLightbox()">✕</button>
-<button class="lightbox-nav lightbox-prev" onclick="lightboxNav(-1)"></button>
+<button class="lightbox-nav lightbox-prev" onclick="lightboxNav(-1)">❮</button>
 <button class="lightbox-nav lightbox-next" onclick="lightboxNav(1)">❯</button>
 <img id="lightboxImg" src="">
 <div class="lightbox-counter" id="lightboxCounter"></div>
 </div>
 
-<button class="admin-toggle" id="adminToggle" onclick="toggleAdmin()">️</button>
+<!-- NUEVO: Video Lightbox -->
+<div class="video-lightbox" id="videoLightbox">
+<button class="video-lightbox-close" onclick="closeVideoLightbox()">✕</button>
+<div class="video-lightbox-content">
+<iframe id="videoLightboxIframe" src="" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>
+<div class="video-lightbox-title" id="videoLightboxTitle"></div>
+</div>
+</div>
+
+<!-- Panel Admin -->
+<button class="admin-toggle" id="adminToggle" onclick="toggleAdmin()">⚙️</button>
 <div class="admin-panel" id="adminPanel">
 <div class="admin-header"><h2>Panel <span>Admin</span></h2><button class="modal-close" onclick="toggleAdmin()" style="position:static">✕</button></div>
 <div class="admin-tabs">
 <button class="admin-tab active" onclick="switchTab('home',this)">🏠 Inicio</button>
 <button class="admin-tab" onclick="switchTab('albums',this)">🖼️ Álbumes</button>
+<button class="admin-tab" onclick="switchTab('videos',this)">🎬 Videos</button>
 <button class="admin-tab" onclick="switchTab('pages',this)">📄 Secciones</button>
 <button class="admin-tab" onclick="switchTab('contact',this)">📞 Contacto</button>
 <button class="admin-tab" onclick="switchTab('comments',this)">💬 Comentarios</button>
@@ -646,17 +764,23 @@ body{font-family:'Montserrat',sans-serif;background:var(--primary);color:#fff;ov
 <button class="btn-add" onclick="openEditHomeSection()">✏️ Editar sección Historia</button>
 </div>
 <div class="admin-section" id="tab-albums">
-<div class="help-box"><h4>💡 Cómo gestionar álbumes</h4><ul><li>Cada álbum es una galería temática independiente</li><li>Hacé clic en "+ Nuevo Álbum" para crear uno</li><li>Dentro de cada álbum podés agregar/eliminar fotos</li><li>Usá ⬆️ ⬇️ para reordenar los álbumes</li></ul></div>
+<div class="help-box"><h4> Cómo gestionar álbumes</h4><ul><li>Cada álbum es una galería temática independiente</li><li>Hacé clic en "+ Nuevo Álbum" para crear uno</li><li>Dentro de cada álbum podés agregar/eliminar fotos</li><li>Usá ⬆️ ⬇️ para reordenar los álbumes</li></ul></div>
 <div id="adminAlbumsList"></div>
 <button class="btn-add" onclick="openEditAlbum()">+ Nuevo Álbum</button>
 </div>
+<!-- NUEVA PESTAÑA ADMIN VIDEOS -->
+<div class="admin-section" id="tab-videos">
+<div class="help-box"><h4>🎬 Cómo gestionar videos</h4><ul><li>Pegá el link de YouTube y el sistema extrae la miniatura automáticamente</li><li>Usá ️ ⬇️ para reordenar los videos</li><li>Hacé clic en ✏️ para editar o 🗑️ para eliminar</li></ul></div>
+<div id="adminVideosList"></div>
+<button class="btn-add" onclick="openEditVideo()">+ Nuevo Video</button>
+</div>
 <div class="admin-section" id="tab-pages">
-<div class="help-box"><h4>💡 Cómo gestionar secciones</h4><ul><li>Cada sección es una página con título, fondo y contenido propios</li><li>Hacé clic en ✏️ para editar</li><li>Usá 🗑️ para eliminar</li></ul></div>
+<div class="help-box"><h4>💡 Cómo gestionar secciones</h4><ul><li>Cada sección es una página con título, fondo y contenido propios</li><li>Hacé clic en ️ para editar</li><li>Usá ️ para eliminar</li></ul></div>
 <div id="adminPagesList"></div>
 <button class="btn-add" onclick="openEditPage()">+ Nueva Sección</button>
 </div>
 <div class="admin-section" id="tab-contact">
-<div class="help-box"><h4> Gestión de Contacto</h4><ul><li>Editá los datos de contacto (ubicación, email, etc.)</li><li>Agregá o eliminá campos del formulario</li><li>Los cambios se reflejan inmediatamente en el sitio</li></ul></div>
+<div class="help-box"><h4>📞 Gestión de Contacto</h4><ul><li>Editá los datos de contacto (ubicación, email, etc.)</li><li>Agregá o eliminá campos del formulario</li><li>Los cambios se reflejan inmediatamente en el sitio</li></ul></div>
 <h3 style="margin-bottom:1rem;color:var(--gold)">Datos de contacto</h3>
 <div id="adminContactItemsList"></div>
 <button class="btn-add" onclick="openEditContactItem()">+ Agregar dato de contacto</button>
@@ -664,7 +788,6 @@ body{font-family:'Montserrat',sans-serif;background:var(--primary);color:#fff;ov
 <div id="adminFormFieldsList"></div>
 <button class="btn-add" onclick="openEditFormField()">+ Agregar campo al formulario</button>
 </div>
-<!-- CAMBIO: NUEVA PESTAÑA ADMIN DE COMENTARIOS -->
 <div class="admin-section" id="tab-comments">
 <div class="help-box"><h4>💬 Gestión de Comentarios</h4><ul><li>Revisá los comentarios de los visitantes</li><li>Eliminá comentarios inapropiados</li><li>Los comentarios se publican automáticamente</li></ul></div>
 <div id="adminCommentsList"></div>
@@ -701,7 +824,7 @@ try {
   supabaseClient.from('albums').select('count').then(function(result) {
     if (result.error) {
       console.error('❌ Error DB:', result.error.message);
-      console.log('️ Usando localStorage como fallback');
+      console.log('⚠️ Usando localStorage como fallback');
     } else {
       SUPABASE_DB_ENABLED = true;
       console.log('✅ Base de datos conectada. Álbumes:', result.count);
@@ -742,13 +865,14 @@ const DEFAULT_FORM_FIELDS = [
 ];
 
 const TEAM_IMAGE = 'https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=1920';
-const ICONS = ['⚽','🏆','','🎊','⭐','👥','🏟️','🎯','','🎊','🥅','','🎖️',''];
+const ICONS = ['','🏆','🎉','🎊','⭐','👥','🏟️','🎯','🎖️','🎊','🥅','🏅','🎖️',''];
 
 let state = {
   homeSection: JSON.parse(localStorage.getItem('larr_home_section')) || DEFAULT_HOME_SECTION,
   albums: [],
+  videos: [],
   pages: JSON.parse(localStorage.getItem('larr_pages')) || [
-    {id:1,title:'Nuestro Equipo',header:'Conocé a nuestro plantel',desc:'Conocé a los jugadores.',icon:'',date:'Desde 1989',url:TEAM_IMAGE,gallery:[]},
+    {id:1,title:'Nuestro Equipo',header:'Conocé a nuestro plantel',desc:'Conocé a los jugadores.',icon:'⚽',date:'Desde 1989',url:TEAM_IMAGE,gallery:[]},
     {id:2,title:'Torneos',header:'Nuestras competencias',desc:'Participamos en torneos.',icon:'🏆',date:'2025',url:TEAM_IMAGE,gallery:[]},
     {id:3,title:'Eventos Sociales',header:'Más allá de la cancha',desc:'Somos una comunidad.',icon:'🎉',date:'Todo el año',url:TEAM_IMAGE,gallery:[]},
     {id:4,title:'Historia',header:'Nuestra trayectoria',desc:'Desde 1989.',icon:'📖',date:'16 de Enero de 1989',url:TEAM_IMAGE,gallery:[]}
@@ -760,7 +884,7 @@ let state = {
   loggedIn: sessionStorage.getItem('larr_logged') === 'true',
   pendingImage: null, originalUrl: null, pagePendingBg: null, pageOriginalBg: null,
   homePendingImage: null, homeOriginalImage: null,
-  selectedIcon: '', currentAlbumId: null, lightboxImages: [], lightboxIndex: 0,
+  selectedIcon: '⚽', currentAlbumId: null, lightboxImages: [], lightboxIndex: 0,
   multiFiles: [], manageMode: false,
   comments: []
 };
@@ -801,6 +925,9 @@ async function loadFromDatabase() {
     
     state.albums = albums;
     console.log('✅ Álbumes cargados desde DB:', albums.length);
+    
+    // Cargar videos
+    await loadVideos();
     
     // Cargar comentarios y contador de visitas
     await loadComments();
@@ -922,7 +1049,263 @@ async function deleteAlbumFromDB(albumId) {
   }
 }
 
-// CAMBIO: FUNCIONES DE COMENTARIOS
+// ==========================================
+// FUNCIONES DE VIDEOS
+// ==========================================
+function extractYouTubeId(url) {
+  if (!url) return null;
+  var regex = /(?:youtube\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/|youtube\.com\/shorts\/)([a-zA-Z0-9_-]{11})/;
+  var match = url.match(regex);
+  return match ? match[1] : null;
+}
+
+function getYouTubeThumbnail(videoId) {
+  return 'https://img.youtube.com/vi/' + videoId + '/hqdefault.jpg';
+}
+
+async function loadVideos() {
+  if (!SUPABASE_DB_ENABLED) return;
+  
+  try {
+    const { data, error } = await supabaseClient
+      .from('videos')
+      .select('*')
+      .order('display_order', { ascending: true });
+    
+    if (error) throw error;
+    
+    state.videos = data || [];
+    console.log('✅ Videos cargados:', state.videos.length);
+  } catch(err) {
+    console.error('Error cargando videos:', err);
+  }
+}
+
+function renderVideos() {
+  const grid = document.getElementById('videosGrid');
+  if (!grid) return;
+  
+  var html = state.videos.map(function(v, index) {
+    var videoId = extractYouTubeId(v.youtube_url);
+    var thumbnail = videoId ? getYouTubeThumbnail(videoId) : '';
+    var isFirst = index === 0;
+    var isLast = index === state.videos.length - 1;
+    
+    var reorderHtml = '';
+    if (state.loggedIn) {
+      reorderHtml = '<div class="album-reorder-controls">' +
+        '<button class="album-reorder-btn" onclick="event.stopPropagation(); moveVideo(' + v.id + ', -1)" ' + (isFirst ? 'disabled' : '') + ' title="Mover arriba">⬆️</button>' +
+        '<button class="album-reorder-btn" onclick="event.stopPropagation(); moveVideo(' + v.id + ', 1)" ' + (isLast ? 'disabled' : '') + ' title="Mover abajo">⬇️</button>' +
+      '</div>';
+    }
+    
+    return '<div class="video-card" onclick="openVideoLightbox(' + v.id + ')">' +
+      reorderHtml +
+      '<div class="video-thumbnail"><img src="' + thumbnail + '" alt="' + v.title + '" onerror="this.src=\'https://via.placeholder.com/480x360?text=Video\'">' +
+      '<div class="video-play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>' +
+      '</div>' +
+      '<div class="video-info"><h3>' + v.title + '</h3><p>' + (v.description || '').substring(0, 100) + (v.description && v.description.length > 100 ? '...' : '') + '</p></div>' +
+    '</div>';
+  }).join('');
+  
+  if (state.loggedIn) html += '<div class="video-add" onclick="openEditVideo()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg><span>Agregar Nuevo Video</span></div>';
+  
+  grid.innerHTML = html;
+}
+
+function renderAdminVideos() {
+  const list = document.getElementById('adminVideosList');
+  if (!list) return;
+  
+  list.innerHTML = state.videos.map(function(v, index) {
+    var videoId = extractYouTubeId(v.youtube_url);
+    var thumbnail = videoId ? getYouTubeThumbnail(videoId) : '';
+    var isFirst = index === 0;
+    var isLast = index === state.videos.length - 1;
+    
+    var reorderHtml = '<div class="album-reorder-controls">' +
+      '<button class="album-reorder-btn" onclick="moveVideo(' + v.id + ', -1)" ' + (isFirst ? 'disabled' : '') + ' title="Mover arriba">⬆️</button>' +
+      '<button class="album-reorder-btn" onclick="moveVideo(' + v.id + ', 1)" ' + (isLast ? 'disabled' : '') + ' title="Mover abajo">⬇️</button>' +
+    '</div>';
+    
+    return '<div class="admin-item">' +
+      reorderHtml +
+      '<div class="admin-item-info" style="display:flex;gap:1rem;align-items:center">' +
+        (thumbnail ? '<img src="' + thumbnail + '" style="width:80px;height:45px;object-fit:cover;border-radius:5px" onerror="this.style.display=\'none\'">' : '') +
+        '<div><div class="admin-item-title">🎬 ' + v.title + '</div><div class="admin-item-meta">' + (v.description || '').substring(0, 50) + '</div></div>' +
+      '</div>' +
+      '<div class="admin-item-actions"><button class="btn-icon btn-edit" onclick="openEditVideo(' + v.id + ')">✏️</button><button class="btn-icon btn-delete" onclick="deleteVideo(' + v.id + ')">🗑️</button></div>' +
+    '</div>';
+  }).join('') || '<p style="opacity:.5;text-align:center;padding:2rem">No hay videos agregados</p>';
+}
+
+function moveVideo(videoId, direction) {
+  if (!state.loggedIn) { openLogin(); return; }
+  var index = state.videos.findIndex(function(v) { return v.id === videoId; });
+  if (index === -1) return;
+  var newIndex = index + direction;
+  if (newIndex < 0 || newIndex >= state.videos.length) return;
+  var video = state.videos.splice(index, 1)[0];
+  state.videos.splice(newIndex, 0, video);
+  save();
+  updateVideoOrderInDB();
+  renderVideos();
+  renderAdminVideos();
+  toast('✅ Orden actualizado', 'success');
+}
+
+async function updateVideoOrderInDB() {
+  if (!SUPABASE_DB_ENABLED) return;
+  try {
+    for (var i = 0; i < state.videos.length; i++) {
+      var video = state.videos[i];
+      var { error } = await supabaseClient
+        .from('videos')
+        .update({ display_order: i + 1 })
+        .eq('id', video.id);
+      if (error) console.error('Error actualizando orden del video ' + video.id + ':', error);
+    }
+    console.log('✅ Orden de videos actualizado en Supabase');
+  } catch (error) {
+    console.error('Error guardando orden de videos:', error);
+  }
+}
+
+function openVideoLightbox(videoId) {
+  var video = state.videos.find(function(v) { return v.id === videoId; });
+  if (!video) return;
+  var ytId = extractYouTubeId(video.youtube_url);
+  if (!ytId) { toast('Video no válido', 'error'); return; }
+  document.getElementById('videoLightboxIframe').src = 'https://www.youtube.com/embed/' + ytId + '?autoplay=1';
+  document.getElementById('videoLightboxTitle').textContent = video.title;
+  document.getElementById('videoLightbox').classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeVideoLightbox() {
+  document.getElementById('videoLightbox').classList.remove('active');
+  document.getElementById('videoLightboxIframe').src = '';
+  document.body.style.overflow = '';
+}
+
+function previewVideoUrl() {
+  var url = document.getElementById('videoField2').value.trim();
+  var ytId = extractYouTubeId(url);
+  var preview = document.getElementById('videoPreview');
+  var previewImg = document.getElementById('videoPreviewImg');
+  if (ytId) {
+    previewImg.src = getYouTubeThumbnail(ytId);
+    preview.style.display = 'block';
+  } else {
+    preview.style.display = 'none';
+  }
+}
+
+function openEditVideo(id) {
+  if (!state.loggedIn) { openLogin(); return; }
+  hideAllErrors();
+  document.getElementById('editVideoId').value = id || '';
+  document.getElementById('editVideoTitle').textContent = id ? 'Editar Video' : 'Nuevo Video';
+  document.getElementById('videoPreview').style.display = 'none';
+  document.getElementById('btnSaveVideo').textContent = '💾 Guardar Video';
+  document.getElementById('btnSaveVideo').disabled = false;
+  
+  if (id) {
+    var video = state.videos.find(function(v) { return v.id === id; });
+    if (video) {
+      document.getElementById('videoField1').value = video.title;
+      document.getElementById('videoField2').value = video.youtube_url;
+      document.getElementById('videoField3').value = video.description || '';
+      var ytId = extractYouTubeId(video.youtube_url);
+      if (ytId) {
+        document.getElementById('videoPreviewImg').src = getYouTubeThumbnail(ytId);
+        document.getElementById('videoPreview').style.display = 'block';
+      }
+    }
+  } else {
+    document.getElementById('videoField1').value = '';
+    document.getElementById('videoField2').value = '';
+    document.getElementById('videoField3').value = '';
+  }
+  document.getElementById('editVideoModal').classList.add('active');
+}
+
+function closeEditVideo() {
+  document.getElementById('editVideoModal').classList.remove('active');
+  hideAllErrors();
+}
+
+async function saveVideo(e) {
+  e.preventDefault();
+  hideAllErrors();
+  var id = document.getElementById('editVideoId').value;
+  var title = document.getElementById('videoField1').value.trim();
+  var youtubeUrl = document.getElementById('videoField2').value.trim();
+  var description = document.getElementById('videoField3').value.trim();
+  
+  var hasError = false;
+  if (!title) { document.getElementById('errVideoTitle').classList.add('show'); hasError = true; }
+  if (!youtubeUrl || !extractYouTubeId(youtubeUrl)) { document.getElementById('errVideoUrl').classList.add('show'); hasError = true; }
+  if (hasError) { toast('Revisá los campos marcados', 'error'); return; }
+  
+  var btn = document.getElementById('btnSaveVideo');
+  btn.textContent = '⏳ Guardando...';
+  btn.disabled = true;
+  
+  try {
+    if (id) {
+      const { error } = await supabaseClient
+        .from('videos')
+        .update({ title: title, youtube_url: youtubeUrl, description: description })
+        .eq('id', parseInt(id));
+      if (error) throw error;
+      var idx = state.videos.findIndex(v => v.id === parseInt(id));
+      if (idx >= 0) {
+        state.videos[idx].title = title;
+        state.videos[idx].youtube_url = youtubeUrl;
+        state.videos[idx].description = description;
+      }
+    } else {
+      const maxOrder = state.videos.length > 0 ? Math.max(...state.videos.map(v => v.display_order || 0)) : 0;
+      const { data, error } = await supabaseClient
+        .from('videos')
+        .insert({ title: title, youtube_url: youtubeUrl, description: description, display_order: maxOrder + 1 })
+        .select()
+        .single();
+      if (error) throw error;
+      state.videos.push(data);
+    }
+    
+    renderVideos();
+    renderAdminVideos();
+    closeEditVideo();
+    toast('✅ Video guardado', 'success');
+  } catch(err) {
+    console.error('Error guardando video:', err);
+    toast('Error al guardar el video', 'error');
+    btn.textContent = '💾 Guardar Video';
+    btn.disabled = false;
+  }
+}
+
+async function deleteVideo(id) {
+  if (!confirm('¿Eliminar este video?')) return;
+  try {
+    const { error } = await supabaseClient.from('videos').delete().eq('id', id);
+    if (error) throw error;
+    state.videos = state.videos.filter(v => v.id !== id);
+    renderVideos();
+    renderAdminVideos();
+    toast('🗑️ Video eliminado', 'success');
+  } catch(err) {
+    console.error('Error eliminando video:', err);
+    toast('Error al eliminar el video', 'error');
+  }
+}
+
+// ==========================================
+// FUNCIONES DE COMENTARIOS
+// ==========================================
 async function loadComments() {
   if (!SUPABASE_DB_ENABLED) return;
   
@@ -998,7 +1381,7 @@ async function deleteComment(commentId) {
     state.comments = state.comments.filter(c => c.id !== commentId);
     renderComments();
     renderAdminComments();
-    toast('🗑️ Comentario eliminado', 'success');
+    toast('️ Comentario eliminado', 'success');
   } catch(err) {
     console.error('Error eliminando comentario:', err);
     toast('Error al eliminar el comentario', 'error');
@@ -1007,6 +1390,7 @@ async function deleteComment(commentId) {
 
 function renderComments() {
   const list = document.getElementById('commentsList');
+  if (!list) return;
   
   if (state.comments.length === 0) {
     list.innerHTML = '<div class="comments-empty"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg><p>Sé el primero en dejar un comentario</p></div>';
@@ -1041,7 +1425,6 @@ function renderComments() {
 
 function renderAdminComments() {
   const list = document.getElementById('adminCommentsList');
-  
   if (!list) return;
   
   if (state.comments.length === 0) {
@@ -1068,7 +1451,6 @@ function renderAdminComments() {
   }).join('');
 }
 
-// CAMBIO: FUNCIONES DE CONTADOR DE VISITAS
 async function loadVisitCount() {
   if (!SUPABASE_DB_ENABLED) return;
   
@@ -1091,32 +1473,20 @@ async function incrementVisitCount() {
   if (!SUPABASE_DB_ENABLED) return;
   
   try {
-    const { data, error } = await supabaseClient
+    const { data: currentData } = await supabaseClient
       .from('site_stats')
-      .update({ visit_count: supabaseClient.rpc('increment_counter') })
-      .eq('id', 1)
       .select('visit_count')
+      .eq('id', 1)
       .single();
     
-    if (error) {
-      // Fallback: incrementar manualmente
-      const { data: currentData } = await supabaseClient
-        .from('site_stats')
-        .select('visit_count')
-        .eq('id', 1)
-        .single();
-      
-      const newCount = (currentData?.visit_count || 0) + 1;
-      
-      await supabaseClient
-        .from('site_stats')
-        .update({ visit_count: newCount })
-        .eq('id', 1);
-      
-      document.getElementById('visitCount').textContent = newCount;
-    } else {
-      document.getElementById('visitCount').textContent = data.visit_count;
-    }
+    const newCount = (currentData?.visit_count || 0) + 1;
+    
+    await supabaseClient
+      .from('site_stats')
+      .update({ visit_count: newCount })
+      .eq('id', 1);
+    
+    document.getElementById('visitCount').textContent = newCount;
   } catch(err) {
     console.error('Error incrementando contador:', err);
   }
@@ -1125,13 +1495,13 @@ async function incrementVisitCount() {
 function updateStorageIndicator() {
   const indicator = document.getElementById('storageIndicator');
   if (SUPABASE_DB_ENABLED) { 
-    indicator.textContent = '️ Supabase DB + Storage'; 
+    indicator.textContent = '☁️ Supabase DB + Storage'; 
     indicator.className = 'storage-indicator supabase'; 
   } else if (supabaseClient) {
-    indicator.textContent = '☁️ Supabase Storage (sin DB)'; 
+    indicator.textContent = '️ Supabase Storage (sin DB)'; 
     indicator.className = 'storage-indicator supabase';
   } else { 
-    indicator.textContent = '️ Modo local (5MB límite)'; 
+    indicator.textContent = '⚠️ Modo local (5MB límite)'; 
     indicator.className = 'storage-indicator local'; 
   }
 }
@@ -1270,7 +1640,7 @@ function renderContactSection() {
     }
     return '<div class="contact-item"><div class="contact-item-icon">' + (item.icon || '📌') + '</div><div><h4>' + item.title + '</h4><p>' + item.content + '</p></div>' + actionsHtml + '</div>';
   }).join('');
-  if (state.loggedIn) contactHtml += '<div class="contact-add-btn visible" onclick="openEditContactItem()">➕ Agregar dato de contacto</div>';
+  if (state.loggedIn) contactHtml += '<div class="contact-add-btn visible" onclick="openEditContactItem()"> Agregar dato de contacto</div>';
   contactInfo.innerHTML = contactHtml;
 
   const contactForm = document.getElementById('contactForm');
@@ -1405,11 +1775,11 @@ function deleteFormField(id) {
 function renderAdminContact() {
   const itemsList = document.getElementById('adminContactItemsList');
   itemsList.innerHTML = state.contactItems.map(function(item) {
-    return '<div class="admin-item"><div class="admin-item-info"><div class="admin-item-title">' + (item.icon || '') + ' ' + item.title + '</div><div class="admin-item-meta">' + item.content + '</div></div><div class="admin-item-actions"><button class="btn-icon btn-edit" onclick="openEditContactItem(' + item.id + ')">✏️</button><button class="btn-icon btn-delete" onclick="deleteContactItem(' + item.id + ')">️</button></div></div>';
+    return '<div class="admin-item"><div class="admin-item-info"><div class="admin-item-title">' + (item.icon || '📌') + ' ' + item.title + '</div><div class="admin-item-meta">' + item.content + '</div></div><div class="admin-item-actions"><button class="btn-icon btn-edit" onclick="openEditContactItem(' + item.id + ')">✏️</button><button class="btn-icon btn-delete" onclick="deleteContactItem(' + item.id + ')">🗑️</button></div></div>';
   }).join('') || '<p style="opacity:.5;text-align:center;padding:1rem">No hay datos de contacto</p>';
   const fieldsList = document.getElementById('adminFormFieldsList');
   fieldsList.innerHTML = state.formFields.map(function(field) {
-    return '<div class="admin-item"><div class="admin-item-info"><div class="admin-item-title">' + field.label + (field.required ? ' *' : '') + '</div><div class="admin-item-meta">Tipo: ' + field.type + '</div></div><div class="admin-item-actions"><button class="btn-icon btn-edit" onclick="openEditFormField(' + field.id + ')">✏️</button><button class="btn-icon btn-delete" onclick="deleteFormField(' + field.id + ')">️</button></div></div>';
+    return '<div class="admin-item"><div class="admin-item-info"><div class="admin-item-title">' + field.label + (field.required ? ' *' : '') + '</div><div class="admin-item-meta">Tipo: ' + field.type + '</div></div><div class="admin-item-actions"><button class="btn-icon btn-edit" onclick="openEditFormField(' + field.id + ')">✏️</button><button class="btn-icon btn-delete" onclick="deleteFormField(' + field.id + ')">🗑️</button></div></div>';
   }).join('') || '<p style="opacity:.5;text-align:center;padding:1rem">No hay campos en el formulario</p>';
 }
 
@@ -1458,6 +1828,7 @@ function render() {
   document.getElementById('heroBg').style.backgroundImage = "url('" + state.heroUrl + "')";
   document.getElementById('heroUrl').value = state.heroUrl;
   renderHomeSection();
+  
   var ag = document.getElementById('albumsGrid');
   var albumsHtml = state.albums.map(function(a) {
     var photoCount = (a.photos || []).length;
@@ -1466,19 +1837,22 @@ function render() {
   }).join('');
   if (state.loggedIn) albumsHtml += '<div class="album-add" onclick="openEditAlbum()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg><span>Crear Nuevo Álbum</span></div>';
   ag.innerHTML = albumsHtml;
+  
+  renderVideos();
+  
   var pg = document.getElementById('pagesGrid');
   pg.innerHTML = state.pages.map(function(p) {
     var pc = (p.gallery || []).length;
     var adminClass = state.loggedIn ? 'admin-mode' : '';
-    return '<div class="page-card ' + adminClass + '" onclick="handlePageCardClick(event,' + p.id + ')"><button class="page-edit-btn" onclick="event.stopPropagation();openEditPage(' + p.id + ')" title="Editar sección">✏️</button><div class="page-card-icon">' + (p.icon || '') + '</div><h3>' + p.title + '</h3><p>' + (p.desc || '').substring(0, 120) + ((p.desc || '').length > 120 ? '...' : '') + '</p><div class="page-card-photos">📸 ' + pc + ' foto' + (pc !== 1 ? 's' : '') + '</div><div class="page-card-date">' + (p.date || '') + '</div></div>';
+    return '<div class="page-card ' + adminClass + '" onclick="handlePageCardClick(event,' + p.id + ')"><button class="page-edit-btn" onclick="event.stopPropagation();openEditPage(' + p.id + ')" title="Editar sección">✏️</button><div class="page-card-icon">' + (p.icon || '') + '</div><h3>' + p.title + '</h3><p>' + (p.desc || '').substring(0, 120) + ((p.desc || '').length > 120 ? '...' : '') + '</p><div class="page-card-photos"> ' + pc + ' foto' + (pc !== 1 ? 's' : '') + '</div><div class="page-card-date">' + (p.date || '') + '</div></div>';
   }).join('');
+  
   renderContactSection(); 
   renderComments();
   renderAdminComments();
   renderAdmin(); 
   updateStorageIndicator();
   
-  // Incrementar contador de visitas
   incrementVisitCount();
 }
 
@@ -1491,6 +1865,9 @@ function renderAdmin() {
   document.getElementById('adminAlbumsList').innerHTML = state.albums.map(function(a) {
     return '<div class="admin-item"><div class="admin-item-info"><div class="admin-item-title">🖼️ ' + a.title + '</div><div class="admin-item-meta">' + (a.date || '') + ' · ' + ((a.photos || []).length) + ' fotos</div></div><div class="admin-item-actions"><button class="btn-icon btn-edit" onclick="openEditAlbum(' + a.id + ')">✏️</button><button class="btn-icon btn-delete" onclick="deleteAlbum(' + a.id + ')">🗑️</button></div></div>';
   }).join('') || '<p style="opacity:.5;text-align:center;padding:2rem">No hay álbumes creados</p>';
+  
+  renderAdminVideos();
+  
   document.getElementById('adminPagesList').innerHTML = state.pages.map(function(p) {
     return '<div class="admin-item"><div class="admin-item-info"><div class="admin-item-title">' + (p.icon || '') + ' ' + p.title + '</div><div class="admin-item-meta">' + (p.date || '') + '</div></div><div class="admin-item-actions"><button class="btn-icon btn-edit" onclick="openEditPage(' + p.id + ')">✏️</button><button class="btn-icon btn-delete" onclick="deletePage(' + p.id + ')">🗑️</button></div></div>';
   }).join('') || '<p style="opacity:.5;text-align:center;padding:2rem">No hay secciones</p>';
@@ -1526,7 +1903,7 @@ function toggleManageMode() {
   var btn = document.getElementById('manageModeBtn');
   if (btn) { btn.classList.toggle('active', state.manageMode); btn.innerHTML = state.manageMode ? '✕ Salir de gestión' : '🗑️ Gestionar fotos'; }
   document.querySelectorAll('.album-photo-item').forEach(function(item) { item.classList.toggle('manage-mode', state.manageMode); });
-  if (state.manageMode) toast('Modo eliminar activado. Hacé clic en ️ para borrar fotos.', '');
+  if (state.manageMode) toast('Modo eliminar activado. Hacé clic en 🗑️ para borrar fotos.', '');
 }
 
 function handlePhotoClick(event, albumId, photoId) {
@@ -1871,7 +2248,7 @@ async function handleMultiFileUpload(e) {
     } catch(err) { console.error('Error procesando ' + file.name, err); }
     processed++;
   }
-  placeholder.innerHTML = '<p style="font-size:1.1rem;margin-bottom:.5rem">📁 Hacé clic para agregar más fotos</p><p style="font-size:.85rem;opacity:.6">Podés seleccionar varias imágenes a la vez</p><p style="font-size:.75rem;opacity:.5;margin-top:.5rem">Las imágenes se comprimirán automáticamente</p>';
+  placeholder.innerHTML = '<p style="font-size:1.1rem;margin-bottom:.5rem"> Hacé clic para agregar más fotos</p><p style="font-size:.85rem;opacity:.6">Podés seleccionar varias imágenes a la vez</p><p style="font-size:.75rem;opacity:.5;margin-top:.5rem">Las imágenes se comprimirán automáticamente</p>';
   placeholder.style.display = 'block';
   updateMultiPreview();
   toast('✅ ' + state.multiFiles.length + ' imágenes procesadas (' + (totalSize / (1024 * 1024)).toFixed(2) + ' MB)', 'success');
@@ -1914,7 +2291,7 @@ async function saveMultiPhotos() {
           console.log('✅ Foto subida a Storage:', photoUrl);
         } catch(uploadErr) {
           console.error('❌ Error subiendo:', uploadErr);
-          toast('️ Error subiendo "' + f.name + '"', 'error');
+          toast('⚠️ Error subiendo "' + f.name + '"', 'error');
           failed++;
           continue;
         }
