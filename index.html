@@ -1721,10 +1721,24 @@ function moveAlbum(albumId, direction) {
   var album = state.albums.splice(index, 1)[0];
   state.albums.splice(newIndex, 0, album);
   save();
+  updateAlbumOrderInDB();
   render();
   renderAdmin();
   toast('✅ Orden actualizado', 'success');
 }
+
+async function updateAlbumOrderInDB() {
+  if (!SUPABASE_DB_ENABLED) return;
+  try { 
+    for (var i = 0; i < state.albums.length; i++) { 
+      var album = state.albums[i]; 
+      var { error } = await supabaseClient.from('albums').update({ display_order: i + 1 }).eq('id', album.id); 
+      if (error) console.error('Error actualizando orden del álbum ' + album.id + ':', error); 
+    } 
+    console.log('✅ Orden de álbumes actualizado en Supabase'); 
+  } catch (error) { console.error('Error guardando orden de álbumes:', error); }
+}
+
 
 function openAlbumDetail(id) { 
   var album = state.albums.find(function(a) { return a.id === id; }); 
