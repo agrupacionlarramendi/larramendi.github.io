@@ -333,7 +333,7 @@ body{font-family:'Montserrat',sans-serif;background:var(--primary);color:#fff;ov
 </head>
 <body>
 
-<div class="storage-indicator local" id="storageIndicator">⚠️ Modo local</div>
+<div class="storage-indicator local" id="storageIndicator">️ Modo local</div>
 
 <nav class="nav" id="nav">
 <div class="nav-logo" onclick="goHome()">
@@ -392,7 +392,7 @@ body{font-family:'Montserrat',sans-serif;background:var(--primary);color:#fff;ov
 <h3 id="aboutTitle">Más que un equipo, una familia</h3>
 <p id="aboutP1">La Agrupación de Veteranos de Fútbol Larramendi nació del amor por el deporte rey. Desde Paraná, Entre Ríos, reunimos a jugadores que mantienen viva la pasión por el fútbol a través de los años.</p>
 <p id="aboutP2">Fundada el 16 de enero de 1989, nuestra agrupación ha sido un pilar del fútbol veterano en la región, fomentando el deporte, la camaradería y los valores que el fútbol nos enseñó. Cada partido es una celebración de la amistad y el compañerismo.</p>
-<button class="admin-edit-btn" onclick="openEditHomeSection()" title="Editar contenido" style="position:static;margin-top:1rem">️ Editar contenido</button>
+<button class="admin-edit-btn" onclick="openEditHomeSection()" title="Editar contenido" style="position:static;margin-top:1rem">✏️ Editar contenido</button>
 <div class="stats" id="statsContainer">
 <div class="stat"><div class="stat-number" id="stat1Num">36+</div><div class="stat-label" id="stat1Label">Años de historia</div></div>
 <div class="stat"><div class="stat-number" id="stat2Num">40+</div><div class="stat-label" id="stat2Label">Jugadores</div></div>
@@ -449,7 +449,7 @@ body{font-family:'Montserrat',sans-serif;background:var(--primary);color:#fff;ov
 <div class="form-group"><label>Email (opcional)</label><input type="email" id="commentEmail" placeholder="tu@email.com"></div>
 </div>
 <div class="form-group"><label>Comentario *</label><textarea id="commentMessage" required placeholder="Compartí tu opinión sobre la agrupación..."></textarea></div>
-<button type="submit" class="btn-submit" id="btnSubmitComment"> Publicar Comentario</button>
+<button type="submit" class="btn-submit" id="btnSubmitComment">💾 Publicar Comentario</button>
 </form>
 </div>
 <div class="comments-list fade-in" id="commentsList"></div>
@@ -469,12 +469,12 @@ body{font-family:'Montserrat',sans-serif;background:var(--primary);color:#fff;ov
 </div>
 </div>
 <p>Paraná, Entre Ríos · Desde 1989</p>
-<div class="footer-social"><a href="#">📘</a><a href="#">📷</a><a href="#">🐦</a><a href="#">▶️</a></div>
+<div class="footer-social"><a href="#">📘</a><a href="#"></a><a href="#">🐦</a><a href="#">▶️</a></div>
 <div class="footer-copy">© 2025 Larramendi. Todos los derechos reservados.</div>
 </footer>
 
 <div class="album-detail" id="albumDetail">
-<button class="album-detail-close" onclick="closeAlbumDetail()"></button>
+<button class="album-detail-close" onclick="closeAlbumDetail()">✕</button>
 <div class="album-detail-hero"><img id="albumDetailHeroImg" src="" alt=""><div class="album-detail-hero-overlay"></div><div class="album-detail-hero-content"><a class="album-detail-back" onclick="closeAlbumDetail()">← Volver a álbumes</a><h1 class="album-detail-hero-title" id="albumDetailTitle"></h1><p class="album-detail-hero-subtitle" id="albumDetailSubtitle"></p></div></div>
 <div class="album-photos-section"><div class="album-photos-header"><div><div class="album-photos-title">Fotos del álbum <span id="albumPhotosTitleName"></span></div><div class="album-photos-count" id="albumPhotosCount"></div></div><div class="album-photos-actions" id="albumPhotosActions"></div></div><div class="album-photos-grid" id="albumPhotosGrid"></div></div>
 </div>
@@ -532,7 +532,7 @@ body{font-family:'Montserrat',sans-serif;background:var(--primary);color:#fff;ov
 </div>
 <div class="form-group"><label>Imagen de portada (opcional)</label><input type="url" id="videoField4" placeholder="URL de imagen personalizada (opcional)" oninput="updateVideoPreview()"><div style="font-size:.8rem;opacity:.6;margin-top:.3rem">Para YouTube se usa automática. Para Facebook/Instagram podés pegar una URL de imagen.</div></div>
 <div class="form-group"><label>Descripción</label><textarea id="videoField3" placeholder="Descripción breve del video..."></textarea></div>
-<button type="submit" class="btn btn-primary btn-full" id="btnSaveVideo">💾 Guardar Video</button>
+<button type="submit" class="btn btn-primary btn-full" id="btnSaveVideo"> Guardar Video</button>
 </form>
 </div>
 </div>
@@ -545,7 +545,7 @@ body{font-family:'Montserrat',sans-serif;background:var(--primary);color:#fff;ov
 <form onsubmit="savePage(event)" novalidate>
 <input type="hidden" id="editPageId">
 <div class="form-group"><label>📝 Título de la sección *</label><input type="text" id="pageField1" required placeholder="Ej: Nuestro Equipo"><div class="form-error" id="errPageTitle">El título es obligatorio</div></div>
-<div class="form-group"><label>📄 Encabezado / Subtítulo</label><input type="text" id="pageField5" placeholder="Ej: Conocé a nuestro equipo"></div>
+<div class="form-group"><label> Encabezado / Subtítulo</label><input type="text" id="pageField5" placeholder="Ej: Conocé a nuestro equipo"></div>
 <div class="form-group"><label>📋 Contenido / Descripción *</label><textarea id="pageField2" style="min-height:150px" placeholder="Escribí el contenido completo de la página..."></textarea><div class="form-error" id="errPageDesc">La descripción es obligatoria</div></div>
 <div class="form-group"><label>🖼️ Imagen de fondo (Hero) *</label>
 <div class="upload-zone" id="pageUploadZone" onclick="document.getElementById('pageFileInput').click()">
@@ -556,7 +556,7 @@ body{font-family:'Montserrat',sans-serif;background:var(--primary);color:#fff;ov
 <input type="url" id="pageField3" placeholder="https://... (opcional si subiste archivo)" oninput="clearPageBgPreview()">
 <div class="form-error" id="errPageBg">Debés subir una imagen o pegar una URL</div>
 </div>
-<div class="form-group"><label> Ícono de la sección</label><div class="icon-selector" id="iconSelector"></div><input type="hidden" id="pageFieldIcon"></div>
+<div class="form-group"><label>🎨 Ícono de la sección</label><div class="icon-selector" id="iconSelector"></div><input type="hidden" id="pageFieldIcon"></div>
 <div class="form-group"><label>📅 Fecha / Período</label><input type="text" id="pageField4" placeholder="Octubre 2025"></div>
 <button type="submit" class="btn btn-primary btn-full" id="btnSavePage">💾 Guardar Sección</button>
 </form>
@@ -570,7 +570,7 @@ body{font-family:'Montserrat',sans-serif;background:var(--primary);color:#fff;ov
 <p class="modal-subtitle">Modificá todos los elementos visibles de la sección "Nuestra Historia"</p>
 <form onsubmit="saveHomeSection(event)" novalidate>
 <div class="form-group"><label>🏷️ Etiqueta superior (ej: "Nuestra Historia")</label><input type="text" id="homeLabel" placeholder="Nuestra Historia"><div class="form-error" id="errHomeLabel">La etiqueta es obligatoria</div></div>
-<div class="form-group"><label>📌 Título principal (usá * para la parte dorada, ej: "Tradición y *Pasión*")</label><input type="text" id="homeTitle" placeholder="Tradición y *Pasión*"><div class="form-error" id="errHomeTitle">El título es obligatorio</div></div>
+<div class="form-group"><label> Título principal (usá * para la parte dorada, ej: "Tradición y *Pasión*")</label><input type="text" id="homeTitle" placeholder="Tradición y *Pasión*"><div class="form-error" id="errHomeTitle">El título es obligatorio</div></div>
 <div class="form-group"><label>📝 Subtítulo del bloque</label><input type="text" id="homeAboutTitle" placeholder="Más que un equipo, una familia"><div class="form-error" id="errHomeAboutTitle">El subtítulo es obligatorio</div></div>
 <div class="form-group"><label>📄 Primer párrafo</label><textarea id="homeP1" style="min-height:100px"></textarea><div class="form-error" id="errHomeP1">El primer párrafo es obligatorio</div></div>
 <div class="form-group"><label>📄 Segundo párrafo</label><textarea id="homeP2" style="min-height:100px"></textarea><div class="form-error" id="errHomeP2">El segundo párrafo es obligatorio</div></div>
@@ -583,7 +583,7 @@ body{font-family:'Montserrat',sans-serif;background:var(--primary);color:#fff;ov
 <input type="url" id="homeImageUrl" placeholder="https://... (opcional si subiste archivo)" oninput="clearHomeImagePreview()">
 </div>
 <div style="border-top:1px solid var(--glass2);padding-top:1rem;margin-top:1rem">
-<h3 style="color:var(--gold);margin-bottom:1rem;font-size:1.1rem">📊 Estadísticas</h3>
+<h3 style="color:var(--gold);margin-bottom:1rem;font-size:1.1rem"> Estadísticas</h3>
 <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem">
 <div class="form-group"><label>Stat 1 - Número</label><input type="text" id="homeStat1Num" placeholder="36+"></div>
 <div class="form-group"><label>Stat 1 - Etiqueta</label><input type="text" id="homeStat1Label" placeholder="Años de historia"></div>
@@ -601,11 +601,11 @@ body{font-family:'Montserrat',sans-serif;background:var(--primary);color:#fff;ov
 <div class="modal-overlay" id="multiUploadModal">
 <div class="modal modal-xl">
 <button class="modal-close" onclick="closeMultiUpload()">✕</button>
-<h2>📸 Agregar Múltiples Fotos</h2>
+<h2> Agregar Múltiples Fotos</h2>
 <p class="modal-subtitle" id="multiUploadSubtitle">Seleccioná todas las fotos que quieras agregar</p>
 <div class="upload-zone" id="multiUploadZone" onclick="document.getElementById('multiFileInput').click()" style="min-height:120px">
 <div id="multiUploadPlaceholder">
-<p style="font-size:1.1rem;margin-bottom:.5rem">📁 Hacé clic para seleccionar fotos</p>
+<p style="font-size:1.1rem;margin-bottom:.5rem"> Hacé clic para seleccionar fotos</p>
 <p style="font-size:.85rem;opacity:.6">Podés seleccionar varias imágenes a la vez</p>
 <p style="font-size:.75rem;opacity:.5;margin-top:.5rem">Las imágenes se comprimirán automáticamente</p>
 </div>
@@ -618,13 +618,13 @@ body{font-family:'Montserrat',sans-serif;background:var(--primary);color:#fff;ov
 <div style="background:var(--glass);border-radius:10px;height:8px;overflow:hidden;margin-bottom:.5rem"><div id="uploadProgressBar" style="background:linear-gradient(90deg,var(--accent),var(--accent2));height:100%;width:0%;transition:width .3s"></div></div>
 <p style="font-size:.85rem;opacity:.7" id="uploadProgressText">Subiendo 0 de 0...</p>
 </div>
-<button class="btn btn-primary btn-full" id="btnMultiSave" onclick="saveMultiPhotos()">💾 Agregar Todas las Fotos</button>
+<button class="btn btn-primary btn-full" id="btnMultiSave" onclick="saveMultiPhotos()"> Agregar Todas las Fotos</button>
 </div>
 </div>
 
 <div class="modal-overlay" id="editContactItemModal">
 <div class="modal">
-<button class="modal-close" onclick="closeEditContactItem()"></button>
+<button class="modal-close" onclick="closeEditContactItem()">✕</button>
 <h2 id="editContactItemTitle">Editar dato de contacto</h2>
 <p class="modal-subtitle">Modificá la información de contacto</p>
 <form onsubmit="saveContactItem(event)" novalidate>
@@ -676,7 +676,7 @@ body{font-family:'Montserrat',sans-serif;background:var(--primary);color:#fff;ov
 <div class="admin-tabs">
 <button class="admin-tab active" onclick="switchTab('home',this)">🏠 Inicio</button>
 <button class="admin-tab" onclick="switchTab('albums',this)">🖼️ Álbumes</button>
-<button class="admin-tab" onclick="switchTab('videos',this)">🎬 Videos</button>
+<button class="admin-tab" onclick="switchTab('videos',this)"> Videos</button>
 <button class="admin-tab" onclick="switchTab('pages',this)">📄 Secciones</button>
 <button class="admin-tab" onclick="switchTab('contact',this)">📞 Contacto</button>
 <button class="admin-tab" onclick="switchTab('comments',this)">💬 Comentarios</button>
@@ -684,16 +684,16 @@ body{font-family:'Montserrat',sans-serif;background:var(--primary);color:#fff;ov
 </div>
 <div class="admin-content">
 <div class="admin-section active" id="tab-home">
-<div class="help-box"><h4> Gestión de la sección Historia</h4><ul><li>Editá el título, subtítulo y textos</li><li>Cambiá la imagen del bloque</li><li>Modificá las 3 estadísticas</li><li>Los cambios se reflejan inmediatamente</li></ul></div>
+<div class="help-box"><h4>🏠 Gestión de la sección Historia</h4><ul><li>Editá el título, subtítulo y textos</li><li>Cambiá la imagen del bloque</li><li>Modificá las 3 estadísticas</li><li>Los cambios se reflejan inmediatamente</li></ul></div>
 <button class="btn-add" onclick="openEditHomeSection()">✏️ Editar sección Historia</button>
 </div>
 <div class="admin-section" id="tab-albums">
-<div class="help-box"><h4>💡 Cómo gestionar álbumes</h4><ul><li>Cada álbum es una galería temática independiente</li><li>Hacé clic en "+ Nuevo Álbum" para crear uno</li><li>Dentro de cada álbum podés agregar/eliminar fotos</li><li>Usá ️ ⬇️ para reordenar los álbumes</li></ul></div>
+<div class="help-box"><h4>💡 Cómo gestionar álbumes</h4><ul><li>Cada álbum es una galería temática independiente</li><li>Hacé clic en "+ Nuevo Álbum" para crear uno</li><li>Dentro de cada álbum podés agregar/eliminar fotos</li><li>Usá ⬆️ ⬇️ para reordenar los álbumes</li></ul></div>
 <div id="adminAlbumsList"></div>
 <button class="btn-add" onclick="openEditAlbum()">+ Nuevo Álbum</button>
 </div>
 <div class="admin-section" id="tab-videos">
-<div class="help-box"><h4>🎬 Cómo gestionar videos</h4><ul><li>Soporta YouTube, Facebook e Instagram</li><li>Pegá el link y el sistema detecta la plataforma</li><li>Para Facebook/Instagram podés agregar imagen de portada</li><li>Usá ⬆️ ️ para reordenar</li></ul></div>
+<div class="help-box"><h4>🎬 Cómo gestionar videos</h4><ul><li>Soporta YouTube, Facebook e Instagram</li><li>Pegá el link y el sistema detecta la plataforma</li><li>Para Facebook/Instagram podés agregar imagen de portada</li><li>Usá ⬆️ ⬇️ para reordenar</li></ul></div>
 <div id="adminVideosList"></div>
 <button class="btn-add" onclick="openEditVideo()">+ Nuevo Video</button>
 </div>
@@ -703,7 +703,7 @@ body{font-family:'Montserrat',sans-serif;background:var(--primary);color:#fff;ov
 <button class="btn-add" onclick="openEditPage()">+ Nueva Sección</button>
 </div>
 <div class="admin-section" id="tab-contact">
-<div class="help-box"><h4>📞 Gestión de Contacto</h4><ul><li>Editá los datos de contacto (ubicación, email, etc.)</li><li>Agregá o eliminá campos del formulario</li><li>Los cambios se reflejan inmediatamente en el sitio</li></ul></div>
+<div class="help-box"><h4> Gestión de Contacto</h4><ul><li>Editá los datos de contacto (ubicación, email, etc.)</li><li>Agregá o eliminá campos del formulario</li><li>Los cambios se reflejan inmediatamente en el sitio</li></ul></div>
 <h3 style="margin-bottom:1rem;color:var(--gold)">Datos de contacto</h3>
 <div id="adminContactItemsList"></div>
 <button class="btn-add" onclick="openEditContactItem()">+ Agregar dato de contacto</button>
@@ -751,12 +751,12 @@ const DEFAULT_HOME_SECTION = { label: 'Nuestra Historia', title: 'Tradición y *
 const DEFAULT_CONTACT_ITEMS = [{ id: 1, icon: '📍', title: 'Ubicación', content: 'Paraná, Entre Ríos, Argentina' }, { id: 2, icon: '📧', title: 'Email', content: CONTACT_EMAIL }, { id: 3, icon: '📱', title: 'Teléfono', content: '+54 343 555-0000' }];
 const DEFAULT_FORM_FIELDS = [{ id: 1, label: 'Nombre completo', type: 'text', required: true, placeholder: 'Tu nombre', options: [] }, { id: 2, label: 'Email', type: 'email', required: true, placeholder: 'tu@email.com', options: [] }, { id: 3, label: 'Asunto', type: 'text', required: false, placeholder: 'Motivo de contacto', options: [] }, { id: 4, label: 'Mensaje', type: 'textarea', required: true, placeholder: 'Tu mensaje...', options: [] }];
 const TEAM_IMAGE = 'https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=1920';
-const ICONS = ['⚽','🏆','🎉','🎊','⭐','👥','️','🎯','🎖️','🎊','🥅','🏅','🎖️','🏅'];
+const ICONS = ['⚽','🏆','🎉','🎊','⭐','👥','🏟️','','🎖️','🎊','🥅','🏅','🎖️','🏅'];
 
 let state = {
   homeSection: JSON.parse(localStorage.getItem('larr_home_section')) || DEFAULT_HOME_SECTION,
   albums: [], videos: [],
-  pages: JSON.parse(localStorage.getItem('larr_pages')) || [{id:1,title:'Nuestro Equipo',header:'Conocé a nuestro plantel',desc:'Conocé a los jugadores.',icon:'⚽',date:'Desde 1989',url:TEAM_IMAGE,gallery:[]},{id:2,title:'Torneos',header:'Nuestras competencias',desc:'Participamos en torneos.',icon:'🏆',date:'2025',url:TEAM_IMAGE,gallery:[]},{id:3,title:'Eventos Sociales',header:'Más allá de la cancha',desc:'Somos una comunidad.',icon:'🎉',date:'Todo el año',url:TEAM_IMAGE,gallery:[]},{id:4,title:'Historia',header:'Nuestra trayectoria',desc:'Desde 1989.',icon:'📖',date:'16 de Enero de 1989',url:TEAM_IMAGE,gallery:[]}],
+  pages: JSON.parse(localStorage.getItem('larr_pages')) || [{id:1,title:'Nuestro Equipo',header:'Conocé a nuestro plantel',desc:'Conocé a los jugadores.',icon:'',date:'Desde 1989',url:TEAM_IMAGE,gallery:[]},{id:2,title:'Torneos',header:'Nuestras competencias',desc:'Participamos en torneos.',icon:'🏆',date:'2025',url:TEAM_IMAGE,gallery:[]},{id:3,title:'Eventos Sociales',header:'Más allá de la cancha',desc:'Somos una comunidad.',icon:'',date:'Todo el año',url:TEAM_IMAGE,gallery:[]},{id:4,title:'Historia',header:'Nuestra trayectoria',desc:'Desde 1989.',icon:'📖',date:'16 de Enero de 1989',url:TEAM_IMAGE,gallery:[]}],
   contactItems: JSON.parse(localStorage.getItem('larr_contact_items')) || DEFAULT_CONTACT_ITEMS,
   formFields: JSON.parse(localStorage.getItem('larr_form_fields')) || DEFAULT_FORM_FIELDS,
   heroUrl: TEAM_IMAGE,
@@ -778,7 +778,6 @@ async function loadFromDatabase() {
     }
     state.albums = albums;
     
-    // Cargar hero image
     try {
       const { data: settingsData } = await supabaseClient.from('site_settings').select('hero_image_url').eq('id', 1).single();
       if (settingsData && settingsData.hero_image_url) {
@@ -788,7 +787,6 @@ async function loadFromDatabase() {
       console.warn('No se pudo cargar site_settings, usando fallback.', settingsErr);
     }
     
-    // Cargar home section desde Supabase
     try {
       const { data: homeData } = await supabaseClient.from('home_section').select('*').eq('id', 1).single();
       if (homeData) {
@@ -881,7 +879,6 @@ async function deleteAlbumFromDB(albumId) {
   } catch(err) { console.error('Error eliminando álbum:', err); return false; } 
 }
 
-// VIDEOS - SOPORTE MULTIPLATAFORMA
 function detectVideoPlatform(url) {
   if (!url) return null;
   if (url.match(/youtube\.com|youtu\.be/)) return 'youtube';
@@ -956,7 +953,7 @@ function renderVideos() {
     if (state.loggedIn) { 
       reorderHtml = '<div class="album-reorder-controls"><button class="album-reorder-btn" onclick="event.stopPropagation(); moveVideo(' + v.id + ', -1)" ' + (isFirst ? 'disabled' : '') + ' title="Mover arriba">⬆️</button><button class="album-reorder-btn" onclick="event.stopPropagation(); moveVideo(' + v.id + ', 1)" ' + (isLast ? 'disabled' : '') + ' title="Mover abajo">⬇️</button></div>'; 
     }
-    var platformBadge = platform ? '<div class="platform-badge ' + platform + '">' + (platform === 'youtube' ? '▶️ YouTube' : platform === 'facebook' ? '📘 Facebook' : '📷 Instagram') + '</div>' : '';
+    var platformBadge = platform ? '<div class="platform-badge ' + platform + '">' + (platform === 'youtube' ? '▶️ YouTube' : platform === 'facebook' ? ' Facebook' : '📷 Instagram') + '</div>' : '';
     return '<div class="video-card" onclick="openVideoLightbox(' + v.id + ')">' + reorderHtml + platformBadge + '<div class="video-thumbnail"><img src="' + thumbnail + '" alt="' + v.title + '" onerror="this.src=\'https://via.placeholder.com/480x360?text=Video\'"><div class="video-play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><div class="video-info"><h3>' + v.title + '</h3><p>' + (v.description || '').substring(0, 100) + (v.description && v.description.length > 100 ? '...' : '') + '</p></div></div>';
   }).join('');
   if (state.loggedIn) html += '<div class="video-add" onclick="openEditVideo()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg><span>Agregar Nuevo Video</span></div>';
@@ -972,8 +969,8 @@ function renderAdminVideos() {
     var isFirst = index === 0; 
     var isLast = index === state.videos.length - 1;
     var reorderHtml = '<div class="album-reorder-controls"><button class="album-reorder-btn" onclick="moveVideo(' + v.id + ', -1)" ' + (isFirst ? 'disabled' : '') + ' title="Mover arriba">⬆️</button><button class="album-reorder-btn" onclick="moveVideo(' + v.id + ', 1)" ' + (isLast ? 'disabled' : '') + ' title="Mover abajo">⬇️</button></div>';
-    var platformIcon = platform === 'youtube' ? '▶️' : platform === 'facebook' ? '📘' : platform === 'instagram' ? '📷' : '🎬';
-    return '<div class="admin-item">' + reorderHtml + '<div class="admin-item-info" style="display:flex;gap:1rem;align-items:center">' + (thumbnail ? '<img src="' + thumbnail + '" style="width:80px;height:45px;object-fit:cover;border-radius:5px" onerror="this.style.display=\'none\'">' : '') + '<div><div class="admin-item-title">' + platformIcon + ' ' + v.title + '</div><div class="admin-item-meta">' + (v.description || '').substring(0, 50) + '</div></div></div><div class="admin-item-actions"><button class="btn-icon btn-edit" onclick="openEditVideo(' + v.id + ')">✏️</button><button class="btn-icon btn-delete" onclick="deleteVideo(' + v.id + ')">🗑️</button></div></div>';
+    var platformIcon = platform === 'youtube' ? '▶️' : platform === 'facebook' ? '📘' : platform === 'instagram' ? '📷' : '';
+    return '<div class="admin-item">' + reorderHtml + '<div class="admin-item-info" style="display:flex;gap:1rem;align-items:center">' + (thumbnail ? '<img src="' + thumbnail + '" style="width:80px;height:45px;object-fit:cover;border-radius:5px" onerror="this.style.display=\'none\'">' : '') + '<div><div class="admin-item-title">' + platformIcon + ' ' + v.title + '</div><div class="admin-item-meta">' + (v.description || '').substring(0, 50) + '</div></div></div><div class="admin-item-actions"><button class="btn-icon btn-edit" onclick="openEditVideo(' + v.id + ')">✏️</button><button class="btn-icon btn-delete" onclick="deleteVideo(' + v.id + ')">️</button></div></div>';
   }).join('') || '<p style="opacity:.5;text-align:center;padding:2rem">No hay videos agregados</p>';
 }
 
@@ -1048,7 +1045,7 @@ function previewVideoUrl() {
   } else if (platform === 'facebook') {
     previewImg.src = 'https://via.placeholder.com/480x360/1877F2/FFFFFF?text=Facebook+Video';
     preview.style.display = 'block';
-    platformDiv.textContent = '📘 Facebook detectado - Agregá imagen de portada opcional';
+    platformDiv.textContent = ' Facebook detectado - Agregá imagen de portada opcional';
   } else if (platform === 'instagram') {
     previewImg.src = 'https://via.placeholder.com/480x360/E4405F/FFFFFF?text=Instagram+Reel';
     preview.style.display = 'block';
@@ -1164,7 +1161,6 @@ async function deleteVideo(id) {
   }
 }
 
-// COMENTARIOS
 async function loadComments() { 
   if (!SUPABASE_DB_ENABLED) return; 
   try { 
@@ -1207,7 +1203,7 @@ async function deleteComment(commentId) {
     state.comments = state.comments.filter(c => c.id !== commentId); 
     renderComments(); 
     renderAdminComments(); 
-    toast('🗑️ Comentario eliminado', 'success'); 
+    toast('️ Comentario eliminado', 'success'); 
   } catch(err) { 
     console.error('Error eliminando comentario:', err); 
     toast('Error al eliminar el comentario', 'error'); 
@@ -1378,7 +1374,6 @@ function clearHomeImagePreview() {
   } 
 }
 
-// CORREGIDO: Ahora guarda en Supabase
 async function saveHomeSection(e) {
   e.preventDefault(); 
   if (!state.loggedIn) return; 
@@ -1412,7 +1407,6 @@ async function saveHomeSection(e) {
   
   if (hasError) { toast('Revisá los campos marcados', 'error'); return; }
   
-  // Guardar en Supabase
   if (SUPABASE_DB_ENABLED) {
     try {
       const { error } = await supabaseClient
@@ -1442,7 +1436,6 @@ async function saveHomeSection(e) {
     }
   }
   
-  // Guardar localmente también (backup)
   state.homeSection = { label, title, aboutTitle, p1, p2, image, stats }; 
   save(); 
   renderHomeSection(); 
@@ -1454,11 +1447,11 @@ function renderContactSection() {
   let contactHtml = state.contactItems.map(function(item) { 
     let actionsHtml = ''; 
     if (state.loggedIn) { 
-      actionsHtml = '<div class="contact-item-actions"><button class="contact-item-btn edit" onclick="openEditContactItem(' + item.id + ')" title="Editar">✏️</button><button class="contact-item-btn delete" onclick="deleteContactItem(' + item.id + ')" title="Eliminar">🗑️</button></div>'; 
+      actionsHtml = '<div class="contact-item-actions"><button class="contact-item-btn edit" onclick="openEditContactItem(' + item.id + ')" title="Editar">✏️</button><button class="contact-item-btn delete" onclick="deleteContactItem(' + item.id + ')" title="Eliminar">️</button></div>'; 
     } 
-    return '<div class="contact-item"><div class="contact-item-icon">' + (item.icon || '📌') + '</div><div><h4>' + item.title + '</h4><p>' + item.content + '</p></div>' + actionsHtml + '</div>'; 
+    return '<div class="contact-item"><div class="contact-item-icon">' + (item.icon || '') + '</div><div><h4>' + item.title + '</h4><p>' + item.content + '</p></div>' + actionsHtml + '</div>'; 
   }).join('');
-  if (state.loggedIn) contactHtml += '<div class="contact-add-btn visible" onclick="openEditContactItem()">➕ Agregar dato de contacto</div>'; 
+  if (state.loggedIn) contactHtml += '<div class="contact-add-btn visible" onclick="openEditContactItem()"> Agregar dato de contacto</div>'; 
   contactInfo.innerHTML = contactHtml;
   const contactForm = document.getElementById('contactForm');
   let formHtml = state.formFields.map(function(field) { 
@@ -1612,7 +1605,7 @@ function deleteFormField(id) {
 function renderAdminContact() {
   const itemsList = document.getElementById('adminContactItemsList'); 
   itemsList.innerHTML = state.contactItems.map(function(item) { 
-    return '<div class="admin-item"><div class="admin-item-info"><div class="admin-item-title">' + (item.icon || '') + ' ' + item.title + '</div><div class="admin-item-meta">' + item.content + '</div></div><div class="admin-item-actions"><button class="btn-icon btn-edit" onclick="openEditContactItem(' + item.id + ')">✏️</button><button class="btn-icon btn-delete" onclick="deleteContactItem(' + item.id + ')">️</button></div></div>'; 
+    return '<div class="admin-item"><div class="admin-item-info"><div class="admin-item-title">' + (item.icon || '📌') + ' ' + item.title + '</div><div class="admin-item-meta">' + item.content + '</div></div><div class="admin-item-actions"><button class="btn-icon btn-edit" onclick="openEditContactItem(' + item.id + ')">✏️</button><button class="btn-icon btn-delete" onclick="deleteContactItem(' + item.id + ')">🗑️</button></div></div>'; 
   }).join('') || '<p style="opacity:.5;text-align:center;padding:1rem">No hay datos de contacto</p>';
   const fieldsList = document.getElementById('adminFormFieldsList'); 
   fieldsList.innerHTML = state.formFields.map(function(field) { 
@@ -1678,7 +1671,7 @@ function render() {
   pg.innerHTML = state.pages.map(function(p) { 
     var pc = (p.gallery || []).length; 
     var adminClass = state.loggedIn ? 'admin-mode' : ''; 
-    return '<div class="page-card ' + adminClass + '" onclick="handlePageCardClick(event,' + p.id + ')"><button class="page-edit-btn" onclick="event.stopPropagation();openEditPage(' + p.id + ')" title="Editar sección">✏️</button><div class="page-card-icon">' + (p.icon || '') + '</div><h3>' + p.title + '</h3><p>' + (p.desc || '').substring(0, 120) + ((p.desc || '').length > 120 ? '...' : '') + '</p><div class="page-card-photos">📸 ' + pc + ' foto' + (pc !== 1 ? 's' : '') + '</div><div class="page-card-date">' + (p.date || '') + '</div></div>'; 
+    return '<div class="page-card ' + adminClass + '" onclick="handlePageCardClick(event,' + p.id + ')"><button class="page-edit-btn" onclick="event.stopPropagation();openEditPage(' + p.id + ')" title="Editar sección">️</button><div class="page-card-icon">' + (p.icon || '') + '</div><h3>' + p.title + '</h3><p>' + (p.desc || '').substring(0, 120) + ((p.desc || '').length > 120 ? '...' : '') + '</p><div class="page-card-photos">📸 ' + pc + ' foto' + (pc !== 1 ? 's' : '') + '</div><div class="page-card-date">' + (p.date || '') + '</div></div>'; 
   }).join('');
   renderContactSection(); 
   renderComments(); 
@@ -1697,14 +1690,40 @@ function handlePageCardClick(event, id) {
 }
 
 function renderAdmin() {
-  document.getElementById('adminAlbumsList').innerHTML = state.albums.map(function(a) { 
-    return '<div class="admin-item"><div class="admin-item-info"><div class="admin-item-title">🖼️ ' + a.title + '</div><div class="admin-item-meta">' + (a.date || '') + ' · ' + ((a.photos || []).length) + ' fotos</div></div><div class="admin-item-actions"><button class="btn-icon btn-edit" onclick="openEditAlbum(' + a.id + ')">✏️</button><button class="btn-icon btn-delete" onclick="deleteAlbum(' + a.id + ')">🗑️</button></div></div>'; 
+  document.getElementById('adminAlbumsList').innerHTML = state.albums.map(function(a, index) {
+    var isFirst = index === 0;
+    var isLast = index === state.albums.length - 1;
+    var reorderHtml = '<div class="album-reorder-controls">' +
+      '<button class="album-reorder-btn" onclick="moveAlbum(' + a.id + ', -1)" ' + (isFirst ? 'disabled' : '') + ' title="Mover arriba">⬆️</button>' +
+      '<button class="album-reorder-btn" onclick="moveAlbum(' + a.id + ', 1)" ' + (isLast ? 'disabled' : '') + ' title="Mover abajo">⬇️</button>' +
+    '</div>';
+    return '<div class="admin-item">' + 
+      reorderHtml +
+      '<div class="admin-item-info"><div class="admin-item-title">🖼️ ' + a.title + '</div><div class="admin-item-meta">' + (a.date || '') + ' · ' + ((a.photos || []).length) + ' fotos</div></div>' +
+      '<div class="admin-item-actions"><button class="btn-icon btn-edit" onclick="openEditAlbum(' + a.id + ')">️</button><button class="btn-icon btn-delete" onclick="deleteAlbum(' + a.id + ')">🗑️</button></div>' +
+    '</div>';
   }).join('') || '<p style="opacity:.5;text-align:center;padding:2rem">No hay álbumes creados</p>';
+  
   renderAdminVideos();
+  
   document.getElementById('adminPagesList').innerHTML = state.pages.map(function(p) { 
     return '<div class="admin-item"><div class="admin-item-info"><div class="admin-item-title">' + (p.icon || '') + ' ' + p.title + '</div><div class="admin-item-meta">' + (p.date || '') + '</div></div><div class="admin-item-actions"><button class="btn-icon btn-edit" onclick="openEditPage(' + p.id + ')">✏️</button><button class="btn-icon btn-delete" onclick="deletePage(' + p.id + ')">🗑️</button></div></div>'; 
   }).join('') || '<p style="opacity:.5;text-align:center;padding:2rem">No hay secciones</p>';
   renderAdminContact();
+}
+
+function moveAlbum(albumId, direction) {
+  if (!state.loggedIn) { openLogin(); return; }
+  var index = state.albums.findIndex(function(a) { return a.id === albumId; });
+  if (index === -1) return;
+  var newIndex = index + direction;
+  if (newIndex < 0 || newIndex >= state.albums.length) return;
+  var album = state.albums.splice(index, 1)[0];
+  state.albums.splice(newIndex, 0, album);
+  save();
+  render();
+  renderAdmin();
+  toast('✅ Orden actualizado', 'success');
 }
 
 function openAlbumDetail(id) { 
@@ -1763,7 +1782,7 @@ async function confirmDeletePhoto(albumId, photoId) {
     album.photos = album.photos.filter(p => p.id !== photoId); 
     save(); 
     openAlbumDetail(albumId); 
-    toast('️ Foto eliminada', 'success'); 
+    toast('🗑️ Foto eliminada', 'success'); 
   } 
 }
 
@@ -1825,6 +1844,7 @@ function doLogin(e) {
     closeLogin(); 
     toast('¡Bienvenido, Administrador!', 'success'); 
     render(); 
+    renderAdmin();
     if (state.currentAlbumId) openAlbumDetail(state.currentAlbumId); 
   } else document.getElementById('loginError').classList.add('show'); 
 }
@@ -1836,6 +1856,7 @@ function logout() {
   document.getElementById('adminPanel').classList.remove('open'); 
   toast('Sesión cerrada'); 
   render(); 
+  renderAdmin();
   if (state.currentAlbumId) openAlbumDetail(state.currentAlbumId); 
 }
 
@@ -1861,7 +1882,7 @@ function openEditAlbum(id) {
   document.getElementById('albumUploadPlaceholder').style.display = 'block'; 
   document.getElementById('albumUploadZone').classList.remove('has-image'); 
   document.getElementById('albumFileInput').value = ''; 
-  document.getElementById('btnSaveAlbum').textContent = '💾 Guardar Álbum'; 
+  document.getElementById('btnSaveAlbum').textContent = ' Guardar Álbum'; 
   document.getElementById('btnSaveAlbum').disabled = false; 
   if (id) { 
     var album = state.albums.find(function(a) { return a.id === id; }); 
@@ -1947,6 +1968,7 @@ async function saveAlbum(e) {
     } else { state.albums.push(albumData); } 
     save(); 
     render(); 
+    renderAdmin();
     closeEditAlbum(); 
     toast('✅ Álbum guardado en la nube', 'success'); 
   } else { 
@@ -1956,6 +1978,7 @@ async function saveAlbum(e) {
     } else { state.albums.push({ id: Date.now(), title, desc, url: url || state.originalUrl, date, photos: [] }); } 
     save(); 
     render(); 
+    renderAdmin();
     closeEditAlbum(); 
     toast('✅ Álbum guardado (local)', 'success'); 
   } 
@@ -1967,6 +1990,7 @@ async function deleteAlbum(id) {
   state.albums = state.albums.filter(function(a) { return a.id !== id; }); 
   save(); 
   render(); 
+  renderAdmin();
   toast('Álbum eliminado', 'error'); 
 }
 
@@ -1977,7 +2001,7 @@ function openEditPage(id) {
   document.getElementById('editPageTitle').textContent = id ? 'Editar Sección' : 'Nueva Sección'; 
   state.pagePendingBg = null; 
   state.pageOriginalBg = null; 
-  state.selectedIcon = '⚽'; 
+  state.selectedIcon = ''; 
   document.getElementById('pageUploadPreview').style.display = 'none'; 
   document.getElementById('pageUploadPlaceholder').style.display = 'block'; 
   document.getElementById('pageUploadZone').classList.remove('has-image'); 
@@ -2079,7 +2103,7 @@ function savePage(e) {
       var page = state.pages.find(function(p) { return p.id === parseInt(id); }); 
       if (page) { page.title = title; page.header = header; page.desc = desc; if (url) page.url = url; else if (state.pageOriginalBg) page.url = state.pageOriginalBg; page.date = date; page.icon = state.selectedIcon; } 
     } else state.pages.push({ id: Date.now(), title: title, header: header, desc: desc, url: url, date: date, icon: state.selectedIcon, gallery: [] }); 
-    if (save()) { render(); closeEditPage(); toast('✅ Sección guardada correctamente', 'success'); } 
+    if (save()) { render(); renderAdmin(); closeEditPage(); toast('✅ Sección guardada correctamente', 'success'); } 
     else { btn.textContent = '💾 Guardar Sección'; btn.disabled = false; } 
   }, 300); 
 }
@@ -2089,6 +2113,7 @@ function deletePage(id) {
   state.pages = state.pages.filter(function(x) { return x.id !== id; }); 
   save(); 
   render(); 
+  renderAdmin();
   toast('Sección eliminada', 'error'); 
 }
 
