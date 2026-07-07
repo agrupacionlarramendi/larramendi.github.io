@@ -740,11 +740,20 @@ let SUPABASE_DB_ENABLED = false;
 try {
   supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
   console.log('✅ Cliente Supabase creado');
-  supabaseClient.from('albums').select('count').then(function(result) {
-    if (result.error) { console.error('❌ Error DB:', result.error.message); } 
-    else { SUPABASE_DB_ENABLED = true; console.log('✅ Base de datos conectada. Álbumes:', result.count); loadFromDatabase(); }
+  
+  // Intentar cargar álbumes directamente en lugar de contar
+  supabaseClient.from('albums').select('*', {count: 'exact', head: false}).then(function(result) {
+    if (result.error) { 
+      console.error('❌ Error DB:', result.error.message); 
+    } else { 
+      SUPABASE_DB_ENABLED = true; 
+      var albumCount = result.data ? result.data.length : 0;
+      console.log('✅ Base de datos conectada. Álbumes:', albumCount); 
+      loadFromDatabase(); 
+    }
   });
 } catch(e) { console.error('Error:', e); }
+
 
 const CONTACT_EMAIL = 'larramendifutbolveteranos@gmail.com';
 const DEFAULT_HOME_SECTION = { label: 'Nuestra Historia', title: 'Tradición y *Pasión*', aboutTitle: 'Más que un equipo, una familia', p1: 'La Agrupación de Veteranos de Fútbol Larramendi nació del amor por el deporte rey. Desde Paraná, Entre Ríos, reunimos a jugadores que mantienen viva la pasión por el fútbol a través de los años.', p2: 'Fundada el 16 de enero de 1989, nuestra agrupación ha sido un pilar del fútbol veterano en la región, fomentando el deporte, la camaradería y los valores que el fútbol nos enseñó. Cada partido es una celebración de la amistad y el compañerismo.', image: 'https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=1920', stats: [{ number: '36+', label: 'Años de historia' }, { number: '40+', label: 'Jugadores' }, { number: '15+', label: 'Torneos' }] };
@@ -1728,17 +1737,35 @@ function moveAlbum(albumId, direction) {
 }
 
 async function updateAlbumOrderInDB() {
-  if (!SUPABASE_DB_ENABLED) return;
+  // Removemos la verificación temporalmente para debug
+  // if (!SUPABASE_DB_ENABLED) return;
+  
+  console.log('🔄 Intentando actualizar orden de álbumes...');
+  console.log('SUPABASE_DB_ENABLED:', SUPABASE_DB_ENABLED);
+  console.log('state.albums:', state.albums);
+  
+  if (!supabaseClient) {
+    console.error('❌ supabaseClient es null');
+    return;
+  }
+  
   try { 
     for (var i = 0; i < state.albums.length; i++) { 
       var album = state.albums[i]; 
-      var { error } = await supabaseClient.from('albums').update({ display_order: i + 1 }).eq('id', album.id); 
-      if (error) console.error('Error actualizando orden del álbum ' + album.id + ':', error); 
+      console.log(`📝 Actualizando álbum ${album.id} a posición ${i + 1}`);
+      var { data, error } = await supabaseClient.from('albums').update({ display_order: i + 1 }).eq('id', album.id);
+      
+      if (error) {
+        console.error('❌ Error actualizando orden del álbum ' + album.id + ':', error); 
+      } else {
+        console.log('✅ Álbum ' + album.id + ' actualizado correctamente');
+      }
     } 
     console.log('✅ Orden de álbumes actualizado en Supabase'); 
-  } catch (error) { console.error('Error guardando orden de álbumes:', error); }
+  } catch (error) { 
+    console.error('❌ Error guardando orden de álbumes:', error); 
+  }
 }
-
 
 function openAlbumDetail(id) { 
   var album = state.albums.find(function(a) { return a.id === id; }); 
